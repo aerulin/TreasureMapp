@@ -1,0 +1,11 @@
+class CreateMissions < ActiveRecord::Migration[6.0]
+  def change
+    create_table :missions do |t|
+      t.string :secret_place
+      t.string :name
+      t.string :category
+
+      t.timestamps
+    end
+  end
+end

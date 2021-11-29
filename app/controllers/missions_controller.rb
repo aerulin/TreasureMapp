@@ -3,5 +3,6 @@ class MissionsController < ApplicationController
   end
 
   def show
+    @mission = Mission.find(params[:id])
   end
 end

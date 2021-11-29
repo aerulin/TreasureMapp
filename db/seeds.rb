@@ -5,16 +5,19 @@ require 'faker'
 # Clear database ####################################################
 
 puts 'Deleting users'
-User.all.destroy
-# puts 'Deleting challenges'
-# Challenge.all.destroy
-# puts 'deleting questions '
-# Question.all.delete
-puts 'Deleting clues '
-Clue.all.delete
-puts 'Deleting mission'
-Mission.all.destroy
+User.all.destroy_all
 
+puts 'Deleting challenges'
+Challenge.all.destroy_all
+
+puts 'deleting questions '
+Question.all.destroy_all
+
+puts 'Deleting clues '
+Clue.all.destroy_all
+
+puts 'Deleting mission'
+Mission.all.destroy_all
 
 # Creating users ####################################################
 
@@ -56,23 +59,24 @@ photo_url = 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Girouette_d_ouc
 mission = Mission.new(
   name: "Ouch'y",
   secret_place: "Tour Haldimand",
-  category: "Quartier"
+  category: "Quartier",
   lat: 46.505073,
   lng: 6.641532,
-  image_url: photo_url,
-
+  photo_url: photo_url,
 )
 mission.save!
 
 
 # Creating clues ###########################################
 
+puts "Creating clues"
 Clue.create(mission: mission, level: 1, description: "Mon créateur était d'origine britanique")
 Clue.create(mission: mission, level: 2, description: "J'aurai gagné un concours d'élégance au XIXeme siècle")
 Clue.create(mission: mission, level: 3, description: "J'ai manqué de mourir étouffée par la flore")
 Clue.create(mission: mission, level: 4, description: "J'ai une petite soeur au parc de mon repos")
 Clue.create(mission: mission, level: 5, description: "Je me trouve à l'embouchure de la Vuachère")
 
-# Creating clues ###########################################
+# Creating question ###########################################
 
-# Question.create(mission: mission, lat: , lng: , question: "", answer:"")
+puts "Creating questions"
+Question.create(mission: mission, lat: 5.3, lng: 4.2, question: "Ca va?", answer:"Oui très bien")

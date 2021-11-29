@@ -78,10 +78,4 @@ Clue.create(mission: mission, level: 5, description: "Je me trouve à l'embouchu
 
 # Creating question ###########################################
 
-<<<<<<< HEAD
 # Question.create(mission: mission, lat: , lng: , question: "", answer:"")
-=======
-puts "Creating questions"
-Question.create(mission: mission, lat: 5.3, lng: 4.2, question: "Ca va?", answer:"Oui très bien")
-
->>>>>>> 47dc8ef4238b23cc7db18689aa67393ad00ca018

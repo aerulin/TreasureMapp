@@ -41,15 +41,20 @@ ActiveRecord::Schema.define(version: 2021_11_29_150022) do
     t.string "secret_place"
     t.string "name"
     t.string "category"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     t.float "lat"
-    t.float "long"
+    t.float "lng"
     t.string "photo_url"
->>>>>>> 12ad9bbc6c8bd979ee61366c4ef9a082e88da128
-=======
->>>>>>> 47dc8ef4238b23cc7db18689aa67393ad00ca018
+    t.string "difficulty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "question"
+    t.string "answer"
+    t.float "lat"
+    t.float "lng"
+    t.bigint "mission_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["mission_id"], name: "index_questions_on_mission_id"

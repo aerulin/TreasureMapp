@@ -27,3 +27,10 @@ User.create(
   password: first_name,
 )
 end
+
+10.times do
+  name = Faker::Name.first_name
+  Mission.create(
+    name: name
+  )
+end

@@ -1,2 +1,18 @@
-<h1>Missions#show</h1>
-<p>Find me in app/views/missions/show.html.erb</p>
+<div class="container mission-img-container">
+  <%= cl_image_tag("<%=@mission.image_url%>",width: 400, height: 300, crop: :fill) %>
+</div>
+
+<div class="categories-container">
+  <div>
+    Categorie: <%=@mission.category%>
+  </div>
+  <div>
+    Difficulté: <%=@mission.difficulty%>
+  </div>
+</div>
+
+<h1 class="mission-title"><%=@mission.title%></h1>
+
+<p class="mission-description"><%=@mission.description%></p>
+
+<div class="btn btn-primary">Rejoindre la mission!</div>

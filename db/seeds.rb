@@ -45,8 +45,8 @@ user = User.new(
 )
 user.save!
 end
-puts 'Users created'
 
+puts 'Users created'
 
 
 # Creating mission ###########################################
@@ -56,7 +56,7 @@ photo_url = 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Girouette_d_ouc
 mission = Mission.new(
   name: "Ouch'y",
   secret_place: "Tour Haldimand",
-  category: "Quartier"
+  category: "Quartier",
   lat: 46.505073,
   lng: 6.641532,
   image_url: photo_url,

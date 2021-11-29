@@ -32,9 +32,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_133401) do
     t.string "secret_place"
     t.string "name"
     t.string "category"
-    t.string "photo_url"
-    t.float "lat"
-    t.float "long"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -48,8 +48,8 @@ user = User.new(
 )
 user.save!
 end
-puts 'Users created'
 
+puts 'Users created'
 
 
 # Creating mission ###########################################
@@ -80,3 +80,4 @@ Clue.create(mission: mission, level: 5, description: "Je me trouve à l'embouchu
 
 puts "Creating questions"
 Question.create(mission: mission, lat: 5.3, lng: 4.2, question: "Ca va?", answer:"Oui très bien")
+

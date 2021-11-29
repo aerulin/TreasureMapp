@@ -41,19 +41,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_150022) do
     t.string "secret_place"
     t.string "name"
     t.string "category"
-    t.float "lat"
-    t.float "lng"
-    t.string "photo_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string "question"
-    t.string "answer"
-    t.float "lat"
-    t.float "lng"
-    t.bigint "mission_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["mission_id"], name: "index_questions_on_mission_id"

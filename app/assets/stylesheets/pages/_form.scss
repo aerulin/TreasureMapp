@@ -1,21 +1,44 @@
+
+.wrapper{
+  height: 100vh;
+  background-image: url("https://res.cloudinary.com/dg2an4buq/image/upload/v1638265396/ivan-guerrero--kr1N1tnOrk-unsplash_on0wj0.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: white;
+}
+
+.title-login{
+  padding: 25px;
+}
+
+.form-inputs-style{
+  padding: 15px;
+  margin: 30px;
+}
+
 .btn{
-    font-weight: 600;
-    background-color: #FC635B;
-    color:white;
+  font-weight: 600;
+  background-color: #FC635B;
+  color:white;
 }
 
 .btn:hover{
-color: white;
-background-color: #dd554e;
+  color: white;
+  background-color:#FF4D43;
+}
+
+.link{
+  padding: 25px;
 }
 
 a {
-    color: #dd554e;
-    text-decoration: none;
-    background-color: transparent;
+  color: #FC635B;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 a:hover {
-    color:#dd554e;
-    text-decoration: underline;
+  color:#FF4D43;
+  text-decoration: underline;
 }

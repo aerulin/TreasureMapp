@@ -1,20 +1,21 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon mobile-navbar">
+<div class="mobile-navbar">
 
-  <div id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-        <li class="nav-item active">
-          <%= link_to "Accueil", "/missions", class: "nav-link" %>
+    <ul class="navbar-bottom">
+        <li class="item-nav" style="border-right:1px solid #e7e7e7">
+          <i class="fas fa-home icon-nav-bottom"></i>
+          <div><%= link_to "Accueil", "/missions", class: "link-nav" %></div>
         </li>
-        <li class="nav-item">
-          <%= link_to "Missions", "/missions", class: "nav-link" %>
+        <li class="item-nav" style="border-right:1px solid #e7e7e7">
+          <i class="fas fa-gamepad icon-nav-bottom"></i>
+          <div><%= link_to "Missions", "/missions", class: "link-nav" %></div>
         </li>
-        <li class="nav-item">
-          <%= link_to "Carte", "/missions", class: "nav-link" %>
+        <li class="item-nav" style="border-right:1px solid #e7e7e7">
+          <i class="fas fa-map-signs icon-nav-bottom"></i>
+          <div><%= link_to "Carte", "/missions", class: "link-nav" %></div>
         </li>
-        <li class="nav-item">
-          <%= link_to "Scores", "/missions", class: "nav-link" %>
+        <li class="item-nav">
+          <i class="fas fa-trophy icon-nav-bottom"></i>
+          <div><%= link_to "Scores", "/missions", class: "link-nav" %></div>
         </li>
     </ul>
-  </div>
 </div>

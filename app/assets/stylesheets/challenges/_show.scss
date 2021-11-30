@@ -1,27 +1,50 @@
 .container-challenge-show {
   display: flex;
   flex-direction: column;
-  margin: 1vh 3vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  margin-bottom: 17vh;
 }
 
 .part-top, .part-bottom {
-  display: flex;
+  display: block;
   flex-direction: column;
   width: 100%;
+  margin: 3vh 0;
 }
 
-.part-top {
-  background-color: rosybrown;
+.part-top h2, .part-bottom h2 {
+  background-color: #FC635B;
+  margin: 2vh auto;
+  padding: 4vh 0;
+  font-size: 3vh;
+  font-weight: bold;
+  text-align: center;
 }
 
-.question-list li, .clues-list li {
+.questions-list li, .clues-list li {
   list-style-type: none;
+  width: 100%;
+  justify-content: left;
+  padding: 4vh 0;
+  margin: 2vh 0;
+  font-size: 2.5vh;
+  padding-left: 30px;
 }
 
-.question-list, .clues-list {
+.questions-list li {
+  background-color: #EDF9E4;
+}
+
+.clues-list li {
+  background-color: #EDF9E4;
+}
+
+.clues-list li:last-child {
+   background-color: #F9E5E4;
+}
+
+.questions-list, .clues-list {
+  width: 70%;
   margin: 0 auto;
-}
-
-.part-bottom {
-  background-color: salmon;
 }

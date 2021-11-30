@@ -1,7 +1,7 @@
 <h1>Missions#index</h1>
 <div class="container-flex">
   <% @missions.each do |mission|%>
-    <div class="item-flex" style="background-image: url('https://picsum.photos/300/200')">
+    <div class="item-flex" style="background-image: url('https://picsum.photos/300/200'); background-size: cover; object-fit: cover;">
         <h2><%= mission.name %></h2>
     </div>
   <% end %>

@@ -1,2 +1,12 @@
-<h1>Challenge#show</h1>
-<p>Find me in app/views/challenge/show.html.erb</p>
+<div class="container-challenge-show">
+  <h1>Accéder à la map</h1>
+  <% @challenge.mission.questions.each do |question| %>
+    <li><%= question.question %></li>
+  <% end %>
+  <h2>Indices récupérés: </h2>
+  <% @challenge.mission.clues.each do %>
+    <li><%= clues.description %></li>
+  <% end %>
+  <p>Quand vous pensez avoir trouvé la bonne localisation cliquez sur ce bouton afin de valider votre localisation</p>
+  <h3>PUSHE ME (IF YOU CAN) !!</h3>
+</div>

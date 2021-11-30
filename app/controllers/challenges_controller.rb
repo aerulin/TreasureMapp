@@ -1,4 +1,4 @@
-class ChallengeController < ApplicationController
+class ChallengesController < ApplicationController
   def show
   end
 

@@ -1,10 +1,20 @@
 <div class="container-challenge-show">
-  <h1>Accéder à la map</h1>
-  <% @challenge.mission.questions.each do |question| %>
-    <li><%= question.question %></li>
-  <% end %>
-  <h2>Indices récupérés: </h2>
-
-  <p>Quand vous pensez avoir trouvé la bonne localisation cliquez sur ce bouton afin de valider votre localisation</p>
-  <h3>PUSHE ME (IF YOU CAN) !!</h3>
+  <div class="part-top">
+    <h1>Accéder à la map</h1>
+    <div class="question-list">
+      <% @challenge.mission.questions.each do |question| %>
+        <li><%= question.question %></li>
+      <% end %>
+    </div>
+  </div>
+  <div class="part-bottom">
+    <h2>Indices récupérés: </h2>
+    <div class="clues-list">
+      <% @challenge.mission.clues.each do |clue| %>
+        <li><%= clue.description %></li>
+      <% end %>
+      <p>Quand vous pensez avoir trouvé la bonne localisation cliquez sur ce bouton afin de valider votre localisation</p>
+      <h3>PUSHE ME (IF YOU CAN) !!</h3>
+    </div>
+  </div>
 </div>

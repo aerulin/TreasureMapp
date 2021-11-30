@@ -1,0 +1,27 @@
+.container-challenge-show {
+  display: flex;
+  flex-direction: column;
+  margin: 1vh 3vh;
+}
+
+.part-top, .part-bottom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.part-top {
+  background-color: rosybrown;
+}
+
+.question-list li, .clues-list li {
+  list-style-type: none;
+}
+
+.question-list, .clues-list {
+  margin: 0 auto;
+}
+
+.part-bottom {
+  background-color: salmon;
+}

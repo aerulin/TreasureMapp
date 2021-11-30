@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_150022) do
+ActiveRecord::Schema.define(version: 2021_11_30_091951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "challenge_questions", force: :cascade do |t|
+    t.bigint "challenge_id"
+    t.bigint "question_id"
+    t.boolean "status", default: false
+    t.integer "answer_counter", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["challenge_id"], name: "index_challenge_questions_on_challenge_id"
+    t.index ["question_id"], name: "index_challenge_questions_on_question_id"
+  end
 
   create_table "challenges", force: :cascade do |t|
     t.string "status"
@@ -45,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_150022) do
     t.float "lng"
     t.string "photo_url"
     t.string "difficulty"
-
+    t.string "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

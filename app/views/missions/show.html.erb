@@ -1,5 +1,6 @@
 <div class="container mission-img-container">
-  <%= cl_image_tag("<%=@mission.image_url%>",width: 400, height: 300, crop: :fill) %>
+  <img src=<%=@mission.photo_url%> alt=<%=@mission.name%>>
+  <h1 class="mission-title"><%=@mission.name%></h1>
 </div>
 
 <div class="categories-container">
@@ -14,8 +15,5 @@
   </div>
 </div>
 
-<h1 class="mission-title"><%=@mission.title%></h1>
-
-<p class="mission-description"><%=@mission.description%></p>
 
 <div class="btn btn-primary">Rejoindre la mission!</div>

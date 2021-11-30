@@ -3,19 +3,19 @@
     <ul class="navbar-bottom">
         <li class="item-nav" style="border-right:1px solid #e7e7e7">
           <i class="fas fa-home icon-nav-bottom"></i>
-          <div><%= link_to "Accueil", "/missions", class: "link-nav" %></div>
+          <div><%= link_to "Accueil", root_path, class: "link-nav" %></div>
         </li>
         <li class="item-nav" style="border-right:1px solid #e7e7e7">
           <i class="fas fa-gamepad icon-nav-bottom"></i>
-          <div><%= link_to "Missions", "/missions", class: "link-nav" %></div>
+          <div><%= link_to "Missions", missions_path, class: "link-nav" %></div>
         </li>
         <li class="item-nav" style="border-right:1px solid #e7e7e7">
           <i class="fas fa-map-signs icon-nav-bottom"></i>
-          <div><%= link_to "Carte", "/missions", class: "link-nav" %></div>
+          <div><%= link_to "Carte", "#", class: "link-nav" %></div>
         </li>
         <li class="item-nav">
-          <i class="fas fa-trophy icon-nav-bottom"></i>
-          <div><%= link_to "Scores", "/missions", class: "link-nav" %></div>
+            <i class="fas fa-trophy icon-nav-bottom"></i>
+            <div><%= link_to "Scores", users_path, class: "link-nav" %></div>
         </li>
     </ul>
 </div>

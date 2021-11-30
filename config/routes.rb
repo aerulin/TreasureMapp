@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'missions/index'
-  get 'missions/show'
   devise_for :users
   root to: 'pages#home'
-  resources :missions, only: [:index, :show]
   resources :users, only: [:index]
+  resources :missions, only: [:index, :show] do
+    resources :challenges, only: [:new, :create]
+  end
+  resources :challenges, only: [:show]
 end

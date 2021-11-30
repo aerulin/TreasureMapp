@@ -106,7 +106,7 @@ puts "Creating Sinan's challenges"
     mission: Mission.all.sample,
     status: ["started", "finished"].sample,
     secret_counter: rand(3),
-    score: rand(700..2000)
+    score: rand(100..500)
   )
 end
 

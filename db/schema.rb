@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_150022) do
     t.string "photo_url"
     t.string "difficulty"
     t.string "time"
-
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

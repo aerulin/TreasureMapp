@@ -13,6 +13,9 @@ Challenge.all.destroy_all
 puts 'deleting questions '
 Question.all.destroy_all
 
+puts 'deleting Challenge-questions '
+ChallengeQuestion.all.destroy_all
+
 puts 'Deleting clues '
 Clue.all.destroy_all
 
@@ -23,12 +26,12 @@ Mission.all.destroy_all
 
 puts 'Creating Sinan...'
 sinan = User.new(
-  first_name: 'Sinan' ,
+  first_name: 'Sinan',
   last_name: 'Lartiste',
   nickname: 'slartiste',
   city: "Lausanne",
   password: '123456',
-  email: 'sinan@gmail.com',
+  email: 'sinan@gmail.com'
 )
 sinan.save!
 puts 'Sinan created'
@@ -39,15 +42,15 @@ puts 'Creating 10 users....'
   last_name = Faker::Name.last_name
   nickname = "#{first_name[0]}#{last_name}"
   email = "#{first_name}.#{last_name}@gmail.com"
-user = User.new(
-  first_name: first_name ,
-  last_name: last_name,
-  nickname: nickname,
-  city: ["Lausanne", "Lausanne","Renens", "Geneva", "Zurich","Prilly","Ecublens","Crissier","Bussigny"].sample,
-  password: '123456',
-  email: email,
-)
-user.save!
+  user = User.new(
+    first_name: first_name,
+    last_name: last_name,
+    nickname: nickname,
+    city: ["Lausanne", "Lausanne", "Renens", "Geneva", "Zurich", "Prilly", "Ecublens", "Crissier", "Bussigny"].sample,
+    password: '123456',
+    email: email
+  )
+  user.save!
 end
 
 puts 'Users created'
@@ -66,17 +69,14 @@ mission = Mission.new(
   time: "1h30",
   lat: 46.505073,
   lng: 6.641532,
-  photo_url: photo_url,
+  photo_url: photo_url
 )
 mission.save!
-
-
 puts "Create other mission"
 
 20.times do
-Mission.create(name: Faker::WorldCup.stadium, photo_url: 'https://picsum.photos/300/300')
+  Mission.create(name: Faker::WorldCup.stadium, photo_url: 'https://picsum.photos/300/300')
 end
-
 
 # Creating clues ###########################################
 
@@ -101,12 +101,12 @@ Question.create(mission: mission, lat: 46.504766, lng: 6.625691, question: "Comb
 puts "Creating Sinan's challenges"
 
 3.times do
-    Challenge.create(
+  Challenge.create(
     user: sinan,
     mission: Mission.all.sample,
     status: ["started", "finished"].sample,
     secret_counter: rand(3),
-    score: rand(700..2000),
+    score: rand(700..2000)
   )
 end
 
@@ -116,9 +116,9 @@ puts "Creating challenges"
   Challenge.create(
     user: User.all.sample,
     mission: Mission.all.sample,
-    status: ["started","started", "finished"].sample,
+    status: ["started", "started", "finished"].sample,
     secret_counter: rand(3),
-    score: rand(100..2000),
+    score: rand(100..2000)
   )
 end
 

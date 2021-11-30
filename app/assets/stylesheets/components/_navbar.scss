@@ -13,9 +13,42 @@
 
 
 .mobile-navbar{
-  height:8vh;
+  background-color: white;
+  text-align:center;
 }
 
 .navbar-light .navbar-nav  .active > .nav-link{
   color:#000000;
+}
+
+
+.navbar-bottom{
+
+  background-color:#ffffff;
+  box-shadow: 5px 10px 10px #e7e7e7e;
+  width: 100%;
+  position:absolute;
+  bottom:0;
+  margin:0 auto;
+  padding:8px 0;
+
+  li {
+    display:inline-block;
+    padding:10px 30px 2px 15px;
+  }
+
+  .icon-nav-bottom{
+    color: #FC635B;
+    font-size:28px;
+    margin: 0 auto;
+  }
+
+  .icon-nav-bottom:hover{
+    color:#FF4D43;
+  }
+
+  li a{
+    font-size:14px;
+    color:#000000;
+  }
 }

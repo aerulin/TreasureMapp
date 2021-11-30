@@ -8,6 +8,7 @@ class CreateMissions < ActiveRecord::Migration[6.0]
       t.float :lng
       t.string :photo_url
       t.string :difficulty
+      t.string :time
 
       t.timestamps
     end

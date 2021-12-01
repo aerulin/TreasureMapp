@@ -1,5 +1,5 @@
 .wrapper-challenge-show {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
 }
 
@@ -13,23 +13,31 @@
   border-bottom-right-radius: 70% 15%;
 }
 
-.clues-button{
+.box-avatar-challenge {
+  display: flex;
+  justify-content: center;
+}
+
+.box-avatar-challenge > a > img {
+  width: 100px;
+}
+
+.icon-challenge {
   position: absolute;
-  width: 80%;
-  top: 50%;
-  transform: translateY(-50%);
+  height: 70px;
+  width: 70px;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.clues-button > ul {
-
+.h2-challenge {
+  font-size: 3vh;
 }
 
-.clues-button > ul > li {
-  list-style: none;
+.button-validate {
+  font-size: 3vh;
 }
-
-
-
 
 
 

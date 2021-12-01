@@ -1,16 +1,23 @@
-<div class="wrapper-challenge-show d-flex direction-row justify-content-center">
+<div class="wrapper-challenge-show d-flex flex-column justify-content-center px-2">
   <header class="header-challenge-show">
-    <h2>Ouvrir la map</h2>
-    <div class="icon-map"></div>
+
+    <h2 class="text-center py-3 h2-challenge">Ouvrir la map</h2>
+
+    <div class="box-avatar-challenge">
+      <%= link_to "map" do %>
+        <%= image_tag "https://res.cloudinary.com/dg2an4buq/image/upload/v1638362273/earth_xe0rsw.png"%>
+      <% end %>
+    </div>
+
   </header>
 
-  <div class="list-wrapper">
+  <div class="list-wrapper mb-5">
     <% @challenge.mission.clues.each do |clue| %>
-      <div class="list-item"><%= clue.description %></div>
+      <div class="list-item bg-success bg-gradient my-4 p-1"><%= clue.description %></div>
     <% end %>
   </div>
 
- <button>Valider lieux secret</button>
+ <div class="btn button-validate">Valider lieu secret</div>
 </div>
 
 

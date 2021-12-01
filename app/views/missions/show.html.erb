@@ -1,19 +1,39 @@
-<div class="container mission-img-container">
-  <img src=<%=@mission.photo_url%> alt=<%=@mission.name%>>
-  <h1 class="mission-title"><%=@mission.name%></h1>
+<div class="main">
+  <div class="banner-custom img">
+    <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt='Background Picture'>
+  </div>
+  <div class="box-avatar">
+    <img class= "avatar border-blue" src=<%=@mission.photo_url%>>
+  </div>
+  <div class="title-mission">
+    <h2><%=@mission.name%></h2>
+  </div>
+  <div class="row p-0">
+    <div class="col-6" style="text-align:center">
+    <div>
+      <i class="fas fa-building icon-description"></i>
+      <%=@mission.category%>
+    </div>
+    <div>
+      <i class="fas fa-clock icon-description"></i>
+      <%=@mission.time%>
+    </div>
+  </div>
+  <div class="col-6" style="text-align:center">
+    <div>
+      <i class="fas fa-dumbbell icon-description"></i>
+      <%=@mission.difficulty%>
+    </div>
+  <div>
+    <i class="fas fa-map-marked-alt icon-description"></i>
+    <%=@mission.category%>
+    </div>
+  </div>
+  </div>
+  <div class="text-mission">
+    <%=@mission.description%>
+  </div>
+  <div class="box-button">
+    <%= link_to "Rejoindre la mission", mission_challenges_path(@mission), method: 'post', class:'btn' %>
+  </div>
 </div>
-
-<div class="categories-container">
-  <div>
-    Categorie: <%=@mission.category%>
-  </div>
-  <div>
-    Difficulté: <%=@mission.difficulty%>
-  </div>
-  <div>
-    Temps estimé: <%=@mission.time%>
-  </div>
-</div>
-
-
-<div class="btn btn-primary">Rejoindre la mission!</div>

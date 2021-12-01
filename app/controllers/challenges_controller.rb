@@ -17,7 +17,7 @@ class ChallengesController < ApplicationController
     challenge.user = current_user
     challenge.mission = Mission.find(params[:mission_id])
     challenge.save
-    redirect_to mission_challenge_path(challenge)
+    redirect_to challenge_path(challenge)
   end
 
   private

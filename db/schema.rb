@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_090454) do
 
   create_table "challenges", force: :cascade do |t|
     t.string "status"
-    t.string "score"
+    t.integer "score"
     t.string "secret_counter"
     t.string "open_question"
     t.bigint "user_id"

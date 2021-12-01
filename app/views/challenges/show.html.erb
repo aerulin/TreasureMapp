@@ -1,9 +1,22 @@
-<h1>Challenge#show</h1>
-<p>Test map</p>
 
-<div id="map" style="width:600px; height: 350px;"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      data-markers="<%= @markers.to_json %>"
-      data-questions="<%=@test.to_json %>"
-      data-mapbox-api-key='pk.eyJ1IjoianVsaWVxdWVsb3oiLCJhIjoiY2t2bTZyeDh1NzhqbDJwcXdvYmhvZWZ0ciJ9.bcMvqZq3NjfhSSDcXWD86Q'>
+<div class="wrapper-challenge-show d-flex flex-column justify-content-center px-2">
+  <header class="header-challenge-show">
+
+    <h2 class="text-center pt-4 mt-2 pb-0 h2-challenge">Ouvrir la map</h2>
+
+    <div class="box-avatar-challenge">
+      <%= link_to "#" do %>
+        <%= image_tag "https://res.cloudinary.com/dg2an4buq/image/upload/v1638362273/earth_xe0rsw.png"%>
+      <% end %>
+    </div>
+
+  </header>
+
+  <div class="list-wrapper mb-2">
+    <% @challenge.mission.clues.each do |clue| %>
+      <div class="list-item pl-3 py-3 m-4 rounded-pill border border-success"><i class="fas fa-unlock-alt pr-3"></i><%= clue.description %></div>
+    <% end %>
+  </div>
+
+ <div class="btn button-validate">Valider lieu secret</div>
 </div>

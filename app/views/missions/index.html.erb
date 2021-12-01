@@ -1,12 +1,15 @@
 <h1>Missions#index</h1>
-<div class="container-flex">
-  <% @missions.each do |mission|%>
-    <%= link_to mission_path(mission) do %>
-      <div>
-        <div class="item-flex" style="background-image: url('https://picsum.photos/300/200'); background-size: cover; object-fit: cover;">
-          <h2><%= mission.name %></h2>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+
+<div class="missions-container">
+<% @missions.each do |mission|%>
+  <div class="container-item">
+    <%= image_tag mission.photo_url, alt: "Le Wagon", width: 200, class:'img-mission-list' %>
+    <div class="mission-infos">
+      <h2><%= mission.name %></h2>
+      <p>Ville: CITY </p>
+      <p>Difficulté: LEVEL</p>
+      <div class="btn"><%= link_to 'Découvrir', mission_path(mission)%></div>
+    </div>
+  </div>
+  <%end%>
 </div>

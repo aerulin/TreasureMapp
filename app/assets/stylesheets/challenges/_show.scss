@@ -1,0 +1,51 @@
+.wrapper-challenge-show {
+  height: 90vh;
+  width: 100%;
+}
+
+.header-challenge-show {
+  position:absolute;
+  top: 0;
+  left: -3px;
+  background-color: thistle;
+  width:100%;
+  height:15%;
+  border-bottom-left-radius: 70% 15%;
+  border-bottom-right-radius: 70% 15%;
+}
+
+.box-avatar-challenge {
+  display: flex;
+  justify-content: center;
+}
+
+.box-avatar-challenge > a > img {
+  width: 80px;
+}
+
+.icon-challenge {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.h2-challenge {
+  font-size: 3vh;
+}
+
+.button-validate {
+  font-size: 3vh;
+  margin: 0 24px;
+}
+
+.list-item {
+  font-size: 10px;
+}
+
+.fa-unlock-alt {
+  font-size: 16px;
+  color: orange;
+}

@@ -1,14 +1,13 @@
 class ChallengesController < ApplicationController
 
   def show
-        @challenge = Challenge.find(params[:id])
-    @markers = @challenge.mission.questions.map do |question|
-    { lat: question.lat, lng: question.lng, question: question.question }
-  end
   end
 
   def map
-
+    @challenge = Challenge.find(params[:challenge_id])
+    @markers = @challenge.mission.questions.map do |question|
+      { lat: question.lat, lng: question.lng, question: question.question }
+    end
   end
 
   def create
@@ -24,5 +23,4 @@ class ChallengesController < ApplicationController
   def questions_params
     params.require(:question).permit(:lat, :lng)
   end
-
 end

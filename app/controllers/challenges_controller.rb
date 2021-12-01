@@ -8,19 +8,20 @@ class ChallengesController < ApplicationController
     @markers = @questions.map do |question|
       { lat: question.lat, lng: question.lng }
     end
-
-  end
-
-  def new
   end
 
   def create
+    challenge = Challenge.new
+    challenge.user = current_user
+    challenge.mission = Mission.find(params[:mission_id])
+    challenge.save
+    redirect_to challenge_path(challenge)
   end
 
-end
+  private
 
-private
-
-def questions_params
+  def questions_params
     params.require(:question).permit(:lat, :lng)
+  end
+
 end

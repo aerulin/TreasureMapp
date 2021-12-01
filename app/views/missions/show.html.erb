@@ -1,22 +1,58 @@
-<div class="container mission-img-container">
-  <img src=<%=@mission.photo_url%> alt=<%=@mission.name%>>
-  <h1 class="mission-title"><%=@mission.name%></h1>
+<div class="main">
+    <div class="wrapper-mission">
+      <img src=<%=@mission.photo_url%> alt=<%=@mission.name%>>
+    </div>
+
+    <div class="box-avatar">
+      <img class= "avatar-ouchy" src=<%=@mission.photo_url%>>
+    </div>
+
+    <div class="title-mission">
+      <h2><%=@mission.name%></h2>
+    </div>
+
+
+
+
+
+  <div class="row p-0">
+
+  <div class="col-6" style="text-align:center">
+    <div>
+    <i class="fas fa-building icon-description"></i>
+    <%=@mission.category%>
+    </div>
+    <div>
+    <i class="fas fa-clock icon-description"></i>
+    <%=@mission.time%>
+    </div>
+  </div>
+
+  <div class="col-6" style="text-align:center">
+    <div>
+    <i class="fas fa-dumbbell icon-description"></i>
+    <%=@mission.difficulty%>
+    </div>
+    <div>
+    <i class="fas fa-map-marked-alt icon-description"></i>
+    <%=@mission.category%>
+    </div>
+  </div>
+
+
+
+  </div>
+
+  <div class="text-mission">
+  <p>typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+  </div>
+
+    <div class="box-button">
+      <div class="btn">Rejoindre la mission!</div>
+  </div>
+
 </div>
-
-<div class="categories-container">
-  <div>
-    Categorie: <%=@mission.category%>
-  </div>
-  <div>
-    Difficulté: <%=@mission.difficulty%>
-  </div>
-  <div>
-    Temps estimé: <%=@mission.time%>
-  </div>
-</div>
-
-
-<div class="btn btn-primary">Rejoindre la mission!</div>
 
 <%# to be deleted %>
 <%= link_to "Create mission", mission_challenges_path(@mission), method: 'post' %>
+

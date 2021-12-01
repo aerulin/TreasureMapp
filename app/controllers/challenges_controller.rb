@@ -1,8 +1,7 @@
 class ChallengesController < ApplicationController
 
   def show
-    @questions = Question.all
-
+    @questions = Question.where(mission_id:params[:id])
     # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
 
     @markers = @questions.map do |question|

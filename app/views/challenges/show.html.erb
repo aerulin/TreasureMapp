@@ -11,9 +11,9 @@
 
   </header>
 
-  <div class="list-wrapper mb-5">
+  <div class="list-wrapper mb-2">
     <% @challenge.mission.clues.each do |clue| %>
-      <div class="list-item-show bg-success bg-gradient my-4 p-1"><%= clue.description %></div>
+      <div class="list-item pl-3 py-3 m-4 rounded-pill border border-success"><i class="fas fa-unlock-alt pr-3"></i><%= clue.description %></div>
     <% end %>
   </div>
 

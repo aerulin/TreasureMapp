@@ -1,21 +1,17 @@
-<div class="wrapper-challenge-show">
-  <header>
+<div class="wrapper-challenge-show d-flex direction-row justify-content-center">
+  <header class="header-challenge-show">
     <h2>Ouvrir la map</h2>
     <div class="icon-map"></div>
   </header>
-  <div class="clues-button">
-    <div class="clues">
-      <ul>
-        <li>Indice</li>
-        <li>Indice</li>
-        <li>Indice</li>
-        <li>Indice</li>
-      </ul>
-      <button>Valider lieux secret</button>
-    </div>
-  </div>
-</div>
 
+  <div class="list-wrapper">
+    <% @challenge.mission.clues.each do |clue| %>
+      <div class="list-item"><%= clue.description %></div>
+    <% end %>
+  </div>
+
+ <button>Valider lieux secret</button>
+</div>
 
 
 

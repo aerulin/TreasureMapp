@@ -1,4 +1,32 @@
+.wrapper-challenge-show {
+  height: 100vh;
+  width: 100%;
+}
 
+.header-challenge-show {
+  position:absolute;
+  top: 0;
+  background-color: thistle;
+  width:100%;
+  height:15%;
+  border-bottom-left-radius: 70% 15%;
+  border-bottom-right-radius: 70% 15%;
+}
+
+.clues-button{
+  position: absolute;
+  width: 80%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.clues-button > ul {
+
+}
+
+.clues-button > ul > li {
+  list-style: none;
+}
 
 
 

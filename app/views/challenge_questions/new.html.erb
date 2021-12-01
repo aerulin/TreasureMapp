@@ -1,0 +1,8 @@
+<h1>Test page</h1>
+
+
+<h3>Question: <%= @question.question %></h3>
+<%= simple_form_for @challenge_question, url: challenge_question_validate_path(@challenge, @question) do |f| %>
+  <%= f.input :guess %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>

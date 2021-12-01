@@ -1,10 +1,50 @@
 <div class="main">
+
   <div class="banner-custom">
     <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt=''>
+    <div class="banner-button">
+      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'btn-border-white' %>
+    </div>
   </div>
   <div class="box-avatar">
     <img class= "avatar border-red" src='https://wavemind.ch/wp-content/uploads/2020/09/sinan-portrait-SITE.png'>
   </div>
   <div class="title-mission">
-    <h2>Hello <%=@user.first_name%></h2>
+    <h2>Hello <%=current_user.first_name%></h2>
   </div>
+
+  <div class="leaderboard mb-2 mx-2">
+    <table class="table-custom">
+      <tbody>
+        <% @users_shortlist.each_with_index do |user, index| %>
+
+          <% if user == current_user %>
+            <tr class='custom-row row-current-user'>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= user.nickname %></td>
+              <td><%= user.calculate_score %></td>
+            </tr>
+          <% else %>
+            <tr class = "custom-row">
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= user.nickname %></td>
+              <td><%= user.calculate_score %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="box-button"><%= link_to "Voir plus", users_path, class:'btn-border-red' %></div>
+  </div>
+
+<hr style="width: 50%; margin-left: auto">
+
+  <div class="open-mission">
+    <h3>Your open missions</h3>
+  </div>
+
+
+
+
+
+</div>

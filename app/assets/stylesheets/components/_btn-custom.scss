@@ -1,0 +1,32 @@
+.box-button{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-red{
+  font-weight: 600;
+  background-color: #FC635B;
+  color:white;
+}
+
+.btn-border-red{
+  font-weight: 200;
+  color: #FC635B;
+  border: 1px solid #FC635B;
+  padding: 2px 5px;
+}
+
+.btn-border-white{
+  font-weight: 200;
+  color: white;
+  border: 1px solid white;
+  padding: 2px 5px;
+}
+
+.banner-button {
+  z-index: 1;
+  position:absolute;
+  top: 10px;
+  right: 10px;
+
+}

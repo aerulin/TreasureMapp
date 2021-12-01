@@ -5,8 +5,12 @@ class UsersController < ApplicationController
   end
 
   def playground
-    @user = current_user
-    @leaderboard = User.all.sort_by { |user| -user.calculate_score }
-    @challenges = Challenge.where(user: current_user)
+    users = User.all.sort_by { |user| -user.calculate_score }
+    rank = users.index(current_user)
+    if rank.zero?
+      @users_shortlist = users[0...3]
+    else
+      @users_shortlist = users[(rank-1)...(rank+1)]
+    end
   end
 end

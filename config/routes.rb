@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       post 'validate', as: :validate, to: 'challenge_questions#validate'
       get 'new', to: 'challenge_questions#new'
     end
+    get 'map', to: 'challenges#map'
   end
 
 end

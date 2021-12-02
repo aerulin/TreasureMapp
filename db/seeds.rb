@@ -61,18 +61,6 @@ Mission.all.destroy_all
 
 # Creating users ####################################################
 
-puts 'Creating Sinan...'
-sinan = User.new(
-  first_name: 'Sinan',
-  last_name: 'Lartiste',
-  nickname: 'slartiste',
-  city: "Lausanne",
-  password: '123456',
-  email: 'sinan@gmail.com',
-)
-sinan.save!
-puts 'Sinan created'
-
 puts 'Creating 30 users....'
 10.times do
   first_name = Faker::Name.first_name
@@ -177,24 +165,56 @@ sauvabelin_q_5 = Question.create(mission: sauvabelin, lat: 46.528084, lng: 6.637
 
 # Creating challenges ###########################################
 
+
+puts "Creating challenges"
+
+
+
+20.times do
+  Challenge.create(
+    user: User.all.sample,
+    mission: Mission.all.sample,
+    status: ["started", "started", "finished"].sample,
+    secret_counter: rand(3),
+    score: rand(100..2000)
+  )
+end
+
+
+
+puts 'Creating Sinan...'
+
+sinan = User.new(
+  first_name: 'Sinan',
+  last_name: 'Lartiste',
+  nickname: 'slartiste',
+  city: "Lausanne",
+  password: '123456',
+  email: 'sinan@gmail.com',
+)
+sinan.save!
+puts 'Sinan created'
+
+
 puts "Creating Sinan's challenges"
 
 Challenge.create(
   user: sinan,
-  mission: Mission.all.sample,
+  mission: Mission.find_by(name: mission_array[0]),
   status: "started",
   secret_counter: rand(3),
   score: rand(200..600)
 )
-
-2.times do
+i = 1
+4.times do
   Challenge.create(
     user: sinan,
-    mission: Mission.all.sample,
+    mission: Mission.find_by(name: mission_array[i]),
     status: "finished",
     secret_counter: rand(3),
     score: rand(200..600)
   )
+i += 1
 end
 
 ouchy_challenge = Challenge.create(
@@ -262,17 +282,7 @@ ChallengeQuestion.create(
   answer_counter: 1
 )
 
-puts "Creating challenges"
 
-20.times do
-  Challenge.create(
-    user: User.all.sample,
-    mission: Mission.all.sample,
-    status: ["started", "started", "finished"].sample,
-    secret_counter: rand(3),
-    score: rand(100..2000)
-  )
-end
 
 puts "------------------------------------------------------------------"
 puts "----------------Seed working correctly. Enjoy !-------------------"

@@ -4,9 +4,13 @@
 }
 
 .btn-red{
-  font-weight: 600;
+  font-weight: 400;
   background-color: #FC635B;
-  color:white;
+  text-align: center;
+}
+
+.btn-red > a {
+  color: white;
 }
 
 .btn-border-red{
@@ -25,8 +29,36 @@
 
 .banner-button {
   z-index: 1;
-  position:absolute;
+  position: absolute;
   top: 10px;
   right: 10px;
+
+}
+
+.banner-back {
+  z-index: 1;
+  position:absolute;
+  top: 10px;
+  left: 10px;
+  font-weight: 200;
+  a{
+  color: white;
+  }
+  border: 1px solid white;
+  padding: 2px 5px;
+
+}
+
+.banner-back-red {
+  z-index: 1;
+  position:absolute;
+  top: 10px;
+  left: 10px;
+  font-weight: 200;
+  a{
+  color: white;
+  }
+  background-color:#FC635B;
+  padding: 2px 5px;
 
 }

@@ -1,0 +1,75 @@
+.podium {
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+
+.podium-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.podium-text p {
+  width: 33%
+}
+
+.podium-shape {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.podium-shape p {
+  padding: 3px;
+  font-size: 18px;
+  color: white;
+  line-height: 18px;
+  margin-bottom: 5px;
+}
+
+.podium-shape .medal {
+  font-size: 30px;
+}
+
+.podium-shape .mission-score {
+  font-weight: 700;
+}
+
+#shape-first {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 20vh;
+  width: 33%;
+  background-color: #FC635B;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+#shape-second {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 17vh;
+  width: 33%;
+  background-color: #f87e78;
+  border-top-left-radius: 3px;
+}
+
+#shape-third {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 14vh;
+  width: 33%;
+  background-color: #FE918C;
+  border-top-right-radius: 3px;
+}
+
+.podium-row {
+  background-color: rgb(224, 224, 224);
+}

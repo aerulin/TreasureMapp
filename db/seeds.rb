@@ -1,6 +1,36 @@
 require 'faker'
 # require 'open-uri'
 
+# Photos link ####################################################
+photo_array = [
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/01-geneva_yafpqo.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441053/02-parc-sauvabelin_w1oqk2.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638442447/12-rhone-geneve_pb6wzg.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/08-yverdon_x3kx0o.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/03-zurich_too6lp.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638442446/13-bale-rhin_ndz1hr.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/11-yverdon-plage_ash4aa.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/05-montreux_sq2oai.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/06-fribourg_bxnm2z.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/04-lausanne-ville_y6maru.jpg',
+]
+
+
+
+
+# Mission name ####################################################
+mission_array = [
+  'Gêne-Ève',
+  'Passe la Bâle',
+  'Sur le (t)Rhone',
+  'Nous Yverdon',
+  'Flow Zürichois',
+  'Rhin océros',
+  'Hiver dont plage',
+  'Lémanger la perche',
+  'Bourge frit',
+  'Ô lain pique'
+]
 
 # Clear database ####################################################
 
@@ -33,17 +63,17 @@ sinan = User.new(
 sinan.save!
 puts 'Sinan created'
 
-puts 'Creating 10 users....'
+puts 'Creating 30 users....'
 10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   nickname = "#{first_name[0]}#{last_name}"
-  email = "#{first_name}.#{last_name}@gmail.com"
+  email = "#{first_name}.#{last_name.downcase}@gmail.com"
 user = User.new(
   first_name: first_name ,
   last_name: last_name,
   nickname: nickname,
-  city: ["Lausanne", "Lausanne","Renens", "Geneva", "Zurich","Prilly","Ecublens","Crissier","Bussigny"].sample,
+  city: ["Lausanne", "Lausanne", "Renens", "Geneva", "Zurich", "Prilly", "Ecublens", "Crissier", "Bussigny"].sample,
   password: '123456',
   email: email,
 )
@@ -63,8 +93,9 @@ ouchy = Mission.new(
   name: "Ouch'y",
   secret_place: "Tour Haldimand",
   category: "Quartier",
-  difficulty: "Intermédiaire",
+  difficulty: "Moyen",
   time: "1h30",
+  city: 'Lausanne',
   lat: 46.505073,
   lng: 6.641532,
   description: "Partez à la découverte du quartier d'Ouchy, ses quais, le lac, ses batiments, ses jardins et son art. En avant pour une folle aventure !",
@@ -79,6 +110,7 @@ sauvabelin = Mission.new(
   category: "Parc",
   difficulty: "Facile",
   time: "2h00",
+  city: 'Lausanne',
   lat: 46.535237,
   lng: 6.638511,
   description: "Lausanne, ville de verdure de parc et de forêt. La mission vous emmenera à la limite de la ville, là où la nature a tous ses droits.",
@@ -87,16 +119,18 @@ sauvabelin = Mission.new(
 sauvabelin.save!
 
 puts "Create other mission"
-
-20.times do
+i = 0
+10.times do
   Mission.create(
-    name: Faker::WorldCup.stadium,
-    photo_url: 'https://picsum.photos/300/300',
+    name: mission_array[i],
+    photo_url: photo_array[i],
     difficulty: ['Facile', 'Moyen', 'Difficile'].sample,
+    city: ['Lausanne', 'Zürich', 'Genève', 'Bâle', 'Fribourg','Yverdon','Palavas-les-Flots'].sample,
     time: "#{rand(0..2)}h#{rand(0...6)}0",
     category: ['Quartier', 'Parc', 'Célébrité', 'Histoire', 'Art'].sample,
     description: Faker::Lorem.sentence(word_count: 5, supplemental: true, random_words_to_add: 4),
   )
+  i += 1
 end
 
 # Creating clues ###########################################
@@ -118,18 +152,18 @@ Clue.create(mission: sauvabelin, level: 5, description: "Je culmine à 35m de ha
 # Creating question ###########################################
 
 puts "Creating questions Ouchy"
-Question.create(mission: ouchy, lat: 46.507945, lng: 6.633765, question: "Quel symbole caché montre la statue des cyclistes au parc olympique", answer:"symbole olympique")
-Question.create(mission: ouchy, lat: 46.507037, lng: 6.626361, question: "A quelle année commence la construction du funiculaire d'Ouchy", answer:"1874")
-Question.create(mission: ouchy, lat: 46.506835, lng: 6.625198, question: "Quelle information nous donne Eole ?", answer:"le type de vent")
-Question.create(mission: ouchy, lat: 46.506170, lng: 6.640920, question: "Qui a offert le Temple Pagode Thaï à la ville de Lausanne ?", answer:"le souverain du Siam")
-Question.create(mission: ouchy, lat: 46.504766, lng: 6.625691, question: "Combien y a t-il de pointe sur la sculputure Ouverture au monde ?", answer:"36")
+ouchy_q_1 = Question.create(mission: ouchy, lat: 46.507945, lng: 6.633765, question: "Quel symbole caché montre la statue des cyclistes au parc olympique", answer:"symbole olympique")
+ouchy_q_2 = Question.create(mission: ouchy, lat: 46.507037, lng: 6.626361, question: "A quelle année commence la construction du funiculaire d'Ouchy", answer:"1874")
+ouchy_q_3 = Question.create(mission: ouchy, lat: 46.506835, lng: 6.625198, question: "Quelle information nous donne Eole ?", answer:"le type de vent")
+ouchy_q_4 = Question.create(mission: ouchy, lat: 46.506170, lng: 6.640920, question: "Qui a offert le Temple Pagode Thaï à la ville de Lausanne ?", answer:"le souverain du Siam")
+ouchy_q_5 = Question.create(mission: ouchy, lat: 46.504766, lng: 6.625691, question: "Combien y a t-il de pointe sur la sculputure Ouverture au monde ?", answer:"36")
 
 puts "Creating questions Sauvabelin"
-Question.create(mission: sauvabelin, lat: 46.537141, lng: 6.638888, question: "En quelle année s'achève la restauration des berges du lac de Sauvabelin", answer:"2017")
-Question.create(mission: sauvabelin, lat: 46.530815, lng: 6.637631, question: "Combien de juges siègent au tribunal cantonnal", answer:"44")
-Question.create(mission: sauvabelin, lat: 46.530675, lng: 6.639757, question: "Quelle est la plus haute montagne visible depuis ce lieu ?", answer:"Mont-blanc")
-Question.create(mission: sauvabelin, lat: 46.530210, lng: 6.640047, question: "Que peut-on voir au fond de la grotte ?'", answer:"un Ours")
-Question.create(mission: sauvabelin, lat: 46.528084, lng: 6.637235, question: "En quelle année est donnée, à la ville de Lausanne, la maison du parc de l'Hermitage ?", answer:"1976")
+sauvabelin_q_1 = Question.create(mission: sauvabelin, lat: 46.537141, lng: 6.638888, question: "En quelle année s'achève la restauration des berges du lac de Sauvabelin", answer:"2017")
+sauvabelin_q_2 = Question.create(mission: sauvabelin, lat: 46.530815, lng: 6.637631, question: "Combien de juges siègent au tribunal cantonnal", answer:"44")
+sauvabelin_q_3 = Question.create(mission: sauvabelin, lat: 46.530675, lng: 6.639757, question: "Quelle est la plus haute montagne visible depuis ce lieu ?", answer:"Mont-blanc")
+sauvabelin_q_4 = Question.create(mission: sauvabelin, lat: 46.530210, lng: 6.640047, question: "Que peut-on voir au fond de la grotte ?'", answer:"un Ours")
+sauvabelin_q_5 = Question.create(mission: sauvabelin, lat: 46.528084, lng: 6.637235, question: "En quelle année est donnée, à la ville de Lausanne, la maison du parc de l'Hermitage ?", answer:"1976")
 
 
 # Creating challenges ###########################################
@@ -145,6 +179,71 @@ puts "Creating Sinan's challenges"
     score: rand(200..600)
   )
 end
+
+ouchy_challenge = Challenge.create(
+    user: sinan,
+    mission: ouchy,
+    status: "started",
+    secret_counter: 0,
+    score: rand(500..100)
+  )
+
+sauvabelin_challenge = Challenge.create(
+    user: sinan,
+    mission: sauvabelin,
+    status: "started",
+    secret_counter: 0,
+    score: rand(500..100)
+  )
+
+ChallengeQuestion.create(
+  challenge: ouchy_challenge,
+  question: ouchy_q_1,
+  status: true,
+  answer_counter: 2
+)
+
+ChallengeQuestion.create(
+  challenge: ouchy_challenge,
+  question: ouchy_q_2,
+  status: false,
+  answer_counter: 1
+)
+
+ChallengeQuestion.create(
+  challenge: ouchy_challenge,
+  question: ouchy_q_3,
+  status: true,
+  answer_counter: 4
+)
+
+ChallengeQuestion.create(
+  challenge: sauvabelin_challenge,
+  question: sauvabelin_q_1,
+  status: true,
+  answer_counter: 4
+)
+
+ChallengeQuestion.create(
+  challenge: sauvabelin_challenge,
+  question: sauvabelin_q_2,
+  status: false,
+  answer_counter: 2
+)
+
+ChallengeQuestion.create(
+  challenge: sauvabelin_challenge,
+  question: sauvabelin_q_3,
+  status: true,
+  answer_counter: 2
+)
+
+ChallengeQuestion.create(
+  challenge: sauvabelin_challenge,
+  question: sauvabelin_q_4,
+  status: true,
+  answer_counter: 1
+)
 
 puts "Creating challenges"
 

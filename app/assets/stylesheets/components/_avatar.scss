@@ -1,6 +1,7 @@
 .box-avatar{
   display: flex;
   justify-content: center;
+
 }
 
 .avatar {
@@ -9,7 +10,9 @@
   border-radius: 50%;
   margin-top: -50px;
   background-color: rgb(241, 241, 241);
+  z-index: 1;
 }
+
 
 .border-red {
   border: 3px solid #FC635B;

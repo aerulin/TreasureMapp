@@ -10,7 +10,7 @@
     <img class= "avatar border-red" src='https://wavemind.ch/wp-content/uploads/2020/09/sinan-portrait-SITE.png'>
   </div>
   <div class="title-mission">
-    <h2>Hello <%=current_user.first_name%></h2>
+    <h2>Hello <%=current_user.first_name%>!</h2>
   </div>
 
   <div class="leaderboard mb-2 mx-2">
@@ -39,12 +39,46 @@
 
 <hr style="width: 50%; margin-left: auto">
 
-  <div class="open-mission">
-    <h3>Your open missions</h3>
+  <div class="open-mission mb-4 text-center">
+    <h3>Vos missions inachevées</h3>
+    <% @open_challenges.each do |challenge|%>
+      <div class="playground-card">
+        <%= image_tag challenge.mission.photo_url, alt: "Le Wagon" %>
+        <div class="playground-card-infos">
+          <div class="playground-card-infos-text">
+            <h5><%= challenge.mission.name %></h5>
+            <div>
+              <p>📍 ADD CITY TO DB </p>
+              <p>🏋️‍♀️ <%= challenge.mission.difficulty %></p>
+            </div>
+          </div>
+          <div class="playground-card-infos-score">A0%</div>
+          <div class="btn-red card-button"><%= link_to 'Reprendre', challenge_path(challenge)%></div>
+        </div>
+      </div>
+    <% end %>
   </div>
 
+<hr style="width: 50%; margin-left: auto">
 
-
-
+  <div class="done-mission text-center">
+    <h3>Vos missions terminées</h3>
+    <% @done_challenges.each do |challenge|%>
+      <div class="playground-card">
+        <%= image_tag challenge.mission.photo_url, alt: "Le Wagon" %>
+        <div class="playground-card-infos">
+          <div class="playground-card-infos-text">
+            <h5><%= challenge.mission.name %></h5>
+            <div>
+              <p>📍 ADD CITY TO DB </p>
+              <p>🏆 <%= challenge.score %></p>
+            </div>
+          </div>
+          <div class="playground-card-infos-score">100%</div>
+          <div class="btn-red card-button"><%= link_to 'Score', '#'%></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
 </div>

@@ -13,11 +13,18 @@
   </header>
 
   <div class="list-wrapper mb-2 mt-5">
-    <% @challenge.challenge_questions.where(status: true).each_with_index do |question, index| %>
-      <div class="list-item pl-3 py-3 m-4 rounded-pill border border-success">
-        <i class="fas fa-unlock-alt pr-3"></i>
-        <%= @challenge.mission.clues[index].description %>
+    <% @challenge.mission.clues.each_with_index do |clue, index|%>
+        <% if index < @challenge.challenge_questions.where(status: true).count %>
+      <div class="list-item pl-3 py-2 m-4 rounded-pill border border-success">
+          <i class="fas fa-unlock-alt pr-3"></i>
+          <%= clue.description %>
       </div>
+        <% else %>
+      <div class="list-item pl-3 py-2 m-4 rounded-pill bg-success">
+          <i class="fas fa-lock pr-3"></i>
+          Indice bloquer
+      </div>
+        <% end %>
     <% end %>
   </div>
 

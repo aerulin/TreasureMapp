@@ -48,12 +48,12 @@
           <div class="playground-card-infos-text">
             <h5><%= challenge.mission.name %></h5>
             <div>
-              <p>📍 ADD CITY TO DB </p>
+              <p>📍 <%= challenge.mission.city %> </p>
               <p>🏋️‍♀️ <%= challenge.mission.difficulty %></p>
             </div>
           </div>
           <div class="playground-card-infos-score"><%= challenge.progress %>%</div>
-          <div class="btn-border-red card-button"><%= link_to 'Reprendre', challenge_path(challenge)%></div>
+          <div class="btn-red card-button"><%= link_to 'Reprendre', challenge_path(challenge)%></div>
         </div>
       </div>
     <% end %>
@@ -70,12 +70,12 @@
           <div class="playground-card-infos-text">
             <h5><%= challenge.mission.name %></h5>
             <div>
-              <p>📍 ADD CITY TO DB </p>
+              <p>📍 <%= challenge.mission.city %> </p>
               <p>🏆 <%= challenge.score %></p>
             </div>
           </div>
           <div class="playground-card-infos-score">100%</div>
-          <div class="btn-border-red card-button"><%= link_to 'Score', '#'%></div>
+          <div class="btn-red card-button"><%= link_to 'Score', '#'%></div>
         </div>
       </div>
     <% end %>

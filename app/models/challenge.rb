@@ -4,7 +4,7 @@ class Challenge < ApplicationRecord
   has_many :challenge_questions
 
   def progress
-    nb_questions = mission.questions.count
+    nb_questions = mission.questions.count + 1
     true_questions = challenge_questions.where(status: true).count
     return 0 if nb_questions.zero?
 

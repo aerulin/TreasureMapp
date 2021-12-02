@@ -15,9 +15,6 @@ photo_array = [
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/04-lausanne-ville_y6maru.jpg',
 ]
 
-
-
-
 # Mission name ####################################################
 mission_array = [
   'Gêne-Ève',
@@ -53,7 +50,7 @@ Mission.all.destroy_all
 
 puts 'Creating Sinan...'
 sinan = User.new(
-  first_name: 'Sinan' ,
+  first_name: 'Sinan',
   last_name: 'Lartiste',
   nickname: 'slartiste',
   city: "Lausanne",
@@ -69,15 +66,15 @@ puts 'Creating 30 users....'
   last_name = Faker::Name.last_name
   nickname = "#{first_name[0]}#{last_name}"
   email = "#{first_name}.#{last_name.downcase}@gmail.com"
-user = User.new(
-  first_name: first_name ,
-  last_name: last_name,
-  nickname: nickname,
-  city: ["Lausanne", "Lausanne", "Renens", "Geneva", "Zurich", "Prilly", "Ecublens", "Crissier", "Bussigny"].sample,
-  password: '123456',
-  email: email,
-)
-user.save!
+  user = User.new(
+    first_name: first_name ,
+    last_name: last_name,
+    nickname: nickname,
+    city: ["Lausanne", "Lausanne", "Renens", "Geneva", "Zurich", "Prilly", "Ecublens", "Crissier", "Bussigny"].sample,
+    password: '123456',
+    email: email,
+  )
+  user.save!
 end
 
 puts 'Users created'
@@ -170,11 +167,19 @@ sauvabelin_q_5 = Question.create(mission: sauvabelin, lat: 46.528084, lng: 6.637
 
 puts "Creating Sinan's challenges"
 
-3.times do
+Challenge.create(
+  user: sinan,
+  mission: Mission.all.sample,
+  status: "started",
+  secret_counter: rand(3),
+  score: rand(200..600)
+)
+
+2.times do
   Challenge.create(
     user: sinan,
     mission: Mission.all.sample,
-    status: ["started", "finished"].sample,
+    status: "finished",
     secret_counter: rand(3),
     score: rand(200..600)
   )

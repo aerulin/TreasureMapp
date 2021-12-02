@@ -12,6 +12,9 @@
   <div class="title-mission">
     <h2>Hello <%=current_user.first_name%>!</h2>
   </div>
+  <hr style="width: 50%; margin-left: auto">
+
+  <h3 style='text-align: center'>Aperçu du classement</h3>
 
   <div class="leaderboard mb-2 mx-2">
     <table class="table-custom">
@@ -60,26 +63,65 @@
     <% end %>
   </div>
 
-<hr style="width: 50%; margin-left: auto">
+  <hr style="width: 50%; margin-left: auto">
 
-  <div class="done-mission text-center">
+  <div class="text-center">
     <h3>Vos missions terminées</h3>
-    <% @done_challenges.each do |challenge|%>
-      <div class="playground-card">
-        <%= image_tag challenge.mission.photo_url, alt: "Le Wagon" %>
-        <div class="playground-card-infos">
-          <div class="playground-card-infos-text">
-            <h5><%= challenge.mission.name %></h5>
-            <div>
-              <p>📍 <%= challenge.mission.city %> </p>
-              <p>🏆 <%= challenge.score %></p>
+
+    <div class="done-mission">
+
+      <% if @done_count >= 3 %>
+        <div class="podium">
+          <div class="podium-shape">
+            <div id="shape-second">
+              <p class="medal">🥈</p>
+              <p class="mission-name"><%= @done_challenges[1].mission.name %></p>
+              <p class="mission-score"><%= @done_challenges[1].score %></p>
+            </div>
+            <div id="shape-first">
+              <p class="medal">🥇</p>
+              <p class="mission-name"><%= @done_challenges[0].mission.name %></p>
+              <p class="mission-score"><%= @done_challenges[0].score %></p>
+            </div>
+            <div id="shape-third">
+              <p class="medal">🥉</p>
+              <p class="mission-name"><%= @done_challenges[2].mission.name %> <br></p>
+              <p class="mission-score"><%= @done_challenges[2].score %></p>
             </div>
           </div>
-          <div class="playground-card-infos-score">100%</div>
-          <div class="btn-red card-button"><%= link_to 'Score', '#'%></div>
         </div>
-      </div>
-    <% end %>
-  </div>
+           <% if @done_count >= 4 %>
+            <table class="table-podium">
+              <tbody>
+                <% @done_challenges[3...@done_count].each_with_index do |challenge, index| %>
+                  <tr class = "podium-row">
+                    <th scope="row"><%= index + 4 %></th>
+                    <td><%= challenge.mission.name%></td>
+                    <td><%= challenge.score %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
 
+      <% elsif @done_count >= 1 %>
+            <table class="table-podium">
+              <tbody>
+                <% @done_challenges.each_with_index do |challenge, index| %>
+                  <tr class = "podium-row">
+                    <th scope="row"><%= index + 1 %></th>
+                    <td><%= challenge.mission.name%></td>
+                    <td><%= challenge.score %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+      <% else %>
+        <p>Vous n'avez pas encore commencé de mission</p>
+        <%= link_to "Mission", missions_path %>
+      <% end %>
+
+    </div>
+  </div>
 </div>

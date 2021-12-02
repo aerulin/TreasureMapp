@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     end
 
     @open_challenges = Challenge.where(user: current_user, status: 'started')
-    @done_challenges = Challenge.where(user: current_user, status: 'finished')
+    @done_challenges = Challenge.where(user: current_user, status: 'finished').order(score: :desc)
+    @done_count = @done_challenges.count
   end
 end

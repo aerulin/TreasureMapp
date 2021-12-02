@@ -12,8 +12,9 @@ class ChallengesController < ApplicationController
 
   def map
     @challenge = Challenge.find(params[:challenge_id])
-    @challenge_question = ChallengeQuestion.new
     @markers = @challenge.mission.questions.map do |question|
+      @challenge_question = ChallengeQuestion.find_by(question: question, challenge: @challenge)
+      @challenge_question = ChallengeQuestion.new if @challenge_question.nil?
       {
         lat: question.lat,
         lng: question.lng,
@@ -24,7 +25,6 @@ class ChallengesController < ApplicationController
     @questions = @challenge.mission.questions.map do |question|
       question.question
     end
-
   end
 
   def create

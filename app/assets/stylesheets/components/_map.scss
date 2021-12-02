@@ -1,0 +1,38 @@
+.map-popup{
+  padding:20px;
+  h1{
+    font-size:14px;
+    margin:0;
+    padding-bottom:15px;
+  }
+  .question{
+    text-align:center;
+    font-size:16px;
+  }
+
+  .form-input{
+    width:98%;
+    margin:0 auto;
+  }
+
+  .btn-red{
+    margin-top:10px;
+    width:98%;
+    border:0;
+    color:white;
+    font-size:16px;
+    padding:7px 20px;
+  }
+}
+
+.alert-flash{
+  background-color: rgba(255,174,169,0.9);
+  color: #000000;
+  font-size:22px;
+  border-radius:8px;
+  padding:30px 10px;
+  text-align: center;
+  margin-left:30px!important;
+  margin-right:30px!important;
+  margin-bottom:40vh!important;
+}

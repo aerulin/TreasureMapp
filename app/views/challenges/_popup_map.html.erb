@@ -1,0 +1,9 @@
+<div class="map-popup">
+  <p class="question">
+    <%= question.question %>
+  </p>
+  <%= simple_form_for challenge_question, url: challenge_question_validate_path(challenge, question) do |f| %>
+    <%= f.input :guess, label: false %>
+    <%= f.submit "Valider", class: "btn-red" %>
+  <% end %>
+</div>

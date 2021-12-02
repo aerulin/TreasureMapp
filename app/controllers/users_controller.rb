@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if rank.zero?
       @users_shortlist = users[0...3]
     else
-      @users_shortlist = users[(rank-1)...(rank+1)]
+      @users_shortlist = users[(rank-1)...(rank+2)]
     end
 
     @open_challenges = Challenge.where(user: current_user, status: 'started')

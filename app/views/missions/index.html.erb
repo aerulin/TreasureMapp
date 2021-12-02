@@ -7,7 +7,8 @@
     </div>
   </div>
   <div class="box-avatar">
-    <img class= "avatar border-red" src='https://res.cloudinary.com/dg2an4buq/image/upload/v1638437399/treasure-icon-index-list_ozivqa.png'>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jcyhxkau.json" speed="1"  class= "avatar border-red" loop  autoplay></lottie-player>
   </div>
 
   <h1>Missions disponibles</h1>
@@ -25,7 +26,11 @@
             <p>🏋️‍♀️ <%= mission.difficulty %></p>
           </div>
         </div>
-        <div class="btn-red card-button"><%= link_to 'Découvrir', mission_path(mission)%></div>
+        <% if Challenge.find_by(mission: mission, user: current_user).present? %>
+          <div class="btn-grey card-button">Déjà faite</div>
+        <% else %>
+          <div class="btn-red card-button"><%= link_to 'Découvrir', mission_path(mission)%></div>
+        <% end %>
       </div>
     </div>
   <% end %>

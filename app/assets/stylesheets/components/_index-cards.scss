@@ -1,4 +1,4 @@
-.playground-card {
+.index-card {
   display: flex;
   width: 95vw;
   margin: 3px auto;
@@ -8,12 +8,12 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.playground-card img{
+.index-card img{
   width: 15vh;
   height: 100%;
 }
 
-.playground-card-infos {
+.index-card-infos {
   display: flex;
   flex-wrap: wrap;
   padding: 4px 6px ;
@@ -21,38 +21,31 @@
   justify-content: center;
 }
 
-.playground-card-infos-text {
+.index-card-infos-text {
   display: flex;
-  width: 70%;
+  width: 100%;
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
   margin-bottom:3px
 }
 
-.playground-card-infos-score {
+.index-card-infos-score {
   width: 30%;
   color: #FC635B;
   font-weight: 500;
   font-size: 26px;
 }
 
-.playground-card-infos h5 {
+.index-card-infos h5 {
   margin: 3px;
 }
 
-.playground-card-infos p {
+.index-card-infos p {
   font-size: 14px;
   margin: 0;
 }
 
-.card-button {
+.index-card-button {
   width: 50%;
-}
-
-.done-mission {
-  background-color: white;
-  width: 95vw;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  margin: 3px auto;
 }

@@ -1,12 +1,8 @@
 .wrapper-challenge-show {
-  height: 90vh;
   width: 100%;
 }
 
 .header-challenge-show {
-  position:absolute;
-  top: 0;
-  left: -3px;
   background-color: thistle;
   width:100%;
   height:15%;
@@ -37,11 +33,25 @@
 }
 
 .button-validate {
-  font-size: 3vh;
-  margin: 0 24px;
+  background-color: orangered;
+  color: rgb(54, 53, 53);
+  padding: 8px 0;
+  border: none;
+  font-size: 16px;
+  font-weight: bolder;
+  letter-spacing: 0.5rem;
+  margin: 0 40px;
 }
 
+.wrapper-challenge-show {
+  min-height: calc(100vh - 83px);
+}
 .list-item {
+  display: flex;
+  align-items: center;
+}
+
+.list-item > span {
   font-size: 10px;
 }
 

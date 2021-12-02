@@ -1,32 +1,31 @@
 
-<div class="wrapper-challenge-show d-flex flex-column justify-content-center px-2">
+<div class="wrapper-challenge-show d-flex flex-column justify-content-between">
   <header class="header-challenge-show">
 
     <h2 class="text-center pt-4 mt-2 pb-0 h2-challenge">Ouvrir la map</h2>
 
     <div class="box-avatar-challenge">
-      <%= link_to "#" do %>
+      <%= link_to challenge_map_path(@challenge) do %>
         <%= image_tag "https://res.cloudinary.com/dg2an4buq/image/upload/v1638362273/earth_xe0rsw.png"%>
       <% end %>
     </div>
-
   </header>
 
-  <div class="list-wrapper mb-2 mt-5">
+  <div class="list-wrapper mb-2 mt-5 mx-4">
     <% @challenge.mission.clues.each_with_index do |clue, index|%>
         <% if index < @challenge.challenge_questions.where(status: true).count %>
-      <div class="list-item pl-3 py-2 m-4 rounded-pill border border-success">
-          <i class="fas fa-unlock-alt pr-3"></i>
-          <%= clue.description %>
-      </div>
+          <div class="list-item pl-3 py-2 m-3 rounded-pill border border-success">
+              <i class="fas fa-unlock-alt pr-3"></i>
+              <span><%= clue.description %></span>
+          </div>
         <% else %>
-      <div class="list-item pl-3 py-2 m-4 rounded-pill bg-success">
-          <i class="fas fa-lock pr-3"></i>
-          Indice bloquer
-      </div>
+          <div class="list-item pl-3 py-2 m-3 rounded-pill bg-success">
+              <i class="fas fa-lock pr-3"></i>
+              <span>Indice bloquer</span>
+          </div>
         <% end %>
     <% end %>
   </div>
 
- <div class="btn button-validate">Valider lieu secret</div>
+  <button class="mb-2 button-validate">Valider lieu secret</button>
 </div>

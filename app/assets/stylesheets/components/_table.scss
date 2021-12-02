@@ -1,0 +1,31 @@
+.leaderboard {
+}
+
+.table-custom {
+  width: 100%;
+  padding: 10px;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  text-align: center;
+}
+
+.custom-row {
+  background-color: rgb(255, 255, 255);
+  padding: 20px 0px;
+}
+
+.custom-row td {
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-right:10px;
+}
+
+.custom-row td:last-child {
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.custom-row th {
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+}

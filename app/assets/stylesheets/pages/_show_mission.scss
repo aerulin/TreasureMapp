@@ -1,22 +1,22 @@
-.mission-img-container {
-  position: relative;
-  width: 100vw;
-  height: 30vh;
-  margin: 0;
-  padding: 0;
+.main{
+  height: 100vh;
+  overflow: scroll;
 }
 
-.mission-img-container img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.title-mission h2 {
+  text-align: center;
 }
 
-.mission-img-container h1 {
-position: absolute;
-width: 100%;
-z-index: 1;
-top: 40%;
-margin: 0 auto;
+.icon-description{
+  display:block;
+  margin:0 auto;
+  font-size:38px;
+  padding: 15px;
+  color: #b9b5b5;
+}
+.text-mission{
+  padding: 0 10px;
+  line-height: 32px;
+  text-align: center;
+  margin-top:50px;
 }

@@ -12,5 +12,8 @@ class UsersController < ApplicationController
     else
       @users_shortlist = users[(rank-1)...(rank+1)]
     end
+
+    @open_challenges = Challenge.where(user: current_user, status: 'started')
+    @done_challenges = Challenge.where(user: current_user, status: 'finished')
   end
 end

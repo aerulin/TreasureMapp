@@ -1,0 +1,50 @@
+.playground-card {
+  display: flex;
+  width: 95vw;
+  margin: 3px auto;
+  height: 15vh;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.playground-card img{
+  width: 15vh;
+  height: 100%;
+}
+
+.playground-card-infos {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px 6px ;
+  flex-grow: 1;
+}
+
+.playground-card-infos-text {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  margin-bottom:3px
+}
+
+.playground-card-infos-score {
+  width: 30%;
+  color: #FC635B;
+  font-weight: 500;
+  font-size: 26px;
+}
+
+.playground-card-infos h5 {
+  margin: 3px;
+}
+
+.playground-card-infos p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.card-button {
+  flex-grow: 1;
+}

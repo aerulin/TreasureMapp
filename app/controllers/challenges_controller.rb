@@ -4,10 +4,26 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
   end
 
+  def new
+    @question = Question.find(params[:question_id])
+    @challenge = Challenge.find(params[:challenge_id])
+    @challenge_question = ChallengeQuestion.new
+  end
+
   def map
     @challenge = Challenge.find(params[:challenge_id])
     @markers = @challenge.mission.questions.map do |question|
-      { lat: question.lat, lng: question.lng, question: question.question }
+      @challenge_question = ChallengeQuestion.find_by(question: question, challenge: @challenge)
+      @challenge_question = ChallengeQuestion.new if @challenge_question.nil?
+      {
+        lat: question.lat,
+        lng: question.lng,
+        info_window: render_to_string(partial: "popup_map", locals: { question: question, challenge: @challenge, challenge_question: @challenge_question })
+      }
+    end
+
+    @questions = @challenge.mission.questions.map do |question|
+      question.question
     end
   end
 

@@ -16,12 +16,13 @@ class ChallengeQuestionsController < ApplicationController
     if params[:challenge_question][:guess].downcase == question.answer.downcase
       challenge_question.status = true
       challenge_question.save!
-      redirect_to challenge_path(challenge)
+      flash[:notice] = "Bravo! Vous avez trouvé la bonne réponse qui a débloqué un indice!"
+      redirect_to challenge_map_path(challenge)
     else
       challenge_question.save!
-      redirect_to challenge_question_new_path
+      flash[:alert] = "Fausse réponse! Essayez à nouveau."
+      redirect_to challenge_map_path(challenge)
     end
-
   end
 
   private

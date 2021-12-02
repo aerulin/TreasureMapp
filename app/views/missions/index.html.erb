@@ -1,14 +1,23 @@
-<h1>Missions#index</h1>
+ <div class="banner-custom">
+    <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt=''>
+    <div class="banner-back">
+      <%= link_to "retour", url_for(:back) %>
+    </div>
+  </div>
+  <div class="box-avatar">
+    <img class= "avatar border-red" src='https://res.cloudinary.com/dg2an4buq/image/upload/v1638437399/treasure-icon-index-list_ozivqa.png'>
+  </div>
+<h1>Missions disponibles</h1>
 
 <div class="missions-container">
 <% @missions.each do |mission|%>
   <div class="container-item">
-    <%= image_tag mission.photo_url, alt: "Le Wagon", width: 200, class:'img-mission-list' %>
+    <%= image_tag mission.photo_url, alt: "Le Wagon", width: 150, class:'img-mission-list' %>
     <div class="mission-infos">
       <h2><%= mission.name %></h2>
-      <p>Ville: CITY </p>
-      <p>Difficulté: LEVEL</p>
-      <div class="btn"><%= link_to 'Découvrir', mission_path(mission)%></div>
+      <p><i class="fas fa-map-marker-alt"></i> mission.city </p>
+      <p>Difficulté: <%= mission.difficulty %></p>
+      <div class="btn-red"><%= link_to 'Découvrir', mission_path(mission)%></div>
     </div>
   </div>
   <%end%>

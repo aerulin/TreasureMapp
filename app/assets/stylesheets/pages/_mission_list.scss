@@ -1,8 +1,29 @@
+.missions-container{
+  height: 100px;
+  h2{
+    font-size:24px;
+  }
+
+  p{
+    margin:0;
+  }
+
+  .container-item{
+    background-color:white;
+    margin:12px;
+    border-radius:10px;
+  }
+
+  .mission-infos{
+    margin-left:20px;
+  }
 .container-item{
   display:flex;
   padding:10px;
 
   .img-mission-list{
     border-radius:5px;
+    padding:0 10px;
   }
+}
 }

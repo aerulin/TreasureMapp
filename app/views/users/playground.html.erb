@@ -20,13 +20,14 @@
 
           <% if user == current_user %>
             <tr class='custom-row row-current-user'>
-              <th scope="row"><%= index + 1 %></th>
+              <th scope="row"><%= @rank %></th>
               <td><%= user.nickname %></td>
               <td><%= user.calculate_score %></td>
             </tr>
           <% else %>
+            <%@rank != 1 ? rank = @rank - 1 : rank = @rank %>
             <tr class = "custom-row">
-              <th scope="row"><%= index + 1 %></th>
+              <th scope="row"><%= index + rank %></th>
               <td><%= user.nickname %></td>
               <td><%= user.calculate_score %></td>
             </tr>

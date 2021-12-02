@@ -29,6 +29,19 @@ mission_array = [
   'Ô lain pique'
 ]
 
+city_array = [
+  'Genève',
+  'Bâle',
+  'Genève',
+  'Yverdon-les-Bains',
+  'Zürich',
+  'Bâle',
+  'Yverdon-les-Bains',
+  'Montreux',
+  'Fribourg',
+  'Lausanne'
+]
+
 # Clear database ####################################################
 
 puts 'Deleting users'
@@ -122,7 +135,7 @@ i = 0
     name: mission_array[i],
     photo_url: photo_array[i],
     difficulty: ['Facile', 'Moyen', 'Difficile'].sample,
-    city: ['Lausanne', 'Zürich', 'Genève', 'Bâle', 'Fribourg','Yverdon','Palavas-les-Flots'].sample,
+    city: city_array[i],
     time: "#{rand(0..2)}h#{rand(0...6)}0",
     category: ['Quartier', 'Parc', 'Célébrité', 'Histoire', 'Art'].sample,
     description: Faker::Lorem.sentence(word_count: 5, supplemental: true, random_words_to_add: 4),
@@ -162,7 +175,6 @@ sauvabelin_q_3 = Question.create(mission: sauvabelin, lat: 46.530675, lng: 6.639
 sauvabelin_q_4 = Question.create(mission: sauvabelin, lat: 46.530210, lng: 6.640047, question: "Que peut-on voir au fond de la grotte ?'", answer:"un Ours")
 sauvabelin_q_5 = Question.create(mission: sauvabelin, lat: 46.528084, lng: 6.637235, question: "En quelle année est donnée, à la ville de Lausanne, la maison du parc de l'Hermitage ?", answer:"1976")
 
-
 # Creating challenges ###########################################
 
 puts "Creating Sinan's challenges"
@@ -186,20 +198,20 @@ Challenge.create(
 end
 
 ouchy_challenge = Challenge.create(
-    user: sinan,
-    mission: ouchy,
-    status: "started",
-    secret_counter: 0,
-    score: rand(500..100)
-  )
+  user: sinan,
+  mission: ouchy,
+  status: "started",
+  secret_counter: 0,
+  score: rand(500..100)
+)
 
 sauvabelin_challenge = Challenge.create(
-    user: sinan,
-    mission: sauvabelin,
-    status: "started",
-    secret_counter: 0,
-    score: rand(500..100)
-  )
+  user: sinan,
+  mission: sauvabelin,
+  status: "started",
+  secret_counter: 0,
+  score: rand(500..100)
+)
 
 ChallengeQuestion.create(
   challenge: ouchy_challenge,

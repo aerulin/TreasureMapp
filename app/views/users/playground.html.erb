@@ -39,7 +39,7 @@
 
 <hr style="width: 50%; margin-left: auto">
 
-  <div class="open-mission text-center">
+  <div class="open-mission mb-4 text-center">
     <h3>Vos missions inachevées</h3>
     <% @open_challenges.each do |challenge|%>
       <div class="playground-card">
@@ -61,17 +61,21 @@
 
 <hr style="width: 50%; margin-left: auto">
 
-  <div class="open-mission text-center">
+  <div class="done-mission text-center">
     <h3>Vos missions terminées</h3>
     <% @done_challenges.each do |challenge|%>
-      <div class="container-item">
-        <%= image_tag challenge.mission.photo_url, alt: "Le Wagon", width: 200, class:'img-mission-list' %>
-        <div class="mission-infos">
-          <h2><%= challenge.mission.name %></h2>
-          <p>Ville: ADD CITY TO DB </p>
-          <p>Difficulté: <%= challenge.mission.difficulty %></p>
-          <p>Score final: <%= challenge.score %></p>
-          <div class="btn"><%= link_to 'See more', '#'%></div>
+      <div class="playground-card">
+        <%= image_tag challenge.mission.photo_url, alt: "Le Wagon" %>
+        <div class="playground-card-infos">
+          <div class="playground-card-infos-text">
+            <h5><%= challenge.mission.name %></h5>
+            <div>
+              <p>📍 ADD CITY TO DB </p>
+              <p>🏆 <%= challenge.score %></p>
+            </div>
+          </div>
+          <div class="playground-card-infos-score">100%</div>
+          <div class="btn-red card-button"><%= link_to 'Score', '#'%></div>
         </div>
       </div>
     <% end %>

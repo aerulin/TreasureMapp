@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="main-wrapper">
     <div class="title-login">
-      <h2>Log in</h2>
+      <h2>Se connecter</h2>
     </div>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs form-inputs-style">
@@ -17,7 +17,7 @@
 
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in", class:'btn-red' %>
+      <%= f.button :submit, "Se connecter", class:'btn-red' %>
     </div>
 
   <% end %>

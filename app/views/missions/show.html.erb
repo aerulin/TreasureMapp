@@ -1,9 +1,13 @@
-<div class="main">
-  <div class="banner-custom img">
+<div class="main-single">
+
+  <div class="banner-custom">
     <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt='Background Picture'>
+    <div class="banner-back">
+      <%= link_to "retour", url_for(:back) %>
+    </div>
   </div>
   <div class="box-avatar">
-    <img class= "avatar border-blue" src=<%=@mission.photo_url%>>
+    <img class= "avatar border-red" src=<%=@mission.photo_url%>>
   </div>
   <div class="title-mission">
     <h2><%=@mission.name%></h2>
@@ -13,21 +17,31 @@
     <div class="row p-0">
       <div class="col-6" style="text-align:center">
         <div>
-          <i class="fas fa-building icon-description"></i>
+          <div class="lotti-container">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_hvkvxnt3.json"   speed="1"  class= "lotti-avatar"  loop  autoplay></lottie-player>
+          </div>
           <%=@mission.category%>
         </div>
         <div>
-          <i class="fas fa-clock icon-description"></i>
+          <div class="lotti-container">
+            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_4yofoa5q.json"  speed="1"  class= "lotti-avatar"  loop  autoplay></lottie-player>
+          </div>
           <%=@mission.time%>
         </div>
       </div>
       <div class="col-6" style="text-align:center">
         <div>
-          <i class="fas fa-dumbbell icon-description"></i>
+          <div class="lotti-container">
+            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
+<dotlottie-player src="https://assets6.lottiefiles.com/dotlotties/dlf10_p1ftxhgu.lottie"  speed="1" class= "lotti-avatar"  loop autoplay></dotlottie-player>
+          </div>
           <%=@mission.difficulty%>
         </div>
       <div>
-        <i class="fas fa-map-marked-alt icon-description"></i>
+        <div class="lotti-container">
+          <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_4xw7yai4.json"  speed="1"  class= "lotti-avatar"  loop  autoplay></lottie-player>
+        </div>
         <%=@mission.city%>
         </div>
       </div>

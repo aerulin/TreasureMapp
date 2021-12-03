@@ -1,6 +1,6 @@
 <div class="banner-back-red">
-      <%= link_to "retour", url_for(:back) %>
-    </div>
+    <%= link_to "retour", challenge_path(@challenge) %>
+</div>
 <div id="map" style="width:100%; height: 100vh;"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       data-markers="<%= @markers.to_json %>">

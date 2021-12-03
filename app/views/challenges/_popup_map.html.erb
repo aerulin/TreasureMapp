@@ -1,0 +1,14 @@
+<div class="map-popup">
+  <% if challenge_question.status %>
+    <p>Vous avez déjà trouvé la bonne réponse.</p>
+    <%= link_to 'voir l\'indice débloqué', challenge_path(challenge)%>
+  <% else %>
+    <p class="question">
+      <%= question.question %>
+    </p>
+    <%= simple_form_for challenge_question, url: challenge_question_validate_path(challenge, question) do |f| %>
+      <%= f.input :guess, label: false %>
+      <%= f.submit "Valider", class: "btn-red" %>
+    <% end %>
+  <% end %>
+</div>

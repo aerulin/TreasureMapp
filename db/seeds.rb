@@ -15,9 +15,6 @@ photo_array = [
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/04-lausanne-ville_y6maru.jpg',
 ]
 
-
-
-
 # Mission name ####################################################
 mission_array = [
   'Gêne-Ève',
@@ -30,6 +27,19 @@ mission_array = [
   'Lémanger la perche',
   'Bourge frit',
   'Ô lain pique'
+]
+
+city_array = [
+  'Genève',
+  'Bâle',
+  'Genève',
+  'Yverdon-les-Bains',
+  'Zürich',
+  'Bâle',
+  'Yverdon-les-Bains',
+  'Montreux',
+  'Fribourg',
+  'Lausanne'
 ]
 
 # Clear database ####################################################
@@ -51,33 +61,21 @@ Mission.all.destroy_all
 
 # Creating users ####################################################
 
-puts 'Creating Sinan...'
-sinan = User.new(
-  first_name: 'Sinan' ,
-  last_name: 'Lartiste',
-  nickname: 'slartiste',
-  city: "Lausanne",
-  password: '123456',
-  email: 'sinan@gmail.com',
-)
-sinan.save!
-puts 'Sinan created'
-
 puts 'Creating 30 users....'
 10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   nickname = "#{first_name[0]}#{last_name}"
   email = "#{first_name}.#{last_name.downcase}@gmail.com"
-user = User.new(
-  first_name: first_name ,
-  last_name: last_name,
-  nickname: nickname,
-  city: ["Lausanne", "Lausanne", "Renens", "Geneva", "Zurich", "Prilly", "Ecublens", "Crissier", "Bussigny"].sample,
-  password: '123456',
-  email: email,
-)
-user.save!
+  user = User.new(
+    first_name: first_name ,
+    last_name: last_name,
+    nickname: nickname,
+    city: ["Lausanne", "Lausanne", "Renens", "Geneva", "Zurich", "Prilly", "Ecublens", "Crissier", "Bussigny"].sample,
+    password: '123456',
+    email: email,
+  )
+  user.save!
 end
 
 puts 'Users created'
@@ -125,7 +123,7 @@ i = 0
     name: mission_array[i],
     photo_url: photo_array[i],
     difficulty: ['Facile', 'Moyen', 'Difficile'].sample,
-    city: ['Lausanne', 'Zürich', 'Genève', 'Bâle', 'Fribourg','Yverdon','Palavas-les-Flots'].sample,
+    city: city_array[i],
     time: "#{rand(0..2)}h#{rand(0...6)}0",
     category: ['Quartier', 'Parc', 'Célébrité', 'Histoire', 'Art'].sample,
     description: Faker::Lorem.sentence(word_count: 5, supplemental: true, random_words_to_add: 4),
@@ -165,36 +163,75 @@ sauvabelin_q_3 = Question.create(mission: sauvabelin, lat: 46.530675, lng: 6.639
 sauvabelin_q_4 = Question.create(mission: sauvabelin, lat: 46.530210, lng: 6.640047, question: "Que peut-on voir au fond de la grotte ?'", answer:"un Ours")
 sauvabelin_q_5 = Question.create(mission: sauvabelin, lat: 46.528084, lng: 6.637235, question: "En quelle année est donnée, à la ville de Lausanne, la maison du parc de l'Hermitage ?", answer:"1976")
 
-
 # Creating challenges ###########################################
 
-puts "Creating Sinan's challenges"
 
-3.times do
+puts "Creating challenges"
+
+
+
+20.times do
   Challenge.create(
-    user: sinan,
+    user: User.all.sample,
     mission: Mission.all.sample,
-    status: ["started", "finished"].sample,
+    status: ["started", "started", "finished"].sample,
     secret_counter: rand(3),
-    score: rand(200..600)
+    score: rand(100..2000)
   )
 end
 
-ouchy_challenge = Challenge.create(
+
+
+puts 'Creating Sinan...'
+
+sinan = User.new(
+  first_name: 'Sinan',
+  last_name: 'Lartiste',
+  nickname: 'slartiste',
+  city: "Lausanne",
+  password: '123456',
+  email: 'sinan@gmail.com',
+)
+sinan.save!
+puts 'Sinan created'
+
+
+puts "Creating Sinan's challenges"
+
+Challenge.create(
+  user: sinan,
+  mission: Mission.find_by(name: mission_array[0]),
+  status: "started",
+  secret_counter: rand(3),
+  score: rand(200..600)
+)
+i = 1
+4.times do
+  Challenge.create(
     user: sinan,
-    mission: ouchy,
-    status: "started",
-    secret_counter: 0,
-    score: rand(500..100)
+    mission: Mission.find_by(name: mission_array[i]),
+    status: "finished",
+    secret_counter: rand(3),
+    score: rand(200..600)
   )
+i += 1
+end
+
+ouchy_challenge = Challenge.create(
+  user: sinan,
+  mission: ouchy,
+  status: "started",
+  secret_counter: 0,
+  score: rand(500..100)
+)
 
 sauvabelin_challenge = Challenge.create(
-    user: sinan,
-    mission: sauvabelin,
-    status: "started",
-    secret_counter: 0,
-    score: rand(500..100)
-  )
+  user: sinan,
+  mission: sauvabelin,
+  status: "started",
+  secret_counter: 0,
+  score: rand(500..100)
+)
 
 ChallengeQuestion.create(
   challenge: ouchy_challenge,
@@ -245,17 +282,7 @@ ChallengeQuestion.create(
   answer_counter: 1
 )
 
-puts "Creating challenges"
 
-20.times do
-  Challenge.create(
-    user: User.all.sample,
-    mission: Mission.all.sample,
-    status: ["started", "started", "finished"].sample,
-    secret_counter: rand(3),
-    score: rand(100..2000)
-  )
-end
 
 puts "------------------------------------------------------------------"
 puts "----------------Seed working correctly. Enjoy !-------------------"

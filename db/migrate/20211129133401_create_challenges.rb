@@ -1,10 +1,9 @@
 class CreateChallenges < ActiveRecord::Migration[6.0]
   def change
     create_table :challenges do |t|
-      t.string :status
-      t.integer :score
-      t.string :secret_counter
-      t.string :open_question
+      t.string :status, default: 'started'
+      t.integer :score, default: 0
+      t.string :secret_counter, default: 0
       t.references :user
       t.references :mission
 

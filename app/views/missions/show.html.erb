@@ -8,32 +8,36 @@
   <div class="title-mission">
     <h2><%=@mission.name%></h2>
   </div>
-  <div class="row p-0">
-    <div class="col-6" style="text-align:center">
-    <div>
-      <i class="fas fa-building icon-description"></i>
-      <%=@mission.category%>
+
+  <div class="mission-icon-box">
+    <div class="row p-0">
+      <div class="col-6" style="text-align:center">
+        <div>
+          <i class="fas fa-building icon-description"></i>
+          <%=@mission.category%>
+        </div>
+        <div>
+          <i class="fas fa-clock icon-description"></i>
+          <%=@mission.time%>
+        </div>
+      </div>
+      <div class="col-6" style="text-align:center">
+        <div>
+          <i class="fas fa-dumbbell icon-description"></i>
+          <%=@mission.difficulty%>
+        </div>
+      <div>
+        <i class="fas fa-map-marked-alt icon-description"></i>
+        <%=@mission.city%>
+        </div>
+      </div>
+
+      <div class="text-mission">
+        <%=@mission.description%>
+      </div>
     </div>
-    <div>
-      <i class="fas fa-clock icon-description"></i>
-      <%=@mission.time%>
-    </div>
   </div>
-  <div class="col-6" style="text-align:center">
-    <div>
-      <i class="fas fa-dumbbell icon-description"></i>
-      <%=@mission.difficulty%>
-    </div>
-  <div>
-    <i class="fas fa-map-marked-alt icon-description"></i>
-    <%=@mission.city%>
-    </div>
-  </div>
-  </div>
-  <div class="text-mission">
-    <%=@mission.description%>
-  </div>
-  <div class="box-button">
-    <%= link_to "Rejoindre la mission", mission_challenges_path(@mission), method: 'post', class:'btn-red' %>
-  </div>
+
+  <%= link_to "Commencer la mission", mission_challenges_path(@mission), method: 'post', class:'btn-mission' %>
+
 </div>

@@ -96,7 +96,7 @@ ouchy = Mission.new(
   city: 'Lausanne',
   lat: 46.505073,
   lng: 6.641532,
-  description: "Partez à la découverte du quartier d'Ouchy, ses quais, le lac, ses batiments, ses jardins et son art. En avant pour une folle aventure !",
+  description: "Partez à la découverte du quartier d'Ouchy, ses quais, le lac, ses bâtiments, ses jardins et son art.",
   photo_url: ouchy_url,
 )
 ouchy.save!
@@ -111,7 +111,7 @@ sauvabelin = Mission.new(
   city: 'Lausanne',
   lat: 46.535237,
   lng: 6.638511,
-  description: "Lausanne, ville de verdure de parc et de forêt. La mission vous emmenera à la limite de la ville, là où la nature a tous ses droits.",
+  description: "Lausanne, ville de verdure, de parcs, et de forêts. La mission vous emmenera aux confins de la ville",
   photo_url: sauvabelin_url,
 )
 sauvabelin.save!
@@ -134,8 +134,8 @@ end
 # Creating clues ###########################################
 
 puts "Creating clues Ouchy"
-Clue.create(mission: ouchy, level: 1, description: "Mon créateur était d'origine britanique")
-Clue.create(mission: ouchy, level: 2, description: "J'aurai gagné un concours d'élégance au XIXeme siècle")
+Clue.create(mission: ouchy, level: 1, description: "Mon créateur était d'origine britannique")
+Clue.create(mission: ouchy, level: 2, description: "J'aurais gagné un concours d'élégance au XIXeme siècle")
 Clue.create(mission: ouchy, level: 3, description: "J'ai manqué de mourir étouffée par la flore")
 Clue.create(mission: ouchy, level: 4, description: "J'ai une petite soeur au parc de Mon-Repos")
 Clue.create(mission: ouchy, level: 5, description: "Je me trouve à l'embouchure de la Vuachère")
@@ -150,25 +150,22 @@ Clue.create(mission: sauvabelin, level: 5, description: "Je culmine à 35m de ha
 # Creating question ###########################################
 
 puts "Creating questions Ouchy"
-ouchy_q_1 = Question.create(mission: ouchy, lat: 46.507945, lng: 6.633765, question: "Quel symbole caché montre la statue des cyclistes au parc olympique", answer:"symbole olympique")
-ouchy_q_2 = Question.create(mission: ouchy, lat: 46.507037, lng: 6.626361, question: "A quelle année commence la construction du funiculaire d'Ouchy", answer:"1874")
+ouchy_q_1 = Question.create(mission: ouchy, lat: 46.507945, lng: 6.633765, question: "Quel symbole caché montre la statue des cyclistes au parc olympique ?", answer:"symbole olympique")
+ouchy_q_2 = Question.create(mission: ouchy, lat: 46.507037, lng: 6.626361, question: "En quelle année commence la construction du funiculaire d'Ouchy ?", answer:"1874")
 ouchy_q_3 = Question.create(mission: ouchy, lat: 46.506835, lng: 6.625198, question: "Quelle information nous donne Eole ?", answer:"le type de vent")
 ouchy_q_4 = Question.create(mission: ouchy, lat: 46.506170, lng: 6.640920, question: "Qui a offert le Temple Pagode Thaï à la ville de Lausanne ?", answer:"le souverain du Siam")
-ouchy_q_5 = Question.create(mission: ouchy, lat: 46.504766, lng: 6.625691, question: "Combien y a t-il de pointe sur la sculputure Ouverture au monde ?", answer:"36")
+ouchy_q_5 = Question.create(mission: ouchy, lat: 46.504766, lng: 6.625691, question: "Combien y a t-il de pointes sur la sculputure Ouverture au monde ?", answer:"36")
 
 puts "Creating questions Sauvabelin"
-sauvabelin_q_1 = Question.create(mission: sauvabelin, lat: 46.537141, lng: 6.638888, question: "En quelle année s'achève la restauration des berges du lac de Sauvabelin", answer:"2017")
-sauvabelin_q_2 = Question.create(mission: sauvabelin, lat: 46.530815, lng: 6.637631, question: "Combien de juges siègent au tribunal cantonnal", answer:"44")
+sauvabelin_q_1 = Question.create(mission: sauvabelin, lat: 46.537141, lng: 6.638888, question: "En quelle année s'achève la restauration des berges du lac de Sauvabelin ?", answer:"2017")
+sauvabelin_q_2 = Question.create(mission: sauvabelin, lat: 46.530815, lng: 6.637631, question: "Combien de juges siègent au tribunal cantonal ?", answer:"44")
 sauvabelin_q_3 = Question.create(mission: sauvabelin, lat: 46.530675, lng: 6.639757, question: "Quelle est la plus haute montagne visible depuis ce lieu ?", answer:"Mont-blanc")
 sauvabelin_q_4 = Question.create(mission: sauvabelin, lat: 46.530210, lng: 6.640047, question: "Que peut-on voir au fond de la grotte ?'", answer:"un Ours")
-sauvabelin_q_5 = Question.create(mission: sauvabelin, lat: 46.528084, lng: 6.637235, question: "En quelle année est donnée, à la ville de Lausanne, la maison du parc de l'Hermitage ?", answer:"1976")
+sauvabelin_q_5 = Question.create(mission: sauvabelin, lat: 46.528084, lng: 6.637235, question: "En quelle année est donnée à la ville de Lausanne la maison du parc de l'Hermitage ?", answer:"1976")
 
 # Creating challenges ###########################################
 
-
 puts "Creating challenges"
-
-
 
 20.times do
   Challenge.create(
@@ -217,13 +214,13 @@ i = 1
 i += 1
 end
 
-ouchy_challenge = Challenge.create(
-  user: sinan,
-  mission: ouchy,
-  status: "started",
-  secret_counter: 0,
-  score: rand(500..100)
-)
+# ouchy_challenge = Challenge.create(
+#   user: sinan,
+#   mission: ouchy,
+#   status: "started",
+#   secret_counter: 0,
+#   score: rand(500..100)
+# )
 
 sauvabelin_challenge = Challenge.create(
   user: sinan,
@@ -233,26 +230,26 @@ sauvabelin_challenge = Challenge.create(
   score: rand(500..100)
 )
 
-ChallengeQuestion.create(
-  challenge: ouchy_challenge,
-  question: ouchy_q_1,
-  status: true,
-  answer_counter: 2
-)
+# ChallengeQuestion.create(
+#   challenge: ouchy_challenge,
+#   question: ouchy_q_1,
+#   status: true,
+#   answer_counter: 2
+# )
 
-ChallengeQuestion.create(
-  challenge: ouchy_challenge,
-  question: ouchy_q_2,
-  status: false,
-  answer_counter: 1
-)
+# ChallengeQuestion.create(
+#   challenge: ouchy_challenge,
+#   question: ouchy_q_2,
+#   status: false,
+#   answer_counter: 1
+# )
 
-ChallengeQuestion.create(
-  challenge: ouchy_challenge,
-  question: ouchy_q_3,
-  status: true,
-  answer_counter: 4
-)
+# ChallengeQuestion.create(
+#   challenge: ouchy_challenge,
+#   question: ouchy_q_3,
+#   status: true,
+#   answer_counter: 4
+# )
 
 ChallengeQuestion.create(
   challenge: sauvabelin_challenge,
@@ -281,8 +278,6 @@ ChallengeQuestion.create(
   status: true,
   answer_counter: 1
 )
-
-
 
 puts "------------------------------------------------------------------"
 puts "----------------Seed working correctly. Enjoy !-------------------"

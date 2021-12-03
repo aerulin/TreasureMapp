@@ -1,13 +1,12 @@
 .wrapper-challenge-show {
+  min-height: calc(100vh - 83px);
   width: 100%;
 }
 
-.header-challenge-show {
-  background-color: thistle;
-  width:100%;
-  height:15%;
-  border-bottom-left-radius: 70% 15%;
-  border-bottom-right-radius: 70% 15%;
+.logo-map {
+  width:75px;
+  height: 75px;
+  background-color: #EE5D4F;
 }
 
 .box-avatar-challenge {
@@ -17,6 +16,14 @@
 
 .box-avatar-challenge > a > img {
   width: 80px;
+}
+
+.text-map {
+  text-align: center;
+}
+
+.text-map > h2 {
+  font-size: 1.2em;
 }
 
 .icon-challenge {
@@ -43,16 +50,13 @@
   margin: 0 40px;
 }
 
-.wrapper-challenge-show {
-  min-height: calc(100vh - 83px);
-}
 .list-item {
   display: flex;
   align-items: center;
 }
 
 .list-item > span {
-  font-size: 10px;
+  font-size: 0.6em;
 }
 
 .fa-unlock-alt, .fa-lock {

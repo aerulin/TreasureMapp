@@ -11,27 +11,25 @@
     <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jcyhxkau.json" speed="1"  class= "avatar border-red" loop  autoplay></lottie-player>
   </div>
 
-  <h1>Missions disponibles</h1>
+  <h1>Nouvelles Missions</h1>
 
 
 
   <% @missions.each do |mission|%>
-    <div class="index-card">
-      <%= image_tag mission.photo_url, alt: "Le Wagon" %>
-      <div class="index-card-infos">
-        <div class="index-card-infos-text">
-          <h5><%= mission.name %></h5>
-          <div>
-            <p>📍 <%= mission.city %> </p>
-            <p>🏋️‍♀️ <%= mission.difficulty %></p>
+    <% if Challenge.find_by(mission: mission, user: current_user).nil? %>
+      <div class="index-card">
+        <%= image_tag mission.photo_url, alt: "Le Wagon" %>
+        <div class="index-card-infos">
+          <div class="index-card-infos-text">
+            <h5><%= mission.name %></h5>
+            <div>
+              <p>📍 <%= mission.city %> </p>
+              <p>🏋️‍♀️ <%= mission.difficulty %></p>
+            </div>
           </div>
-        </div>
-        <% if Challenge.find_by(mission: mission, user: current_user).present? %>
-          <div class="btn-grey card-button">Déjà faite</div>
-        <% else %>
           <div class="btn-red card-button"><%= link_to 'Découvrir', mission_path(mission)%></div>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

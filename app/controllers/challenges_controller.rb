@@ -63,7 +63,7 @@ class ChallengesController < ApplicationController
       # ask_long = 6.641385
       user_long = ask_long.to_f
 
-      test = user_lat.between?(place[0] - delta, place[0] + delta)
+      # test = user_lat.between?(place[0] - delta, place[0] + delta)
       if user_lat.between?(place[0] - delta, place[0] + delta) && user_long.between?(place[1] - delta, place[1] + delta)
        flash[:validation] = "Bravo! Vous avez débloqué le lieu secret et terminé la mission! "
       else

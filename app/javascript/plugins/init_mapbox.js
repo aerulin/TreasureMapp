@@ -22,11 +22,17 @@ const map = new mapboxgl.Map({
 const markers = JSON.parse(mapElement.dataset.markers);
 
   markers.forEach((marker) => {
-    new mapboxgl.Marker()
-      .setLngLat([marker.lng, marker.lat])
-      .setPopup(new mapboxgl.Popup().setHTML(marker.info_window))
-      .addTo(map);
-  });
+
+  const element = document.createElement('div');
+  element.className = 'marker';
+  element.style.backgroundImage = `url('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png')`;
+  element.style.backgroundSize = 'contain';
+  element.style.width = '25px';
+  element.style.height = '25px';
+  new mapboxgl.Marker(element)
+    .setLngLat([marker.lng, marker.lat])
+    .addTo(map);
+});
 
   map.addControl(
     new mapboxgl.GeolocateControl({

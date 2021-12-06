@@ -2,6 +2,7 @@ class Challenge < ApplicationRecord
   belongs_to :user
   belongs_to :mission
   has_many :challenge_questions
+  attr_accessor :long, :lat
 
   def progress
     nb_questions = mission.questions.count + 1

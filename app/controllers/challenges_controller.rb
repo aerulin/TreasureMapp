@@ -84,6 +84,7 @@ class ChallengesController < ApplicationController
     ask_long = request.location.longitude
     user_long = ask_long.to_f
     raise
+  end
 
   def score
     @challenge = Challenge.find(params[:challenge_id])
@@ -94,4 +95,5 @@ class ChallengesController < ApplicationController
   def questions_params
     params.require(:question).permit(:lat, :lng)
   end
+
 end

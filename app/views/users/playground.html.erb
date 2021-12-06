@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="box-avatar">
-    <img class= "avatar border-red" src='https://wavemind.ch/wp-content/uploads/2020/09/sinan-portrait-SITE.png'>
+   <%= cl_image_tag current_user.photo.key, crop: :fill, class:'avatar' %>
   </div>
   <div class="title-mission">
     <h2>Hello <%=current_user.first_name%>!</h2>

@@ -71,25 +71,33 @@
     <div class="done-mission">
 
       <% if @done_count >= 3 %>
-        <div class="podium">
-          <div class="podium-shape">
-            <div id="shape-second">
-              <p class="medal">🥈</p>
-              <p class="mission-name"><%= @done_challenges[1].mission.name %></p>
-              <p class="mission-score"><%= @done_challenges[1].score %></p>
-            </div>
-            <div id="shape-first">
-              <p class="medal">🥇</p>
-              <p class="mission-name"><%= @done_challenges[0].mission.name %></p>
-              <p class="mission-score"><%= @done_challenges[0].score %></p>
-            </div>
-            <div id="shape-third">
-              <p class="medal">🥉</p>
-              <p class="mission-name"><%= @done_challenges[2].mission.name %> <br></p>
-              <p class="mission-score"><%= @done_challenges[2].score %></p>
+          <div class="podium">
+            <div class="podium-shape">
+              <div id="shape-second">
+                <a href="/challenges/<%= @done_challenges[1].id %>/score">
+                  <p class="medal">🥈</p>
+                  <p class="mission-name"><%= @done_challenges[1].mission.name %></p>
+                  <p class="mission-score"><%= @done_challenges[1].score %></p>
+                </a>
+              </div>
+
+              <div id="shape-first">
+                <a href="/challenges/<%= @done_challenges[0].id %>/score">
+                  <p class="medal">🥇</p>
+                  <p class="mission-name"><%= @done_challenges[0].mission.name %></p>
+                  <p class="mission-score"><%= @done_challenges[0].score %></p>
+                </a>
+              </div>
+
+              <div id="shape-third">
+                <a href="/challenges/<%= @done_challenges[0].id %>/score">
+                  <p class="medal">🥉</p>
+                  <p class="mission-name"><%= @done_challenges[2].mission.name %> <br></p>
+                  <p class="mission-score"><%= @done_challenges[2].score %></p>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
            <% if @done_count >= 4 %>
             <table class="table-podium">
               <tbody>

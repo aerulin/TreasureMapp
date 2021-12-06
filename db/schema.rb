@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 2021_12_06_082339) do
   end
 
   create_table "challenges", force: :cascade do |t|
-    t.string "status", default: "started"
+    t.boolean "status", default: false
     t.integer "score", default: 0
-    t.string "secret_counter", default: "0"
+    t.integer "secret_counter", default: 0
     t.bigint "user_id"
     t.bigint "mission_id"
     t.datetime "created_at", precision: 6, null: false

@@ -104,13 +104,14 @@
                 <% @done_challenges[3...@done_count].each_with_index do |challenge, index| %>
                   <tr class = "podium-row">
                     <th scope="row"><%= index + 4 %></th>
-                    <td><%= challenge.mission.name%></td>
+                    <td><a href="/challenges/<%= challenge.id %>/score"><%= challenge.mission.name%></a></td>
                     <td><%= challenge.score %></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
           <% end %>
+        </div>
 
       <% elsif @done_count >= 1 %>
             <table class="table-podium">
@@ -118,17 +119,21 @@
                 <% @done_challenges.each_with_index do |challenge, index| %>
                   <tr class = "podium-row">
                     <th scope="row"><%= index + 1 %></th>
-                    <td><%= challenge.mission.name%></td>
+                    <td><a href="/challenges/<%= challenge.id %>/score"><%= challenge.mission.name%></a></td>
                     <td><%= challenge.score %></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
+          </div>
 
       <% else %>
-        <p>Vous n'avez pas encore commencé de mission</p>
-        <%= link_to "Mission", missions_path %>
+      </div>
+        <div class='playground-box'>
+          <p>Vous n'avez pas encore commencé de mission</p>
+          <%= link_to "Mission", missions_path, class:'btn btn-red' %>
       <% end %>
+
 
     </div>
   </div>

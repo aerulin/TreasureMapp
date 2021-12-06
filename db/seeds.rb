@@ -1,5 +1,5 @@
 require 'faker'
-# require 'open-uri'
+require 'open-uri'
 
 # Photos link ####################################################
 photo_array = [
@@ -13,6 +13,14 @@ photo_array = [
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/05-montreux_sq2oai.jpg',
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/06-fribourg_bxnm2z.jpg',
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/04-lausanne-ville_y6maru.jpg',
+]
+
+people_photo_array = [
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637919368/hamilton_ykiivz.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637919368/macron_sefgml.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637846119/surchat_vcwej2.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637845901/patrick_cwkajv.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637845642/jacques_xya10w.jpg',
 ]
 
 # Mission name ####################################################
@@ -278,6 +286,11 @@ sinan = User.new(
   password: '123456',
   email: 'sinan@gmail.com',
 )
+# sinan.photo.attach(
+#       io: URI.open('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png'),
+#       filename: "sinan.png",
+#       content_type: 'image/png'
+#     )
 sinan.save!
 puts 'Sinan created'
 

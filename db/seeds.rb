@@ -286,11 +286,11 @@ sinan = User.new(
   password: '123456',
   email: 'sinan@gmail.com',
 )
-# sinan.photo.attach(
-#       io: URI.open('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png'),
-#       filename: "sinan.png",
-#       content_type: 'image/png'
-#     )
+sinan.photo.attach(
+  io: URI.open('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png'),
+  filename: "sinan.png",
+  content_type: 'image/png'
+)
 sinan.save!
 puts 'Sinan created'
 

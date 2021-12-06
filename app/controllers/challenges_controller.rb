@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
 
+
   def show
     @challenge = Challenge.find(params[:id])
   end
@@ -50,32 +51,25 @@ class ChallengesController < ApplicationController
 
       # place from mission
       latitude = Mission.find(mission_id).lat
-      longitude = Mission.find(mission_id).lat
+      longitude = Mission.find(mission_id).lng
 
       place = [latitude, longitude]
-      delta = 0.003000
+      delta = 0.001000
 
       ask_lat = request.location.latitude
+      # ask_lat = 46.505406
       user_lat = ask_lat.to_f
       ask_long = request.location.longitude
+      # ask_long = 6.641385
       user_long = ask_long.to_f
-
-      # form_lat = params[:challenge][:lat]
-      # user_lat = form_lat.to_f
-      # form_long = params[:challenge][:long]
-      # user_long = form_long.to_f
-      # latitude range
-      # rlat = (place[0] + delta)..(place[0] - delta)
-      puts "********************************"
 
       test = user_lat.between?(place[0] - delta, place[0] + delta)
       if user_lat.between?(place[0] - delta, place[0] + delta) && user_long.between?(place[1] - delta, place[1] + delta)
-        puts "Woohooooo"
+       flash[:validation] = "Bravo! Vous avez débloqué le lieu secret et terminé la mission! "
       else
-        puts "Awwwwww"
+        flash[:falsy] = "Oups! Il semblerait que ce ne soit pas le bon endroit, essayez encore!"
       end
       redirect_to challenge_path(challenge)
-      flash[:true] = "Bravo! Vous avez trouvé la bonne réponse."
   end
 
   def geolocate

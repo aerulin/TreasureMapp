@@ -13,8 +13,8 @@ class UsersController < ApplicationController
       @users_shortlist = users[(@rank - 2)...(@rank + 1)]
     end
 
-    @open_challenges = Challenge.where(user: current_user, status: 'started')
-    @done_challenges = Challenge.where(user: current_user, status: 'finished').order(score: :desc)
+    @open_challenges = Challenge.where(user: current_user, status: false)
+    @done_challenges = Challenge.where(user: current_user, status: true).order(score: :desc)
     @done_count = @done_challenges.count
   end
 end

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get 'new', to: 'challenge_questions#new'
     end
     get 'map', to: 'challenges#map'
-    # post 'map', as: :validate, to: 'challenge_questions#validate'
+    post 'map', as: :validate, to: 'challenge_questions#validate'
+    get 'score', to: 'challenges#score'
   end
 end

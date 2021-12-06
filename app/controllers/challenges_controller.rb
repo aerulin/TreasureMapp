@@ -40,6 +40,7 @@ class ChallengesController < ApplicationController
     redirect_to challenge_path(challenge)
   end
 
+
   # Geolocalisation validation
 
 
@@ -83,6 +84,9 @@ class ChallengesController < ApplicationController
     ask_long = request.location.longitude
     user_long = ask_long.to_f
     raise
+
+  def score
+    @challenge = Challenge.find(params[:challenge_id])
   end
 
   private

@@ -45,13 +45,13 @@
       <p>
         <%= @challenge.calculate_score[:question_guess] - @challenge.calculate_score[:question_answered]  %>
         x
-        <%= @challenge.calculate_score[:guess_malus] %>
+        <%= @challenge.calculate_score[:guess_malus] %> pts
       </p>
       <p class="score-list-points"> <%= @challenge.calculate_score[:score_guess] %> pts</p>
     </div>
 
     <div class="score-list" id="final_guess_false">
-      <p class="score-list-title">Malus essais erronés:</p>
+      <p class="score-list-title">Mauvais lieu secret:</p>
         <p>
           <%= @challenge.calculate_score[:final_guess]  %>
           x

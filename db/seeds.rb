@@ -301,6 +301,26 @@ sinan.photo.attach(
 sinan.save!
 puts 'Sinan created'
 
+puts 'sleep'
+
+puts 'Creating Alein...'
+
+alain = User.new(
+  first_name: 'Alain',
+  last_name: 'Travers',
+  nickname: 'ATravers',
+  city: "Lausanne",
+  password: '123456',
+  email: 'alain@gmail.com',
+)
+alain.photo.attach(
+  io: URI.open('https://izar.ae/wp-content/uploads/2018/02/51511-01-2_edited.jpg'),
+  filename: "alain.jpg",
+  content_type: 'image/jpg'
+)
+alain.save!
+puts 'Alein created'
+
 puts "Creating Sinan's challenges"
 
 Challenge.create(
@@ -312,13 +332,22 @@ Challenge.create(
 )
 i = 1
 4.times do
-  Challenge.create(
+  challenge = Challenge.new(
     user: sinan,
     mission: Mission.find_by(name: mission_array[i]),
     status: true,
     secret_counter: rand(3),
-    score: rand(200..600)
   )
+  rand(4..7).times do
+    ChallengeQuestion.create(
+      challenge: challenge,
+      question: Question.all.sample,
+      status: true,
+      answer_counter: rand(1..3),
+    )
+  end
+  challenge.score = challenge.calculate_score[:final_score]
+  challenge.save
 i += 1
 end
 

@@ -1,0 +1,101 @@
+<div class="main">
+
+ <div class="banner-custom">
+    <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt=''>
+    <div class="banner-back">
+      <%= link_to "retour", url_for(:back) %>
+    </div>
+  </div>
+  <div class="box-avatar">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jcyhxkau.json" speed="1"  class= "avatar border-red" loop  autoplay></lottie-player>
+  </div>
+
+  <h2>Score final de mission</h2>
+
+
+<div class="score-box">
+  <div id="final-score">
+    <p>Score final</p>
+  <h2><%= @challenge.calculate_score[:final_score] %> </h2>
+  </div>
+
+  <table>
+    <tbody>
+
+      <div class="score-list" id="question_answered">
+        <p>
+          Questions répondues
+          <%= @challenge.calculate_score[:question_answered] %>
+          x
+          <%= @challenge.calculate_score[:question_points] %>
+          = +
+          <%= @challenge.calculate_score[:score_questions] %>
+           pts
+        </p>
+      </div>
+
+      <div class="score-list" id="guess_false">
+        <p>
+          Mauvaises réponses
+          <%= @challenge.calculate_score[:question_guess] - @challenge.calculate_score[:question_answered]  %>
+          x
+          <%= @challenge.calculate_score[:guess_malus] %>
+          =
+          <%= @challenge.calculate_score[:score_guess] %>
+           pts
+        </p>
+      </div>
+
+      <div class="score-list" id="final_guess_false">
+        <p>
+          Malus essais erronés
+          <%= @challenge.calculate_score[:final_guess]  %>
+          x
+          <%= @challenge.calculate_score[:final_guess_malus] %>
+          =
+          <%= @challenge.calculate_score[:score_final_guess] %>
+           pts
+        </p>
+      </div>
+
+      <div class="score-list" id="mission_done">
+        <p>Mission achevée
+          =
+          <% if @challenge.calculate_score[:mission_done] %>
+            + <%= @challenge.calculate_score[:final_guess]  %> pts
+          <% else %>
+            0 pts
+          <% end %>
+        </p>
+      </div>
+
+      <div class="score-list" id="bonus">
+        <p>Bonus difficulté
+          <%= @challenge.calculate_score[:mission_difficulty] %>
+          <%= (@challenge.calculate_score[:bonus] * 100).to_i %>%
+          =
+          <%= @challenge.calculate_score[:bonus_points] %>
+          pts
+        </p>
+      </div>
+
+      <div class="score-list" id="multiplier">
+      </div>
+
+    </tbody>
+  </table>
+
+</div>
+
+
+
+
+</div>
+
+
+<h1>This is score page</h1>
+
+
+<%= @challenge %>
+<%= @challenge.calculate_score %>

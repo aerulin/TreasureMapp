@@ -35,6 +35,10 @@ class ChallengesController < ApplicationController
     redirect_to challenge_path(challenge)
   end
 
+  def score
+    @challenge = Challenge.find(params[:challenge_id])
+  end
+
   private
 
   def questions_params

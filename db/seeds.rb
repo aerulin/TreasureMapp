@@ -262,13 +262,11 @@ puts "Creating challenges"
   Challenge.create(
     user: User.all.sample,
     mission: Mission.all.sample,
-    status: ["started", "started", "finished"].sample,
+    status: [true, false, false].sample,
     secret_counter: rand(3),
     score: rand(100..2000)
   )
 end
-
-
 
 puts 'Creating Sinan...'
 
@@ -289,7 +287,7 @@ puts "Creating Sinan's challenges"
 Challenge.create(
   user: sinan,
   mission: Mission.find_by(name: mission_array[0]),
-  status: "started",
+  status: false,
   secret_counter: rand(3),
   score: rand(200..600)
 )
@@ -298,7 +296,7 @@ i = 1
   Challenge.create(
     user: sinan,
     mission: Mission.find_by(name: mission_array[i]),
-    status: "finished",
+    status: true,
     secret_counter: rand(3),
     score: rand(200..600)
   )
@@ -316,7 +314,7 @@ end
 sauvabelin_challenge = Challenge.create(
   user: sinan,
   mission: sauvabelin,
-  status: "started",
+  status: false,
   secret_counter: 0,
   score: rand(500..100)
 )

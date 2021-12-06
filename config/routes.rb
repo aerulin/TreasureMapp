@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     end
     get 'map', to: 'challenges#map'
     post 'map', as: :validate, to: 'challenge_questions#validate'
+    get 'score', to: 'challenges#score'
   end
 end

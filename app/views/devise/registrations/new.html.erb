@@ -1,7 +1,7 @@
 <div class="container">
 
 <h1 style="color:#FC635b">TreasureMapp</h1>
-  <h2>S'inscrire</h2>
+  <h2 class="d-flex justify-content-center">S'inscrire</h2>
 
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -10,40 +10,48 @@
     <div class="form-inputs">
 
       <%= f.input :first_name,
+                  label: 'prénom',
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "prénom" }%>
       <%= f.input :last_name,
+                  label: 'nom',
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "nom" }%>
       <%= f.input :nickname,
+                  label: 'pseudo',
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "pseudo" }%>
       <%= f.input :city,
+                  label: 'ville',
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "Ville" }%>
       <%= f.input :email,
+                  label: 'email',
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
       <%= f.input :password,
+                  label: 'mot de passe',
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                   input_html: { autocomplete: "nouveau-password" } %>
       <%= f.input :password_confirmation,
+                  label: 'confirmation du mot de passe',
                   required: true,
                   input_html: { autocomplete: "nouveau-password" } %>
     </div>
 
-    <div class="form-actions">
-      <div class="btn">
+    <div class="box-button form-actions">
+      <div class="btn btn-border-red mt-3">
         <%= f.button :submit, "S'inscrire" %>
       </div>
+
     </div>
   <% end %>
+ <!--<%= render "devise/shared/links" %>-->
 
-  <%= render "devise/shared/links" %>
 </div>

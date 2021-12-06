@@ -3,6 +3,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import mapboxgl from 'mapbox-gl';
 const mapElement = document.getElementById('map');
+// const challenge_question = ChallengeQuestion.new
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
@@ -22,15 +23,25 @@ const map = new mapboxgl.Map({
 const markers = JSON.parse(mapElement.dataset.markers);
 
   markers.forEach((marker) => {
+    // if (challenge_question.status == true ) {
+      // const element = document.createElement('div');
+     // element.className = 'marker';
+    // element.style.backgroundImage = `url('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png')`;
+     // element.style.backgroundSize = 'contain';
+     // element.style.width = '25px';
+     // element.style.height = '25px';
+    // } else {
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('https://res.cloudinary.com/dg2an4buq/image/upload/v1638362273/earth_xe0rsw.png')`;
+    element.style.backgroundSize = 'contain';
+    element.style.width = '25px';
+    element.style.height = '25px';
+    //};
 
-  const element = document.createElement('div');
-  element.className = 'marker';
-  element.style.backgroundImage = `url('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png')`;
-  element.style.backgroundSize = 'contain';
-  element.style.width = '25px';
-  element.style.height = '25px';
   new mapboxgl.Marker(element)
     .setLngLat([marker.lng, marker.lat])
+    .setPopup(new mapboxgl.Popup().setHTML(marker.info_window))
     .addTo(map);
 });
 

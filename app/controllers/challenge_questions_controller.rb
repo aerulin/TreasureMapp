@@ -24,6 +24,10 @@ class ChallengeQuestionsController < ApplicationController
     redirect_to challenge_map_path(challenge)
   end
 
+  def button
+
+  end
+
   private
 
   def q_params

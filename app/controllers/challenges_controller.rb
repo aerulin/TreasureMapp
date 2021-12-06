@@ -46,6 +46,7 @@ class ChallengesController < ApplicationController
 
 
    def validate
+
       challenge = Challenge.find(params[:challenge_id])
       mission_id = challenge.mission_id
 
@@ -56,28 +57,21 @@ class ChallengesController < ApplicationController
       place = [latitude, longitude]
       delta = 0.001000
 
-      ask_lat = request.location.latitude
-      # ask_lat = 46.505406
+      # ask_lat = request.location.latitude
+      ask_lat = 46.505406
       user_lat = ask_lat.to_f
-      ask_long = request.location.longitude
-      # ask_long = 6.641385
+      # ask_long = request.location.longitude
+      ask_long = 6.641385
       user_long = ask_long.to_f
 
       # test = user_lat.between?(place[0] - delta, place[0] + delta)
       if user_lat.between?(place[0] - delta, place[0] + delta) && user_long.between?(place[1] - delta, place[1] + delta)
-       flash[:validation] = "Bravo! Vous avez débloqué le lieu secret et terminé la mission! "
+        redirect_to challenge_score_path
+
       else
         flash[:falsy] = "Oups! Il semblerait que ce ne soit pas le bon endroit, essayez encore!"
+        redirect_to challenge_path(challenge)
       end
-      redirect_to challenge_path(challenge)
-  end
-
-  def geolocate
-    ask_lat = request.location.latitude
-    user_lat = ask_lat.to_f
-    ask_long = request.location.longitude
-    user_long = ask_long.to_f
-    raise
   end
 
   def score

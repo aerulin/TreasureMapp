@@ -82,7 +82,8 @@ Mission.all.destroy_all
 
 # Creating users ####################################################
 
-puts 'Creating 30 users....'
+puts 'Creating 10 users....'
+p = 0
 10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -96,6 +97,12 @@ puts 'Creating 30 users....'
     password: '123456',
     email: email
   )
+  # user.photo.attach(
+  #   io: URI.open(people_photo_array.sample),
+  #   filename: "user#{p}.png",
+  #   content_type: 'image/png'
+  # )
+  # p += 1
   user.save!
 end
 
@@ -287,13 +294,32 @@ sinan = User.new(
   email: 'sinan@gmail.com',
 )
 sinan.photo.attach(
-      io: URI.open('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png'),
-      filename: "sinan.png",
-      content_type: 'image/png'
-    )
+  io: URI.open('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png'),
+  filename: "sinan.png",
+  content_type: 'image/png'
+)
 sinan.save!
 puts 'Sinan created'
 
+puts 'sleep'
+
+puts 'Creating Alein...'
+
+alain = User.new(
+  first_name: 'Alain',
+  last_name: 'Travers',
+  nickname: 'ATravers',
+  city: "Lausanne",
+  password: '123456',
+  email: 'alain@gmail.com',
+)
+alain.photo.attach(
+  io: URI.open('https://izar.ae/wp-content/uploads/2018/02/51511-01-2_edited.jpg'),
+  filename: "alain.jpg",
+  content_type: 'image/jpg'
+)
+alain.save!
+puts 'Alein created'
 
 puts "Creating Sinan's challenges"
 
@@ -306,13 +332,22 @@ Challenge.create(
 )
 i = 1
 4.times do
-  Challenge.create(
+  challenge = Challenge.new(
     user: sinan,
     mission: Mission.find_by(name: mission_array[i]),
     status: true,
     secret_counter: rand(3),
-    score: rand(200..600)
   )
+  rand(4..7).times do
+    ChallengeQuestion.create(
+      challenge: challenge,
+      question: Question.all.sample,
+      status: true,
+      answer_counter: rand(1..3),
+    )
+  end
+  challenge.score = challenge.calculate_score[:final_score]
+  challenge.save
 i += 1
 end
 

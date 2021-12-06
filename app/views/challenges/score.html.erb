@@ -8,13 +8,26 @@
   </div>
   <div class="box-avatar">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_jcyhxkau.json" speed="1"  class= "avatar border-red" loop  autoplay></lottie-player>
+    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_xldzoar8.json" speed="1"  class= "avatar border-red" loop  autoplay></lottie-player>
   </div>
 
-  <h3>Score <%= @challenge.mission.name %></h3>
+  <h3>Mission: <%= @challenge.mission.name %></h3>
 
 
   <div class="score-box">
+
+    <div class="score-list" id="mission_done">
+      <p class="score-list-title">Mission achevée:</p>
+      <p><%= @challenge.calculate_score[:score_end_mission] %> pts</p>
+      <p class="score-list-points">
+        <% if @challenge.calculate_score[:mission_done] %>
+          + <%= @challenge.calculate_score[:mission_points]  %> pts
+        <% else %>
+          0 pts
+        <% end %>
+      </p>
+    </div>
+
 
     <div class="score-list" id="question_answered">
       <p class="score-list-title"> Questions répondues:</p>
@@ -32,31 +45,19 @@
       <p>
         <%= @challenge.calculate_score[:question_guess] - @challenge.calculate_score[:question_answered]  %>
         x
-        <%= @challenge.calculate_score[:guess_malus] %>
+        <%= @challenge.calculate_score[:guess_malus] %> pts
       </p>
       <p class="score-list-points"> <%= @challenge.calculate_score[:score_guess] %> pts</p>
     </div>
 
     <div class="score-list" id="final_guess_false">
-      <p class="score-list-title">Malus essais erronés:</p>
+      <p class="score-list-title">Mauvais lieu secret:</p>
         <p>
           <%= @challenge.calculate_score[:final_guess]  %>
           x
           <%= @challenge.calculate_score[:final_guess_malus] %> pts
         </p>
         <p class="score-list-points"><%= @challenge.calculate_score[:score_final_guess] %> pts</p>
-    </div>
-
-    <div class="score-list" id="mission_done">
-      <p class="score-list-title">Mission achevée:</p>
-      <p><%= @challenge.calculate_score[:score_end_mission] %> pts</p>
-      <p class="score-list-points">
-        <% if @challenge.calculate_score[:mission_done] %>
-          + <%= @challenge.calculate_score[:final_guess]  %> pts
-        <% else %>
-          0 pts
-        <% end %>
-      </p>
     </div>
 
     <div class="score-list" id="bonus">
@@ -78,8 +79,8 @@
   </div>
 
   <div>
-  <p>Mission commencée le: <%= @challenge.created_at %></p>
-  <p>Mission terminée le: <%= @challenge.created_at %></p>
+  <p>Mission commencée le: <%= @challenge.created_at.strftime("%d-%m-%Y") %></p>
+  <p>Mission terminée le: <%= @challenge.created_at.strftime("%d-%m-%Y") %></p>
   </div>
 
 </div>

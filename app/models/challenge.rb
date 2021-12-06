@@ -57,7 +57,7 @@ class Challenge < ApplicationRecord
       final_guess: secret_counter,
       score_final_guess: final_location_guess,
       mission_done: status,
-      score_end_mission_: pt_end_mission,
+      score_end_mission: pt_end_mission,
       mission_points: final_end_mission,
       final_score: final_score,
       mission_difficulty: mission.difficulty,

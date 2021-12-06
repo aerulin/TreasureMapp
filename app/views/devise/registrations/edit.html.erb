@@ -1,11 +1,20 @@
-<div class="container">
+<div class="main">
+
+ <div class="banner-custom">
+    <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt=''>
+  </div>
+  <div class="box-avatar">
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, crop: :fill, class:'avatar border-red' %>
+    <% else %>
+      <img src="https://www.splitbrain.org/_static/monsterid/monsterid.php?.png" alt="avatar" class='avatar border-red'>
+    <% end %>
+  </div>
 
 
 
-
-
-  <h2 class="text-center mt-3">Mettre à jour mon compte</h2>
-
+  <h2 class="text-center mt-3">Profil</h2>
+  <div class="container">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
@@ -58,7 +67,7 @@
                   input_html: { autocomplete: "current-password" } %>
     </div>
 
-
+ </div>
 
 
 

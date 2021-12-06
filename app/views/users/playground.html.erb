@@ -7,7 +7,11 @@
     </div>
   </div>
   <div class="box-avatar">
-   <%= cl_image_tag current_user.photo.key, crop: :fill, class:'avatar' %>
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, crop: :fill, class:'avatar border-red' %>
+    <% else %>
+      <img src="https://www.splitbrain.org/_static/monsterid/monsterid.php?.png" alt="avatar" class='avatar border-red'>
+    <% end %>
   </div>
   <div class="title-mission">
     <h2>Hello <%=current_user.first_name%>!</h2>

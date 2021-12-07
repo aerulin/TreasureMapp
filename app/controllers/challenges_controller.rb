@@ -51,7 +51,7 @@ class ChallengesController < ApplicationController
       question.question
     end
     end
-    redirect_to challenge_score_path
+    #redirect_to challenge_score_path(challenge)
 end
 
 
@@ -77,16 +77,16 @@ end
       place = [latitude, longitude]
       delta = 0.001000
 
-      # ask_lat = request.location.latitude
-      ask_lat = 46.505406
+      ask_lat = request.location.latitude
+      # ask_lat = 46.505406
       user_lat = ask_lat.to_f
-      # ask_long = request.location.longitude
-      ask_long = 6.641385
+      ask_long = request.location.longitude
+      # ask_long = 6.641385
       user_long = ask_long.to_f
 
       # test = user_lat.between?(place[0] - delta, place[0] + delta)
       if user_lat.between?(place[0] - delta, place[0] + delta) && user_long.between?(place[1] - delta, place[1] + delta)
-        redirect_to challenge_score_path
+        redirect_to challenge_score_path(challenge)
 
       else
         flash[:falsy] = "Oups! Il semblerait que ce ne soit pas le bon endroit, essayez encore!"

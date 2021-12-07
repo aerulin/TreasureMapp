@@ -24,6 +24,7 @@ class ChallengesController < ApplicationController
       {
         lat: question.lat,
         lng: question.lng,
+        status: @challenge_question.status,
         info_window: render_to_string(partial: "popup_map", locals: { question: question, challenge: @challenge, challenge_question: @challenge_question })
       }
     end
@@ -43,10 +44,7 @@ class ChallengesController < ApplicationController
 
 
   # Geolocalisation validation
-
-
-   def validate
-
+  def validate
       challenge = Challenge.find(params[:challenge_id])
       mission_id = challenge.mission_id
 

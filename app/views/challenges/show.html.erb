@@ -34,11 +34,11 @@
     <% end %>
   </div>
 
-  <%= simple_form_for @challenge, method: :post, url: challenge_validate_path(@challenge) do |f| %>
-      <%= f.submit "Valider le lieu secret - test", class: "mb-2 button-validate" %>
+  <%if @challenge.challenge_questions.count == @challenge.challenge_questions.where(status: true).count %>
+    <%= simple_form_for @challenge, method: :post, url: challenge_validate_path(@challenge) do |f| %>
+      <%= f.submit "Valider le lieu secret", class: "mb-2 button-validate" %>
+      <%end%>
+  <%else%>
+    <button disabled class="mb-2 button-validate" style="opacity:0.7">Répondez à toutes les questions pour pouvoir débloquer le lieu secret.</button>
   <% end %>
-
-
-
-  <!--<button class="mb-2 button-validate">Valider lieu secret</button>-->
 </div>

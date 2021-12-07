@@ -3,11 +3,15 @@
   <div class="banner-custom">
     <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt=''>
     <div class="banner-button">
-      <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:'btn-border-white' %>
+      <%= link_to "Mon profil",  edit_user_registration_path, class:'btn-border-white' %>
     </div>
   </div>
   <div class="box-avatar">
-    <img class= "avatar border-red" src='https://wavemind.ch/wp-content/uploads/2020/09/sinan-portrait-SITE.png'>
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, crop: :fill, class:'avatar border-red' %>
+    <% else %>
+      <img src="https://www.splitbrain.org/_static/monsterid/monsterid.php?.png" alt="avatar" class='avatar border-red'>
+    <% end %>
   </div>
   <div class="title-mission">
     <h2>Hello <%=current_user.first_name%>!</h2>
@@ -65,63 +69,76 @@
 
   <hr style="width: 50%; margin-left: auto">
 
-  <div class="text-center">
-    <h3>Vos missions terminées</h3>
+  <% if @done_count >= 3 %>
+    <div class="text-center">
+      <h3>Vos missions terminées</h3>
 
-    <div class="done-mission">
-
-      <% if @done_count >= 3 %>
+      <div class="done-mission">
         <div class="podium">
           <div class="podium-shape">
-            <div id="shape-second">
-              <p class="medal">🥈</p>
-              <p class="mission-name"><%= @done_challenges[1].mission.name %></p>
-              <p class="mission-score"><%= @done_challenges[1].score %></p>
+            <div id="shape-second" class="podium-step-box">
+              <a href="/challenges/<%= @done_challenges[1].id %>/score">
+                <p class="medal">🥈</p>
+                <p class="mission-name"><%= @done_challenges[1].mission.name %></p>
+                <p class="mission-score"><%= @done_challenges[1].score %></p>
+              </a>
             </div>
-            <div id="shape-first">
-              <p class="medal">🥇</p>
-              <p class="mission-name"><%= @done_challenges[0].mission.name %></p>
-              <p class="mission-score"><%= @done_challenges[0].score %></p>
+
+            <div id="shape-first" class="podium-step-box">
+              <a href="/challenges/<%= @done_challenges[0].id %>/score">
+                <p class="medal">🥇</p>
+                <p class="mission-name"><%= @done_challenges[0].mission.name %></p>
+                <p class="mission-score"><%= @done_challenges[0].score %></p>
+              </a>
             </div>
-            <div id="shape-third">
-              <p class="medal">🥉</p>
-              <p class="mission-name"><%= @done_challenges[2].mission.name %> <br></p>
-              <p class="mission-score"><%= @done_challenges[2].score %></p>
+
+            <div id="shape-third" class="podium-step-box">
+              <a href="/challenges/<%= @done_challenges[0].id %>/score">
+                <p class="medal">🥉</p>
+                <p class="mission-name"><%= @done_challenges[2].mission.name %> <br></p>
+                <p class="mission-score"><%= @done_challenges[2].score %></p>
+              </a>
             </div>
           </div>
         </div>
-           <% if @done_count >= 4 %>
-            <table class="table-podium">
-              <tbody>
-                <% @done_challenges[3...@done_count].each_with_index do |challenge, index| %>
-                  <tr class = "podium-row">
-                    <th scope="row"><%= index + 4 %></th>
-                    <td><%= challenge.mission.name%></td>
-                    <td><%= challenge.score %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          <% end %>
-
-      <% elsif @done_count >= 1 %>
-            <table class="table-podium">
-              <tbody>
-                <% @done_challenges.each_with_index do |challenge, index| %>
-                  <tr class = "podium-row">
-                    <th scope="row"><%= index + 1 %></th>
-                    <td><%= challenge.mission.name%></td>
-                    <td><%= challenge.score %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-
-      <% else %>
-        <p>Vous n'avez pas encore commencé de mission</p>
-        <%= link_to "Mission", missions_path %>
-      <% end %>
-
+        <% if @done_count >= 4 %>
+          <table class="table-podium">
+            <tbody>
+              <% @done_challenges[3...@done_count].each_with_index do |challenge, index| %>
+                <tr class = "podium-row">
+                  <th scope="row"><%= index + 4 %></th>
+                  <td><a href="/challenges/<%= challenge.id %>/score"><%= challenge.mission.name%></a></td>
+                  <td><%= challenge.score %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
     </div>
-  </div>
+
+
+  <% elsif @done_count >= 1 %>
+    <div class="text-center">
+      <h3>Vos missions terminées</h3>
+      <table class="table-podium">
+        <tbody>
+          <% @done_challenges.each_with_index do |challenge, index| %>
+            <tr class = "podium-row">
+              <th scope="row"><%= index + 1 %></th>
+              <td><a href="/challenges/<%= challenge.id %>/score"><%= challenge.mission.name%></a></td>
+              <td><%= challenge.score %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <% else %>
+    <div class='playground-box text-center'>
+      <p>Vous n'avez pas encore terminé de mission</p>
+      <%= link_to "Mission", missions_path, class:'btn btn-red' %>
+    </div>
+  <% end %>
+
 </div>

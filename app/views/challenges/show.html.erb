@@ -33,5 +33,10 @@
         <% end %>
     <% end %>
   </div>
+
+  <%= simple_form_for @challenge, method: :post, url: challenge_validate_path(@challenge) do |f| %>
+      <%= f.submit "Valider le lieu secret - test", class: "btn-red" %>
+    <% end %>
+
   <button class="mb-2 button-validate">Valider lieu secret</button>
 </div>

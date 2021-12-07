@@ -1,0 +1,51 @@
+.score-box {
+  width: 80vw;
+  margin: 5vw auto;
+  padding: 5vw;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 5vw;
+
+}
+
+
+.score-list {
+  text-align: center;
+  display:flex;
+  justify-content: space-between;
+}
+
+.score-list > p {
+  font-size: 3vw;
+  flex-grow: 1;
+}
+
+.score-list-title{
+  width: 50%;
+  text-align: left;
+}
+
+.score-list-points{
+  width: 20%;
+  text-align: right;
+  font-weight: 600;
+}
+
+#final-score-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 2vh;
+  p {
+    margin: 0;
+  }
+  h2 {
+    margin:0;
+  }
+}
+
+#final-score {
+  font-size: 9vw ;
+  font-weight: 700;
+  color: #FC635B;
+}

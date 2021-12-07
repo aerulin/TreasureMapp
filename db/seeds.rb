@@ -1,5 +1,5 @@
 require 'faker'
-# require 'open-uri'
+require 'open-uri'
 
 # Photos link ####################################################
 photo_array = [
@@ -15,12 +15,20 @@ photo_array = [
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/04-lausanne-ville_y6maru.jpg',
 ]
 
+people_photo_array = [
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637919368/hamilton_ykiivz.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637919368/macron_sefgml.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637846119/surchat_vcwej2.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637845901/patrick_cwkajv.jpg',
+  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637845642/jacques_xya10w.jpg',
+]
+
 # Mission name ####################################################
 mission_array = [
   'Gêne-Ève',
   'Passe la Bâle',
   'Sur le (t)Rhone',
-  'Nous Yverdon',
+  'Nous Yverdons',
   'Flow Zürichois',
   'Rhin océros',
   'Hiver dont plage',
@@ -42,6 +50,19 @@ city_array = [
   'Lausanne'
 ]
 
+description_array = [
+  "A la conquête de la ville de Calvin. Attention à ne pas prendre une martmite sur la tête.",
+  "Capitale culturelle, ville des amoureux, une petite escapade romantique.",
+  "Des montagnes à la Mer Méditerranée, laissez vous porter par le courant.",
+  "As de la grammaire et la conjugaison ? Sauras-tu Yverder ?",
+  "Patrimoine mondiale de la Gastronomie ? Pas du tout, mais c'est bon quand même",
+  "Ambiance tropicale l'été, Lac Baikal l'hiver. Tu veux faire un plouf ?",
+  "Sous les pavés la plage ! Un mois de mai à Yverdon.",
+  "Souvent trop cher, presque toujours de Pologne, la perche fait débat.",
+  "C'est gras, c'est bon, c'est le Fribourgeon.",
+  "Le pull qui gratte, les dents qui claquent. Ça donne envie ?"
+]
+
 # Clear database ####################################################
 
 puts 'Deleting users'
@@ -61,25 +82,31 @@ Mission.all.destroy_all
 
 # Creating users ####################################################
 
-puts 'Creating 30 users....'
+puts 'Creating 10 users....'
+p = 0
 10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   nickname = "#{first_name[0]}#{last_name}"
   email = "#{first_name}.#{last_name.downcase}@gmail.com"
   user = User.new(
-    first_name: first_name ,
+    first_name: first_name,
     last_name: last_name,
     nickname: nickname,
     city: ["Lausanne", "Lausanne", "Renens", "Geneva", "Zurich", "Prilly", "Ecublens", "Crissier", "Bussigny"].sample,
     password: '123456',
-    email: email,
+    email: email
   )
+  # user.photo.attach(
+  #   io: URI.open(people_photo_array.sample),
+  #   filename: "user#{p}.png",
+  #   content_type: 'image/png'
+  # )
+  # p += 1
   user.save!
 end
 
 puts 'Users created'
-
 
 # Creating mission ###########################################
 
@@ -97,7 +124,7 @@ ouchy = Mission.new(
   lat: 46.505073,
   lng: 6.641532,
   description: "Partez à la découverte du quartier d'Ouchy, ses quais, le lac, ses bâtiments, ses jardins et son art.",
-  photo_url: ouchy_url,
+  photo_url: ouchy_url
 )
 ouchy.save!
 
@@ -112,7 +139,7 @@ sauvabelin = Mission.new(
   lat: 46.535237,
   lng: 6.638511,
   description: "Lausanne, ville de verdure, de parcs, et de forêts. La mission vous emmenera aux confins de la ville",
-  photo_url: sauvabelin_url,
+  photo_url: sauvabelin_url
 )
 sauvabelin.save!
 
@@ -126,7 +153,7 @@ i = 0
     city: city_array[i],
     time: "#{rand(0..2)}h#{rand(0...6)}0",
     category: ['Quartier', 'Parc', 'Célébrité', 'Histoire', 'Art'].sample,
-    description: Faker::Lorem.sentence(word_count: 5, supplemental: true, random_words_to_add: 4),
+    description: description_array[i]
   )
   i += 1
 end
@@ -150,18 +177,97 @@ Clue.create(mission: sauvabelin, level: 5, description: "Je culmine à 35m de ha
 # Creating question ###########################################
 
 puts "Creating questions Ouchy"
-ouchy_q_1 = Question.create(mission: ouchy, lat: 46.507945, lng: 6.633765, question: "Quel symbole caché montre la statue des cyclistes au parc olympique ?", answer:"symbole olympique")
-ouchy_q_2 = Question.create(mission: ouchy, lat: 46.507037, lng: 6.626361, question: "En quelle année commence la construction du funiculaire d'Ouchy ?", answer:"1874")
-ouchy_q_3 = Question.create(mission: ouchy, lat: 46.506835, lng: 6.625198, question: "Quelle information nous donne Eole ?", answer:"le type de vent")
-ouchy_q_4 = Question.create(mission: ouchy, lat: 46.506170, lng: 6.640920, question: "Qui a offert le Temple Pagode Thaï à la ville de Lausanne ?", answer:"le souverain du Siam")
-ouchy_q_5 = Question.create(mission: ouchy, lat: 46.504766, lng: 6.625691, question: "Combien y a t-il de pointes sur la sculputure Ouverture au monde ?", answer:"36")
+ouchy_q_1 = Question.create(
+  mission: ouchy,
+  lat: 46.507945,
+  lng: 6.633765,
+  question: "Quel symbole caché montre la statue des cyclistes au parc olympique ?",
+  answer: "symbole olympique",
+  validation: ["symbole", "olympique"]
+)
+
+ouchy_q_2 = Question.create(
+  mission: ouchy,
+  lat: 46.507037,
+  lng: 6.626361,
+  question: "En quelle année commence la construction du funiculaire d'Ouchy ?",
+  answer: "1874",
+  validation: ["1874"]
+)
+
+ouchy_q_3 = Question.create(
+  mission: ouchy,
+  lat: 46.506835,
+  lng: 6.625198,
+  question: "Quelle information nous donne Eole ?",
+  answer: "le type de vent",
+  validation: ["vent"]
+)
+
+ouchy_q_4 = Question.create(
+  mission: ouchy,
+  lat: 46.506170,
+  lng: 6.640920,
+  question: "Qui a offert le Temple Pagode Thaï à la ville de Lausanne ?",
+  answer: "le souverain du Siam",
+  validation: ["roi", "souverain", "regent", "siam"]
+)
+
+ouchy_q_5 = Question.create(
+  mission: ouchy,
+  lat: 46.504766,
+  lng: 6.625691,
+  question: "Combien y a t-il de pointes sur la sculputure Ouverture au monde ?",
+  answer: "36",
+  validation: ["36"]
+)
 
 puts "Creating questions Sauvabelin"
-sauvabelin_q_1 = Question.create(mission: sauvabelin, lat: 46.537141, lng: 6.638888, question: "En quelle année s'achève la restauration des berges du lac de Sauvabelin ?", answer:"2017")
-sauvabelin_q_2 = Question.create(mission: sauvabelin, lat: 46.530815, lng: 6.637631, question: "Combien de juges siègent au tribunal cantonal ?", answer:"44")
-sauvabelin_q_3 = Question.create(mission: sauvabelin, lat: 46.530675, lng: 6.639757, question: "Quelle est la plus haute montagne visible depuis ce lieu ?", answer:"Mont-blanc")
-sauvabelin_q_4 = Question.create(mission: sauvabelin, lat: 46.530210, lng: 6.640047, question: "Que peut-on voir au fond de la grotte ?'", answer:"un Ours")
-sauvabelin_q_5 = Question.create(mission: sauvabelin, lat: 46.528084, lng: 6.637235, question: "En quelle année est donnée à la ville de Lausanne la maison du parc de l'Hermitage ?", answer:"1976")
+
+sauvabelin_q_1 = Question.create(
+  mission: sauvabelin,
+  lat: 46.537141,
+  lng: 6.638888,
+  question: "En quelle année s'achève la restauration des berges du lac de Sauvabelin ?",
+  answer: "2017",
+  validation: ["2017"]
+)
+
+sauvabelin_q_2 = Question.create(
+  mission: sauvabelin,
+  lat: 46.530815,
+  lng: 6.637631,
+  question: "Combien de juges siègent au tribunal cantonal ?",
+  answer:"44",
+  validation: ["44"]
+)
+
+sauvabelin_q_3 = Question.create(
+  mission: sauvabelin,
+  lat: 46.530675,
+  lng: 6.639757,
+  question: "Quelle est la plus haute montagne visible depuis ce lieu ?",
+  answer: "Mont-blanc",
+  validation: ["blanc", "mont blanc", "mont-blanc"]
+)
+
+sauvabelin_q_4 = Question.create(
+  mission: sauvabelin,
+  lat: 46.530210,
+  lng: 6.640047,
+  question: "Que peut-on voir au fond de la grotte ?",
+  answer: "un Ours",
+  validation: ["ours"]
+)
+
+sauvabelin_q_5 = Question.create(
+  mission: sauvabelin,
+  lat: 46.528084,
+  lng: 6.637235,
+  question: "En quelle année est donnée à la ville de Lausanne la maison du parc de l'Hermitage ?",
+  answer: "1976",
+  validation: ["1976"]
+)
 
 # Creating challenges ###########################################
 
@@ -171,13 +277,11 @@ puts "Creating challenges"
   Challenge.create(
     user: User.all.sample,
     mission: Mission.all.sample,
-    status: ["started", "started", "finished"].sample,
+    status: [true, false, false].sample,
     secret_counter: rand(3),
     score: rand(100..2000)
   )
 end
-
-
 
 puts 'Creating Sinan...'
 
@@ -189,28 +293,61 @@ sinan = User.new(
   password: '123456',
   email: 'sinan@gmail.com',
 )
+sinan.photo.attach(
+  io: URI.open('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png'),
+  filename: "sinan.png",
+  content_type: 'image/png'
+)
 sinan.save!
 puts 'Sinan created'
 
+puts 'sleep'
+
+puts 'Creating Alein...'
+
+alain = User.new(
+  first_name: 'Alain',
+  last_name: 'Travers',
+  nickname: 'ATravers',
+  city: "Lausanne",
+  password: '123456',
+  email: 'alain@gmail.com',
+)
+alain.photo.attach(
+  io: URI.open('https://izar.ae/wp-content/uploads/2018/02/51511-01-2_edited.jpg'),
+  filename: "alain.jpg",
+  content_type: 'image/jpg'
+)
+alain.save!
+puts 'Alein created'
 
 puts "Creating Sinan's challenges"
 
 Challenge.create(
   user: sinan,
   mission: Mission.find_by(name: mission_array[0]),
-  status: "started",
+  status: false,
   secret_counter: rand(3),
   score: rand(200..600)
 )
 i = 1
 4.times do
-  Challenge.create(
+  challenge = Challenge.new(
     user: sinan,
     mission: Mission.find_by(name: mission_array[i]),
-    status: "finished",
+    status: true,
     secret_counter: rand(3),
-    score: rand(200..600)
   )
+  rand(4..7).times do
+    ChallengeQuestion.create(
+      challenge: challenge,
+      question: Question.all.sample,
+      status: true,
+      answer_counter: rand(1..3),
+    )
+  end
+  challenge.score = challenge.calculate_score[:final_score]
+  challenge.save
 i += 1
 end
 
@@ -225,7 +362,7 @@ end
 sauvabelin_challenge = Challenge.create(
   user: sinan,
   mission: sauvabelin,
-  status: "started",
+  status: false,
   secret_counter: 0,
   score: rand(500..100)
 )

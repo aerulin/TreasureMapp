@@ -3,15 +3,28 @@
 }
 
 .background-img {
-  background-image: url("treasur-map.jpg");
+  background-image:  url("treasur-map.jpg");
   height: 87vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: rgba($color: #ffe600, $alpha: 0.2);
 }
 
 .text {
   background-color: rgba(200, 200, 200, 0.8);
   border: 2px solid black;
   height: 87vh;
+  font-size: 1em;
+}
+
+.text  h1 {
+  color:#FC635b;
+  text-shadow: 1px 1px 2px black;
+  font-weight: 900;
+  font-size: 3em;
+}
+
+.text h2 {
+  text-decoration: underline;
 }

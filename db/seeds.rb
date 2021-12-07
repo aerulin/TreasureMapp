@@ -41,10 +41,10 @@ city_array = [
   'Genève',
   'Bâle',
   'Genève',
-  'Yverdon-les-Bains',
+  'Yverdon',
   'Zürich',
   'Bâle',
-  'Yverdon-les-Bains',
+  'Yverdon',
   'Montreux',
   'Fribourg',
   'Lausanne'
@@ -63,7 +63,7 @@ description_array = [
   "Le pull qui gratte, les dents qui claquent. Ça donne envie ?"
 ]
 
-nickname_array = %w[tibo-gem-pa matil-de.france lapin-kentin manu_militari c_la_cataline m-organic riz.laine colin_maillard g_pa_didier boris-tourne]
+nickname_array = %w[tibo-gem-pa matil-de.france lapin-kentin manu_militari c_la_cata_line m-organic riz-laine colin_maillard g_pa_didier baux_risqués]
 
 # Clear database ####################################################
 

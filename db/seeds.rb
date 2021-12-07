@@ -63,6 +63,8 @@ description_array = [
   "Le pull qui gratte, les dents qui claquent. Ça donne envie ?"
 ]
 
+nickname_array = %w[tibo-gem-pa matil-de.france lapin-kentin manu_militari c_la_cataline m-organic riz.laine colin_maillard g_pa_didier boris-tourne]
+
 # Clear database ####################################################
 
 puts 'Deleting users'
@@ -87,12 +89,11 @@ p = 0
 10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
-  nickname = "#{first_name[0]}#{last_name}"
-  email = "#{first_name}.#{last_name.downcase}@gmail.com"
+  email = "#{first_name.downcase}.#{last_name.downcase}@gmail.com"
   user = User.new(
     first_name: first_name,
     last_name: last_name,
-    nickname: nickname,
+    nickname: nickname_array[p],
     city: ["Lausanne", "Lausanne", "Renens", "Geneva", "Zurich", "Prilly", "Ecublens", "Crissier", "Bussigny"].sample,
     password: '123456',
     email: email
@@ -102,8 +103,8 @@ p = 0
   #   filename: "user#{p}.png",
   #   content_type: 'image/png'
   # )
-  # p += 1
   user.save!
+  p += 1
 end
 
 puts 'Users created'
@@ -112,6 +113,7 @@ puts 'Users created'
 
 ouchy_url = 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Girouette_d_ouchy_lausanne_suisse.jpg'
 sauvabelin_url = 'https://cdn.loisirs.ch/media/cache/default_og_image/default/0001/14/13725_default_og_image.jpg'
+wagon_url = 'https://d2r9nfiii89r0l.cloudfront.net/dimg/800x600/dimg/romain_paillard_boris_paillard_sebastien_saunier_-_le_wagon.jpg'
 
 puts "create Ouch'y mission"
 ouchy = Mission.new(
@@ -142,6 +144,21 @@ sauvabelin = Mission.new(
   photo_url: sauvabelin_url
 )
 sauvabelin.save!
+
+puts "Borissolé"
+wagon = Mission.new(
+  name: "Borissolé",
+  secret_place: "Le Wagon",
+  category: "Célébrité",
+  difficulty: "Difficile",
+  time: "0h45",
+  city: 'Lausanne',
+  lat: 46.53206308153252,
+  lng: 6.59230929974131,
+  description: "Maman j'ai raté Boris !",
+  photo_url: wagon_url
+)
+wagon.save!
 
 puts "Create other mission"
 i = 0
@@ -174,7 +191,14 @@ Clue.create(mission: sauvabelin, level: 3, description: "Le Douglas est mon él�
 Clue.create(mission: sauvabelin, level: 4, description: "J'ai vu le jour grâce à la générosité de nombreuses familles")
 Clue.create(mission: sauvabelin, level: 5, description: "Je culmine à 35m de hauteur")
 
-# Creating question ###########################################
+puts "Creating clues Wagon"
+Clue.create(mission: wagon, level: 1, description: "J'ai des roues mais ne bouge")
+Clue.create(mission: wagon, level: 3, description: "Un de mes professeurs est champion de Suisse")
+Clue.create(mission: wagon, level: 2, description: "Je suis animé par les perceuses et la ventilation")
+Clue.create(mission: wagon, level: 4, description: "Mon créateur s'est (auto) divinisé")
+Clue.create(mission: wagon, level: 5, description: "Chaque jour vous y sentirez son regard")
+
+# Creating question OUCHY ###########################################
 
 puts "Creating questions Ouchy"
 ouchy_q_1 = Question.create(
@@ -221,6 +245,8 @@ ouchy_q_5 = Question.create(
   answer: "36",
   validation: ["36"]
 )
+
+# Creating question SAUVABELIN ###########################################
 
 puts "Creating questions Sauvabelin"
 
@@ -269,26 +295,76 @@ sauvabelin_q_5 = Question.create(
   validation: ["1976"]
 )
 
-# Creating challenges ###########################################
+# Creating question LEWAGON ###########################################
+
+wagon_q_1 = Question.create(
+  mission: wagon,
+  lat: 46.532244761648016,
+  lng: 6.592130283832927,
+  question: "En quelle année le grand Manitou a-t'il créé le Wagon ?",
+  answer: "2013",
+  validation: ["2013"]
+)
+
+wagon_q_2 = Question.create(
+  mission: wagon,
+  lat: 46.538932134735624,
+  lng: 6.58087239703863,
+  question: "Quel est le menu traditionel du mercredi pour le déjeuner ? (à midi Alain)",
+  answer: "Burger King",
+  validation: ["Burger", "King"]
+)
+
+wagon_q_3 = Question.create(
+  mission: wagon,
+  lat: 46.52762794320534,
+  lng: 6.598606890506459,
+  question: "Quelle entreprise a ses bureaux en ce lieu ?",
+  answer: "Wavemind",
+  validation: ["Wavemind", "Alain", "Wave", "Mind"]
+)
+
+wagon_q_4 = Question.create(
+  mission: wagon,
+  lat: 46.529013775170206,
+  lng: 6.600066406327933,
+  question: "Quel sport notre champion de Suisse ne pratique pas ?",
+  answer: "Hockey sur glace",
+  validation: ["Hockey", "Glace"]
+)
+
+wagon_q_5 = Question.create(
+  mission: wagon,
+  lat: 46.53684395622203,
+  lng: 6.57869737307225,
+  question: "Quel est le point de départ de la course de Trotinette electrique ?",
+  answer: "la Gare de Renens",
+  validation: ["Gare", "CFF", "Renens"]
+)
+
+
+# Creating random challenges ###########################################
 
 puts "Creating challenges"
 
-20.times do
+User.all.each do |user|
   Challenge.create(
-    user: User.all.sample,
+    user: user,
     mission: Mission.all.sample,
     status: [true, false, false].sample,
     secret_counter: rand(3),
-    score: rand(100..2000)
+    score: rand(1000..3000)
   )
 end
+
+# Creating Alain et Sinan ###########################################
 
 puts 'Creating Sinan...'
 
 sinan = User.new(
   first_name: 'Sinan',
-  last_name: 'Lartiste',
-  nickname: 'slartiste',
+  last_name: 'Otech',
+  nickname: 'sinananas',
   city: "Lausanne",
   password: '123456',
   email: 'sinan@gmail.com',
@@ -301,14 +377,12 @@ sinan.photo.attach(
 sinan.save!
 puts 'Sinan created'
 
-puts 'sleep'
-
 puts 'Creating Alein...'
 
 alain = User.new(
   first_name: 'Alain',
   last_name: 'Travers',
-  nickname: 'ATravers',
+  nickname: 'alun_2_3_partez',
   city: "Lausanne",
   password: '123456',
   email: 'alain@gmail.com',
@@ -321,15 +395,10 @@ alain.photo.attach(
 alain.save!
 puts 'Alein created'
 
-puts "Creating Sinan's challenges"
+# Creating Sinan ended challenge ###########################################
 
-Challenge.create(
-  user: sinan,
-  mission: Mission.find_by(name: mission_array[0]),
-  status: false,
-  secret_counter: rand(3),
-  score: rand(200..600)
-)
+puts "Creating Sinan's ended challenges"
+
 i = 1
 4.times do
   challenge = Challenge.new(
@@ -348,24 +417,17 @@ i = 1
   end
   challenge.score = challenge.calculate_score[:final_score]
   challenge.save
-i += 1
+  i += 1
 end
+
+# Setup Sinan Ouchy Challenge ###########################################
 
 # ouchy_challenge = Challenge.create(
 #   user: sinan,
 #   mission: ouchy,
-#   status: "started",
+#   status: false,
 #   secret_counter: 0,
-#   score: rand(500..100)
 # )
-
-sauvabelin_challenge = Challenge.create(
-  user: sinan,
-  mission: sauvabelin,
-  status: false,
-  secret_counter: 0,
-  score: rand(500..100)
-)
 
 # ChallengeQuestion.create(
 #   challenge: ouchy_challenge,
@@ -387,6 +449,15 @@ sauvabelin_challenge = Challenge.create(
 #   status: true,
 #   answer_counter: 4
 # )
+
+# Setup Sinan Sauvabelin Challenge ###########################################
+
+sauvabelin_challenge = Challenge.create(
+  user: sinan,
+  mission: sauvabelin,
+  status: false,
+  secret_counter: 0,
+)
 
 ChallengeQuestion.create(
   challenge: sauvabelin_challenge,
@@ -412,8 +483,52 @@ ChallengeQuestion.create(
 ChallengeQuestion.create(
   challenge: sauvabelin_challenge,
   question: sauvabelin_q_4,
-  status: true,
+  status: false,
   answer_counter: 1
+)
+
+# Setup Sinan Wagon Challenge ###########################################
+
+wagon_challenge = Challenge.create(
+  user: sinan,
+  mission: wagon,
+  status: false,
+  secret_counter: 0,
+)
+
+ChallengeQuestion.create(
+  challenge: wagon_challenge,
+  question: wagon_q_1,
+  status: false,
+  answer_counter: 1
+)
+
+ChallengeQuestion.create(
+  challenge: wagon_challenge,
+  question: wagon_q_2,
+  status: true,
+  answer_counter: 3
+)
+
+ChallengeQuestion.create(
+  challenge: wagon_challenge,
+  question: wagon_q_3,
+  status: false,
+  answer_counter: 0
+)
+
+ChallengeQuestion.create(
+  challenge: wagon_challenge,
+  question: wagon_q_4,
+  status: true,
+  answer_counter: 2
+)
+
+ChallengeQuestion.create(
+  challenge: wagon_challenge,
+  question: wagon_q_5,
+  status: true,
+  answer_counter: 2
 )
 
 puts "------------------------------------------------------------------"

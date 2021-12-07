@@ -12,7 +12,7 @@
 }
 
 .main-wrapper{
-  margin-bottom: 83px;
+  margin-bottom: 13vh;
 }
 
 
@@ -34,11 +34,13 @@
   bottom:0;
   margin:0 auto;
   padding:8px 0;
-  height: 12vh;
+  height: 10vh;
 
   li {
     display:inline-block;
-    padding:10px 30px 2px 15px;
+    padding: 0px 10px 0px 10px;
+    width: 23%;
+
   }
 
   .icon-nav-bottom{

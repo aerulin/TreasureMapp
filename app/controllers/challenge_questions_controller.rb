@@ -12,14 +12,17 @@ class ChallengeQuestionsController < ApplicationController
 
     challenge_question = ChallengeQuestion.find_or_create_by(question: question, challenge: challenge)
     challenge_question.answer_counter += 1
+    user_guess = params[:challenge_question][:guess].downcase.split
+    question_validation = question.validation
+    intersection = user_guess & question_validation
 
-    if params[:challenge_question][:guess].downcase == question.answer.downcase
+    if intersection.empty?
+      challenge_question.save!
+      flash[:false] = "Fausse réponse! Essayez à nouveau."
+    else
       challenge_question.status = true
       challenge_question.save!
       flash[:true] = "Bravo! Vous avez trouvé la bonne réponse."
-    else
-      challenge_question.save!
-      flash[:false] = "Fausse réponse! Essayez à nouveau."
     end
     if params[:challenge_question][:redirect]
       redirect_to '/map_all_challenges'
@@ -31,6 +34,7 @@ class ChallengeQuestionsController < ApplicationController
   def button
 
   end
+
 
   private
 

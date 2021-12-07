@@ -1,57 +1,62 @@
 <div class="main-single">
-
-  <div class="banner-custom">
-    <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt='Background Picture'>
-    <div class="banner-back">
-      <%= link_to "retour", root_path%>
+  <div class="box-distribute">
+    <div class="banner-custom">
+      <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt='Background Picture'>
+      <div class="banner-back">
+        <%= link_to "retour", root_path%>
+      </div>
     </div>
-  </div>
-  <div class="box-avatar">
-    <img class= "avatar border-red" src=<%=@mission.photo_url%>>
-  </div>
-  <div class="title-mission">
-    <h2><%=@mission.name%></h2>
-  </div>
-
-  <div class="mission-icon-box">
-    <div class="row p-0">
-      <div class="col-6" style="text-align:center">
-        <div>
-          <div class="lotti-container">
-            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-            <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_hvkvxnt3.json"   speed="1"  class= "lotti-avatar"  loop  autoplay></lottie-player>
-          </div>
-          <%=@mission.category%>
-        </div>
-        <div>
-          <div class="lotti-container">
-            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_4yofoa5q.json"  speed="1"  class= "lotti-avatar"  loop  autoplay></lottie-player>
-          </div>
-          <%=@mission.time%>
-        </div>
-      </div>
-      <div class="col-6" style="text-align:center">
-        <div>
-          <div class="lotti-container">
-            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
-<dotlottie-player src="https://assets6.lottiefiles.com/dotlotties/dlf10_p1ftxhgu.lottie"  speed="1" class= "lotti-avatar"  loop autoplay></dotlottie-player>
-          </div>
-          <%=@mission.difficulty%>
-        </div>
-      <div>
-        <div class="lotti-container">
-          <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_4xw7yai4.json"  speed="1"  class= "lotti-avatar"  loop  autoplay></lottie-player>
-        </div>
-        <%=@mission.city%>
-        </div>
-      </div>
-
-      <div class="text-mission">
-        <%=@mission.description%>
-      </div>
+    <div class="box-avatar">
+      <img class= "avatar border-red" src=<%=@mission.photo_url%>>
+    </div>
+    <div class="title-mission">
+      <h2><%=@mission.name%></h2>
     </div>
   </div>
 
-  <%= link_to "Commencer la mission", mission_challenges_path(@mission), method: 'post', class:'btn-mission' %>
+  <div class="box-distribute">
+    <div class="mission-icon-box">
+      <div class="row p-0">
+        <div class="col-6" style="text-align:center">
+          <div>
+            <div class="lotti-container">
+              <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+              <lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_hvkvxnt3.json"   speed="1"  class= "lotti-avatar"  loop  autoplay></lottie-player>
+            </div>
+            <%=@mission.category%>
+          </div>
+          <div>
+            <div class="lotti-container">
+              <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_4yofoa5q.json"  speed="1"  class= "lotti-avatar"  loop  autoplay></lottie-player>
+            </div>
+            <%=@mission.time%>
+          </div>
+        </div>
+        <div class="col-6" style="text-align:center">
+          <div>
+            <div class="lotti-container">
+              <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
+  <dotlottie-player src="https://assets6.lottiefiles.com/dotlotties/dlf10_p1ftxhgu.lottie"  speed="1" class= "lotti-avatar"  loop autoplay></dotlottie-player>
+            </div>
+            <%=@mission.difficulty%>
+          </div>
+        <div>
+          <div class="lotti-container">
+            <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_4xw7yai4.json"  speed="1"  class= "lotti-avatar"  loop  autoplay></lottie-player>
+          </div>
+          <%=@mission.city%>
+          </div>
+        </div>
+
+        <div class="text-mission">
+          <%=@mission.description%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-distribute">
+    <%= link_to "Commencer la mission", mission_challenges_path(@mission), method: 'post', class:'btn-mission' %>
+  </div>
 
 </div>

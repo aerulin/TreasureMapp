@@ -312,7 +312,7 @@ wagon_q_2 = Question.create(
   lng: 6.58087239703863,
   question: "Quel est le menu traditionel du mercredi pour le déjeuner ? (à midi Alain)",
   answer: "Burger King",
-  validation: ["Burger", "King"]
+  validation: ["burger", "king"]
 )
 
 wagon_q_3 = Question.create(
@@ -321,7 +321,7 @@ wagon_q_3 = Question.create(
   lng: 6.598606890506459,
   question: "Quelle entreprise a ses bureaux en ce lieu ?",
   answer: "Wavemind",
-  validation: ["Wavemind", "Alain", "Wave", "Mind"]
+  validation: ["wavemind", "alain", "wave", "mind"]
 )
 
 wagon_q_4 = Question.create(
@@ -330,7 +330,7 @@ wagon_q_4 = Question.create(
   lng: 6.600066406327933,
   question: "Quel sport notre champion de Suisse ne pratique pas ?",
   answer: "Hockey sur glace",
-  validation: ["Hockey", "Glace"]
+  validation: ["hockey", "glace"]
 )
 
 wagon_q_5 = Question.create(
@@ -339,7 +339,7 @@ wagon_q_5 = Question.create(
   lng: 6.57869737307225,
   question: "Quel est le point de départ de la course de Trotinette electrique ?",
   answer: "la Gare de Renens",
-  validation: ["Gare", "CFF", "Renens"]
+  validation: ["gare", "cff", "renens"]
 )
 
 

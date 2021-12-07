@@ -11,12 +11,13 @@
 .index-card img{
   width: 15vh;
   height: 100%;
+  padding-right: 2px;
 }
 
 .index-card-infos {
   display: flex;
   flex-wrap: wrap;
-  padding: 4px 6px ;
+  // padding: 4px 6px ;
   flex-grow: 1;
   justify-content: center;
 }

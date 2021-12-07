@@ -1,6 +1,0 @@
-<h1>Test geolocalisation</h1>
-<%= simple_form_for @challenge, method: :post, url: challenge_validate_path(@challenge) do |f| %>
-      <%= f.input :lat, label: 'latitude' %>
-      <%= f.input :long, label: 'longitude' %>
-      <%= f.submit "Valider", class: "btn-red" %>
-    <% end %>

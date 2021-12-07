@@ -21,7 +21,11 @@ class ChallengeQuestionsController < ApplicationController
       challenge_question.save!
       flash[:false] = "Fausse réponse! Essayez à nouveau."
     end
-    redirect_to challenge_map_path(challenge)
+    if params[:challenge_question][:redirect]
+      redirect_to '/map_all_challenges'
+    else
+      redirect_to challenge_map_path(challenge)
+    end
   end
 
   def button

@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :challenges, only: [:show] do
-    get "test_geolocalisation", to: "challenges#geocode"
     post 'validate', as: :validate
     resources :questions do
       post 'validate', as: :validate, to: 'challenge_questions#validate'
@@ -22,4 +21,5 @@ Rails.application.routes.draw do
     # post 'map', as: :validate, to: 'challenge_questions#validate'
     get 'score', to: 'challenges#score'
   end
+  get 'map_all_challenges', to: 'challenges#map_all_challenges'
 end

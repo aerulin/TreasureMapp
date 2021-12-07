@@ -11,11 +11,6 @@ class ChallengesController < ApplicationController
     @challenge_question = ChallengeQuestion.new
   end
 
-  def geocode
-    @location = {}
-    @challenge = Challenge.find(params[:challenge_id])
-  end
-
   def map
     @challenge = Challenge.find(params[:challenge_id])
     @markers = @challenge.mission.questions.map do |question|
@@ -33,6 +28,33 @@ class ChallengesController < ApplicationController
       question.question
     end
   end
+
+  def map_all_challenges
+    @challenge_open = Challenge.where(user: current_user, status: false)
+
+    @markers = []
+    @challenge_open.each do |challenge|
+      challenge.mission.questions.each do |question|
+        @challenge_question = ChallengeQuestion.find_by(question: question, challenge: challenge)
+        p "*************************"
+        p challenge.inspect
+        p question.inspect
+        @challenge_question = ChallengeQuestion.new if @challenge_question.nil?
+        @markers << {
+          lat: question.lat,
+          lng: question.lng,
+          status: @challenge_question.status,
+          info_window: render_to_string(partial: "popup_map_all", locals: { question: question, challenge: challenge, challenge_question: @challenge_question })
+        }
+      end
+      @questions = challenge.mission.questions.each do |question|
+      question.question
+    end
+    end
+    redirect_to challenge_score_path
+end
+
+
 
   def create
     challenge = Challenge.new

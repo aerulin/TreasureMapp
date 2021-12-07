@@ -1,4 +1,45 @@
-<div class="d-flex align-items-center">
+<div class="background-img d-flex align-items-center">
+  <div class="text p-2">
+    <h1 class="justify-content-center">Treasurmapp</h1>
+    <h2 class="text-center mt-2">Menu</h2>
+    <p>Le menu en bas de la page vous facilitera la navigation des différentes pages.</p>
+    <h3 class="text-center mt-2">Accueil</h3>
+    <p class="text-center mt-2">Pour pouvoir revenir sur votre playground.</p>
+    <h3 class="text-center mt-2">Missions</h3>
+    <p>Pour voir la liste des missions disponible pas encore commencées.</p>
+    <h3 class="text-center mt-2">Carte</h3>
+    <p>Vous servira à voir directement toute les missions disponible autour de votre position actuel.</p>
+    <h3 class="text-center mt-2">Scores</h3>
+    <p>Pour voir le classement général de tout les joue</p>
+    <div class="chevron">
+      <%= link_to tuto_playground_path do %>
+        <i class="fas fa-chevron-left"></i>
+      <% end %>
+      <%= link_to tuto_missions_path do %>
+        <i class="fas fa-chevron-right"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%# <div class="d-flex  align-items-center">
   <div class="p-3">
     <h1 class="justify-content-center">Treasurmapp</h1>
     <h2 class="text-center mt-2">Menu</h2>
@@ -20,4 +61,4 @@
     <i class="fas fa-chevron-left"></i>
     <i class="fas fa-chevron-right"></i>
   </div>
-</div>
+</div> %>

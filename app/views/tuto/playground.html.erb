@@ -1,4 +1,43 @@
-<div class="d-flex align-items-center">
+<div class="background-img d-flex align-items-center">
+  <div class="text p-2">
+    <h1 class="justify-content-center mt-1">Treasurmapp</h1>
+    <h2 class="text-center mt-1 mb-0">Playground</h2>
+    <hr>
+    <h3 class="text-center mt-1">Aperçu du classement</h3>
+    <p>La première partie de votre page playground sera votre position au classement.</p>
+    <p>Pour voir ou vous vous situé par rapport aux autre joueurs vous aurez juste à cliquez sur le bouton voir plus.</p>
+    <hr>
+    <h3 class="text-center mt-1">Missions inachevées</h3>
+    <p>Cette partie du playground vous montrera toute les missions que vous aurez commencer mais pas fini.</p>
+    <hr>
+    <h3 class="text-center mt-1">Missions terminées</h3>
+    <p>Et la dernière partie du playground vous affichera les 4 meilleures missions auquels vous avez effectué le plus de points.</p>
+    <div class="chevron">
+      <%= link_to tuto_description_treasurmapp_path do %>
+        <i class="fas fa-chevron-left"></i>
+      <% end %>
+      <%= link_to tuto_menu_path do %>
+        <i class="fas fa-chevron-right"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%# <div class="d-flex align-items-center">
   <div class="p-3">
     <h1 class="justify-content-center">Treasurmapp</h1>
     <h2 class="text-center mt-2">Playground</h2>
@@ -30,8 +69,8 @@
     </div>
     <p>Les 4 meilleures scores des missions accomplies</p>
     <div class="chevron">
-      <i class="fas fa-chevron-left chevron-test"></i>
+      <i class="fas fa-chevron-left"></i>
       <i class="fas fa-chevron-right"></i>
     </div>
   </div>
-</div>
+</div> %>

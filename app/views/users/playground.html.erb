@@ -54,7 +54,9 @@
     <% @open_challenges.each do |challenge|%>
 
       <div class="playground-card">
-        <%= image_tag challenge.mission.photo_url, alt: "Le Wagon" %>
+        <div class="playground-card-img">
+          <%= image_tag challenge.mission.photo_url, alt: "Le Wagon" %>
+        </div>
         <div class="playground-card-infos">
           <div class="playground-card-infos-text">
             <h5><%= challenge.mission.name %></h5>
@@ -63,8 +65,10 @@
               <p>🏋️‍♀️ <%= challenge.mission.difficulty %></p>
             </div>
           </div>
-          <div class="playground-card-infos-score"><%= challenge.progress %>%</div>
-          <div class="btn-red card-button"><%= link_to 'Reprendre', challenge_path(challenge)%></div>
+          <div class="playground-right-box">
+            <div class="playground-card-infos-score"><%= challenge.progress %> %</div>
+            <div class="btn-red playground-card-button"><%= link_to 'Reprendre', challenge_path(challenge)%></div>
+          </div>
         </div>
       </div>
     <% end %>

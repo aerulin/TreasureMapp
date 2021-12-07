@@ -1,10 +1,21 @@
 .map-popup{
   padding:20px;
+  text-align: center;
   h1{
     font-size:14px;
     margin:0;
     padding-bottom:15px;
   }
+
+  p{
+    margin: 0;
+
+  }
+
+  .question-text {
+  font-weight: bold;
+  }
+
   .question{
     text-align:center;
     font-size:16px;
@@ -22,6 +33,18 @@
     color:white;
     font-size:16px;
     padding:7px 20px;
+  }
+
+  .btn-border-red{
+    font-weight: 200;
+    color: #FC635B;
+    border: 1px solid #FC635B;
+    padding: 2px 5px;
+
+  }
+
+  .question-box {
+    margin-bottom: 3vh;
   }
 }
 

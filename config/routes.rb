@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tuto/show'
   devise_for :users
   root to: 'users#playground'
   resources :users, only: [:index] do
@@ -22,4 +23,10 @@ Rails.application.routes.draw do
     # post 'map', as: :validate, to: 'challenge_questions#validate'
     get 'score', to: 'challenges#score'
   end
+
+  # Route for Treasuremapp tuto
+  get 'tuto/description_treasurmapp', to: 'tuto#description'
+  get 'tuto/menu', to: 'tuto#menu'
+  get 'tuto/playground', to: 'tuto#playground'
+  get 'tuto/missions', to: 'tuto#missions'
 end

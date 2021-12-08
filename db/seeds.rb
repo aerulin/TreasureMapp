@@ -403,7 +403,7 @@ puts 'Creating Alein...'
 
 alain = User.new(
   first_name: 'Alain',
-  last_name: 'Travers',
+  last_name: 'Deloin',
   nickname: 'alun_2_3_partez',
   city: "Lausanne",
   password: '123456',

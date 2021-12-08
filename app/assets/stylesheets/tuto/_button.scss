@@ -1,16 +1,21 @@
+.place-btn a{
+  display: flex;
+  align-items: flex-end;
+}
+
 .button-tuto-m {
   background-color: #FC635B;
   border: none;
   border-radius: 5px;
   width: 100%;
   font-size: 1.2em;
+  border: 1px solid black;
 }
 
 .button-tuto-m:hover{
   background-color: #FF4D43;
 }
 
-.place-btn a{
-  display: flex;
-  align-items: flex-end;
+.list-style-type {
+  list-style-type: none;
 }

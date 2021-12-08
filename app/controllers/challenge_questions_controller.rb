@@ -22,12 +22,12 @@ class ChallengeQuestionsController < ApplicationController
     else
       challenge_question.status = true
       challenge_question.save!
-      flash[:true] = "Bravo! Vous avez trouvé la bonne réponse."
-    end
-    if params[:challenge_question][:redirect]
-      redirect_to '/map_all_challenges'
-    else
-      redirect_to challenge_map_path(challenge)
+      if params[:challenge_question][:redirect]
+        redirect_to '/map_all_challenges'
+      else
+        redirect_to challenge_map_path(challenge)
+      end
+       flash[:true] = "Bravo! Vous avez trouvé la bonne réponse et débloqué un indice!"
     end
   end
 

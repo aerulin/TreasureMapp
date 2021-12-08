@@ -26,6 +26,7 @@ require("channels")
 import "bootstrap";
 
 import { initMapbox } from '../plugins/init_mapbox';
+import { geolocate } from "../plugins/localisation_user";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -34,4 +35,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initMapbox();
 });
 
+geolocate();
 // CSS

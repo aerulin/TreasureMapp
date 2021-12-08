@@ -1,6 +1,5 @@
 class ChallengesController < ApplicationController
 
-
   def show
     @challenge = Challenge.find(params[:id])
   end
@@ -51,7 +50,7 @@ class ChallengesController < ApplicationController
       question.question
     end
     end
-    redirect_to challenge_score_path
+    #redirect_to challenge_score_path(challenge)
 end
 
 
@@ -64,34 +63,29 @@ end
     redirect_to challenge_path(challenge)
   end
 
-
   # Geolocalisation validation
   def validate
-      challenge = Challenge.find(params[:challenge_id])
-      mission_id = challenge.mission_id
+    challenge = Challenge.find(params[:challenge_id])
+    mission_id = challenge.mission_id
 
-      # place from mission
-      latitude = Mission.find(mission_id).lat
-      longitude = Mission.find(mission_id).lng
+    # place from mission
+    latitude = Mission.find(mission_id).lat
+    longitude = Mission.find(mission_id).lng
 
-      place = [latitude, longitude]
-      delta = 0.001000
+    place = [latitude, longitude]
+    delta = 0.001000
+    # user_lat = 46.505406
+    user_lat = params[:lat]
+    # user_long = 6.641385
+    user_long = params[:lon]
 
-      # ask_lat = request.location.latitude
-      ask_lat = 46.505406
-      user_lat = ask_lat.to_f
-      # ask_long = request.location.longitude
-      ask_long = 6.641385
-      user_long = ask_long.to_f
-
-      # test = user_lat.between?(place[0] - delta, place[0] + delta)
-      if user_lat.between?(place[0] - delta, place[0] + delta) && user_long.between?(place[1] - delta, place[1] + delta)
-        redirect_to challenge_score_path
-
-      else
-        flash[:falsy] = "Oups! Il semblerait que ce ne soit pas le bon endroit, essayez encore!"
-        redirect_to challenge_path(challenge)
-      end
+    # test = user_lat.between?(place[0] - delta, place[0] + delta)
+    if user_lat.between?(place[0] - delta, place[0] + delta) && user_long.between?(place[1] - delta, place[1] + delta)
+      render json: { location: challenge_score_path(challenge) }
+    else
+      flash[:falsy] = "Oups! Il semblerait que ce ne soit pas le bon endroit, essayez encore!"
+      render json: { location: challenge_path(challenge) }
+    end
   end
 
   def score

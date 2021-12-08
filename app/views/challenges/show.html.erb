@@ -39,18 +39,19 @@
     <% end %>
   </tbody>
 
+
 </table>
 
 </div>
   <div class="box-button">
   <div class="button-buzzer">
-  <%if @challenge.challenge_questions.count == @challenge.challenge_questions.where(status: true).count %>
-    <%= simple_form_for @challenge, method: :post, url: challenge_validate_path(@challenge) do |f| %>
-      <%= f.submit "Valider le lieu secret", class: "btn-red" %>
-      <%end%>
-  <%else%>
-    <button disabled class="btn-red">Valider le lieu secret</button>
-  <% end %>
+  <!--<%if @challenge.challenge_questions.count == @challenge.challenge_questions.where(status: true).count %>-->
+
+      <button class="mb-2 button-validate" id="local-validation" data-challengeId=<%= @challenge.id %>>Valider le lieu secret</button>
+  <!--<%else%>
+    <button disabled class="mb-2 button-validate" style="opacity:0.7">Répondez à toutes les questions pour pouvoir débloquer le lieu secret.</button>
+  <% end %>-->
+
 </div>
   </div>
 </div>

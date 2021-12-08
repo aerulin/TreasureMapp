@@ -1,22 +1,22 @@
 <div class="background-img d-flex align-items-center">
-  <div class="text p-2 px-3">
-    <div>
+  <div class="text p-2 px-3 d-flex flex-column bd-highlight">
+    <div class="bd-highlight">
       <h1 class="justify-content-center">Treasurmapp</h1>
       <p class="text-center">Avec Treasurmapp vous allez vous instruire, voyager et le tout, tout en vous amusant !!!!</p>
       <p class="text-center">En mode compétition vous devrez gagnez le plus de points possible pour pouvoir faire partis des meilleures joueurs et ainsi gagné différent prix.</p>
     </div>
-    <div>
-      <h2 class="text-center">Règles du jeu</h2>
-      <ol class="">
-        <li class="mt-1">Choisir une mission et accéder à son tableau de bord.</li>
-        <li class="mt-1">Ouvrir la map pour se rendre là où se trouvent les questions.</li>
-        <li class="mt-1">Répondre aux questions pour débloquer les indices qui servent à définir le lien secret</li>
-        <li class="mt-1">Se rendre au lieu secret et valider la mission en appuyant sur le bouton</li>
+    <div class="bd-highlight">
+      <h2 class="text-center mb-2">Règles du jeu</h2>
+      <ol class="mt-3">
+        <li class="mt-2">Choisir une mission et accéder à son tableau de bord.</li>
+        <li class="mt-2">Ouvrir la map pour se rendre là où se trouvent les questions.</li>
+        <li class="mt-2">Répondre aux questions pour débloquer les indices qui servent à définir le lien secret</li>
+        <li class="mt-2">Se rendre au lieu secret et valider la mission en appuyant sur le bouton</li>
       </ol>
     </div>
-    <div class="place-btn d-flex align-items-end text-center">
+    <div class="place-btn mt-auto p-2 bd-highlight">
       <%= link_to missions_path do %>
-        <button class="button-tuto-m p-2 px-5 font-weight-bold">Jouer</button>
+        <button class="button-tuto-m p-2 px-5 font-weight-bold">Direction les missions</button>
       <% end %>
     </div>
   </div>

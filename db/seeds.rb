@@ -15,12 +15,37 @@ photo_array = [
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/04-lausanne-ville_y6maru.jpg',
 ]
 
+# User config ####################################################
 people_photo_array = [
-  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637919368/hamilton_ykiivz.jpg',
-  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637919368/macron_sefgml.jpg',
-  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637846119/surchat_vcwej2.jpg',
-  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637845901/patrick_cwkajv.jpg',
-  'https://res.cloudinary.com/dg2an4buq/image/upload/v1637845642/jacques_xya10w.jpg',
+  'https://scontent-zrh1-1.xx.fbcdn.net/v/t31.18172-8/1233185_10151996261145466_123608388_o.jpg?_nc_cat=104&ccb=1-5&_nc_sid=174925&_nc_ohc=Wh7Ogl-WwGQAX8ayg4E&_nc_ht=scontent-zrh1-1.xx&oh=964858ca76b193bda3ddcc6c10f99235&oe=61D4C229',
+  'https://media-exp1.licdn.com/dms/image/C4D03AQE-NlbWekf_cQ/profile-displayphoto-shrink_200_200/0/1525170617485?e=1643241600&v=beta&t=xuV--6urfX-I3gmUWwmlO6rlDXdPA_rSKPQejSyOz7E',
+  'https://scontent-zrh1-1.xx.fbcdn.net/v/t1.18169-9/10439375_539783666153655_4785173868232971770_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=174925&_nc_ohc=_DlWuZjzZGYAX-cD8EE&_nc_oc=AQlh1vAkOV-rEjnG8YxHC6-Q89KCdhNbEsgrw_07NaD6MP34jfJXxNpylzEK7jvyM08&_nc_ht=scontent-zrh1-1.xx&oh=a4a87124c5d3dc2f36f74e69a6bb0273&oe=61D5CB70',
+  'https://media-exp1.licdn.com/dms/image/C5603AQF1m6GQm0_Caw/profile-displayphoto-shrink_200_200/0/1517401395277?e=1642636800&v=beta&t=ISlmb5J3o71erLEbZANIcEr2CbFIRNItzbuvvB28FPw',
+  'https://media-exp1.licdn.com/dms/image/C4D03AQEvudK4GBsvlA/profile-displayphoto-shrink_200_200/0/1553800705162?e=1642032000&v=beta&t=eZqPYIQDXK5O6DKvaTDJ4Ae--TN2Jfc6y814iPN2XUE',
+  'https://scontent-zrh1-1.xx.fbcdn.net/v/t39.30808-6/255020301_10159306986390259_8165562350308746856_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=gO9w0tcr3ooAX-2-8lm&tn=18zihvG_Xm7Yo8rg&_nc_ht=scontent-zrh1-1.xx&oh=7a862ab2017692228c8275bfa4b63191&oe=61B4EE5A',
+  'https://media-exp1.licdn.com/dms/image/C4E03AQG-WjMuGBEIcg/profile-displayphoto-shrink_100_100/0/1582910207780?e=1643846400&v=beta&t=DK_ZJ-2eaL0mr0usHHZqUkPlmmJslLQyK1y8ulB4PGQ',
+  'https://scontent-zrh1-1.xx.fbcdn.net/v/t1.18169-9/12003167_10205751447879577_5442256014356102599_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_ohc=fWtqG4yM904AX_CRN5v&_nc_ht=scontent-zrh1-1.xx&oh=d141b31ac2c91c6b3bd5bdb2b3019c20&oe=61D77793',
+  'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+  'https://pbs.twimg.com/profile_images/990936890726670336/gApnSP5j_400x400.jpg',
+  'https://pbs.twimg.com/profile_images/1259471144924721152/azs4IpYS_400x400.jpg',
+  'https://pbs.twimg.com/profile_images/859814701584220161/sKM3MmS__400x400.jpg',
+  'https://i.f1g.fr/media/figaro/704x396_cropupscale/2018/01/14/XVM63b07e52-f6ef-11e7-8019-2c6b598f24bb.jpg',
+]
+
+nickname_array = %w[
+  tibo-gem-pa
+  matil-de.france
+  lapin-kentin
+  manu_militari
+  c_la_cata_line
+  m-organic
+  riz-laine
+  colin_maillard
+  g_pa_didier
+  baux_risqués
+  sé_ba_vrai
+  romain_des_bois
+  chanson_paillarde
 ]
 
 # Mission name ####################################################
@@ -63,7 +88,6 @@ description_array = [
   "Le pull qui gratte, les dents qui claquent. Ça donne envie ?"
 ]
 
-nickname_array = %w[tibo-gem-pa matil-de.france lapin-kentin manu_militari c_la_cata_line m-organic riz-laine colin_maillard g_pa_didier baux_risqués]
 
 # Clear database ####################################################
 
@@ -82,11 +106,14 @@ Clue.all.destroy_all
 puts 'Deleting mission'
 Mission.all.destroy_all
 
+puts 'Deleting attachments'
+ActiveStorage::Attachment.destroy_all
+
 # Creating users ####################################################
 
 puts 'Creating 10 users....'
 p = 0
-10.times do
+13.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = "#{first_name.downcase}.#{last_name.downcase}@gmail.com"
@@ -98,11 +125,6 @@ p = 0
     password: '123456',
     email: email
   )
-  # user.photo.attach(
-  #   io: URI.open(people_photo_array.sample),
-  #   filename: "user#{p}.png",
-  #   content_type: 'image/png'
-  # )
   user.save!
   p += 1
 end
@@ -370,9 +392,9 @@ sinan = User.new(
   email: 'sinan@gmail.com',
 )
 sinan.photo.attach(
-  io: URI.open('https://res.cloudinary.com/dg2an4buq/image/upload/v1638797470/sinan-portrait-SITE_nhsfld.png'),
-  filename: "sinan.png",
-  content_type: 'image/png'
+  io: URI.open('https://scontent-zrh1-1.xx.fbcdn.net/v/t1.18169-9/190711_4365858577_1943_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=wj_NIzSCnKUAX-W__ON&_nc_ht=scontent-zrh1-1.xx&oh=01be2c018cc5dbe9721de7970792bf71&oe=61D50430'),
+  filename: "sinan.jpg",
+  content_type: 'image/jpg'
 )
 sinan.save!
 puts 'Sinan created'
@@ -388,7 +410,7 @@ alain = User.new(
   email: 'alain@gmail.com',
 )
 alain.photo.attach(
-  io: URI.open('https://izar.ae/wp-content/uploads/2018/02/51511-01-2_edited.jpg'),
+  io: URI.open('https://scontent-zrh1-1.xx.fbcdn.net/v/t1.18169-9/12795429_10154098249806162_586776562201634611_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_ohc=1d7YKAUuuWIAX88DW6U&_nc_ht=scontent-zrh1-1.xx&oh=0e8bfd4aa4fb606ba71593c6a22a80e7&oe=61D514F5'),
   filename: "alain.jpg",
   content_type: 'image/jpg'
 )
@@ -530,6 +552,23 @@ ChallengeQuestion.create(
   status: true,
   answer_counter: 2
 )
+
+
+# Attach pictures to Users ########################
+
+puts "add pictures to users"
+
+p = 0
+User.all[0..12].each do |user|
+  puts "Attaching photo to: #{user.nickname}"
+  user.photo.attach(
+    io: URI.open(people_photo_array[p]),
+    filename: "user#{p}.jpg",
+    content_type: 'image/jpg'
+  )
+sleep(2.seconds)
+p += 1
+end
 
 puts "------------------------------------------------------------------"
 puts "----------------Seed working correctly. Enjoy !-------------------"

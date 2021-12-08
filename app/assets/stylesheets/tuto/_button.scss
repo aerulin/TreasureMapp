@@ -9,7 +9,8 @@
   border-radius: 5px;
   width: 100%;
   font-size: 1.2em;
-  border: 1px solid black;
+  color:white;
+  font-weight:400;
 }
 
 .button-tuto-m:hover{
@@ -19,3 +20,80 @@
 .list-style-type {
   list-style-type: none;
 }
+
+
+
+
+// Test animation button
+// .place-btn-test > a{
+//   position: relative;
+//   padding: 20px 60px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: rgba(0, 0, 0, 0.5);
+//   margin: 40px;
+//   transition: 1s;
+//   text-decoration: none;
+//   overflow: hidden;
+// }
+
+// .place-btn-test > a:hover {
+//   background: var(--clr);
+//   box-shadow: 0 0 10px var(--clr),
+//   0 0 30px var(--clr),
+//   0 0 60px var(--clr),
+//   0 0 100px var(--clr);
+// }
+
+// .place-btn-test > a:before {
+//   content: '';
+//   position: absolute;
+//   width: 40px;
+//   height: 400%;
+//   background: var(--clr);
+//   transition: 1s;
+//   animation: animate 2s linear infinite;
+//   animation-delay: calc(0.33s * var(--i));
+// }
+
+// .place-btn-test > a:hover:before {
+//   width: 120%;
+// }
+
+
+// @keyframes animate {
+//   0%{
+//     transform: rotate(0deg);
+//   }
+//   100%{
+//     transform: rotate(360deg);
+//   }
+// }
+
+// .place-btn-test > a:after {
+//   content: '';
+//   position: absolute;
+//   inset: 4px;
+//   background: #e25a53;
+//   transition: 0.5s;
+// }
+
+// .place-btn-test > a:hover:after {
+//   background: var(--clr);
+// }
+
+// .place-btn-test > a span {
+//   position: relative;
+//   z-index: 1;
+//   font-size: 2em;
+//   color: #fff;
+//   opacity: 0.5;
+//   text-transform: uppercase;
+//   letter-spacing: 4px;
+//   transition: 0.5s;
+// }
+
+// .place-btn-test > a:hover span {
+//   opacity: 1;
+// }

@@ -15,12 +15,18 @@ photo_array = [
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1638441052/04-lausanne-ville_y6maru.jpg',
 ]
 
+
 people_photo_array = [
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1637919368/hamilton_ykiivz.jpg',
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1637919368/macron_sefgml.jpg',
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1637846119/surchat_vcwej2.jpg',
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1637845901/patrick_cwkajv.jpg',
   'https://res.cloudinary.com/dg2an4buq/image/upload/v1637845642/jacques_xya10w.jpg',
+  'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+  'https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+  'https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+  'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+  'https://images.unsplash.com/photo-1520451644838-906a72aa7c86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=850&q=80',
 ]
 
 # Mission name ####################################################
@@ -98,11 +104,6 @@ p = 0
     password: '123456',
     email: email
   )
-  # user.photo.attach(
-  #   io: URI.open(people_photo_array.sample),
-  #   filename: "user#{p}.png",
-  #   content_type: 'image/png'
-  # )
   user.save!
   p += 1
 end
@@ -530,6 +531,22 @@ ChallengeQuestion.create(
   status: true,
   answer_counter: 2
 )
+
+
+# Attach pictures to Users ########################
+
+puts "add pictures to users"
+
+p = 0
+User.all[0..9].each do |user|
+  puts "attaching user #{p+1}"
+  user.photo.attach(
+    io: URI.open(people_photo_array[p]),
+    filename: "user#{p}.jpg",
+    content_type: 'image/jpg'
+  )
+p += 1
+end
 
 puts "------------------------------------------------------------------"
 puts "----------------Seed working correctly. Enjoy !-------------------"

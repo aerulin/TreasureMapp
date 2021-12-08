@@ -14,41 +14,41 @@
     <h2>Classement</h2>
   </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Rang</th>
-        <th scope="col"></th>
-        <th scope="col" style="text-align: left">Utilisateur</th>
-        <th scope="col">Score</th>
-      </tr>
-    </thead>
+  <table class="table" id="leaderboard-table">
+      <thead>
+        <tr class="leaderboard-head">
+          <th scope="col">Rang</th>
+          <th scope="col"></th>
+          <th scope="col" style="text-align: left">Utilisateur</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
 
     <tbody>
-    <% @users.each_with_index do |user, index| %>
+      <% @users.each_with_index do |user, index| %>
 
-      <% if user == current_user %>
-        <tr class='custom-row row-current-user'>
-          <th scope="row"><%= index + 1 %></th>
-          <td><%= cl_image_tag current_user.photo.key, crop: :fill, class:'avatar-small border-red' %></td>
-          <td style="text-align: left"><%= user.nickname %></td>
-          <td><%= user.calculate_score %></td>
-        </tr>
-      <% else %>
-        <tr>
-          <th scope="row"><%= index + 1 %></th>
-          <td>
-            <% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, crop: :fill, class:'avatar-small border-red' %>
-            <% else %>
-              <img src="https://www.splitbrain.org/_static/monsterid/monsterid.php?.png" alt="avatar" class='avatar-small border-red'>
-            <% end %>
-          </td>
-          <td style="text-align: left"><%= user.nickname %></td>
-          <td><%= user.calculate_score %></td>
-        </tr>
+        <% if user == current_user %>
+          <tr class='custom-row row-current-user'>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= cl_image_tag current_user.photo.key, crop: :fill, class:'avatar-small border-red' %></td>
+            <td style="text-align: left"><%= user.nickname %></td>
+            <td><%= user.calculate_score %></td>
+          </tr>
+        <% else %>
+          <tr class="rank<%= index %>">
+            <th scope="row"><%= index + 1 %></th>
+            <td>
+              <% if user.photo.attached? %>
+                <%= cl_image_tag user.photo.key, crop: :fill, class:'avatar-small border-red' %>
+              <% else %>
+                <img src="https://www.splitbrain.org/_static/monsterid/monsterid.php?.png" alt="avatar" class='avatar-small border-red'>
+              <% end %>
+            </td>
+            <td style="text-align: left"><%= user.nickname %></td>
+            <td><%= user.calculate_score %></td>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
     </tbody>
 
   </table>

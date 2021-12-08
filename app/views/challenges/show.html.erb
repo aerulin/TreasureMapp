@@ -8,8 +8,10 @@
       </div>
     </div>
     <div class="box-avatar">
-      <%= link_to challenge_map_path(@challenge) do %>
-        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_hooof5c8.json" speed="1" class= "logo-map avatar border-red" loop  autoplay></lottie-player>
+
+
+    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_svy4ivvy.json" speed="1" class= "loading avatar border-red" loop autoplay></lottie-player>
+ <%= link_to challenge_map_path(@challenge) do %>
       <% end %>
     </div>
     <div class="text-map">
@@ -18,27 +20,37 @@
     </div>
   </header>
 
-  <div class="list-wrapper mb-2 mt-5 mx-4">
+<div class="show-box">
+<table class="show-table-custom">
+    <tbody>
+
     <% @challenge.mission.clues.each_with_index do |clue, index|%>
         <% if index < @challenge.challenge_questions.where(status: true).count %>
-          <div class="list-item pl-3 py-2 m-3 rounded-pill border border-success">
-              <i class="fas fa-unlock-alt pr-3"></i>
-              <span><%= clue.description %></span>
-          </div>
+        <tr class="row-show-unlocked"style="background-color:#FC635B;">
+              <th><i class="fas fa-unlock-alt p-2"></i></th>
+              <td><%= clue.description %></td>
+          </tr>
         <% else %>
-          <div class="list-item pl-3 py-2 m-3 rounded-pill bg-success">
-              <i class="fas fa-lock pr-3"></i>
-              <span>Indice bloqué</span>
-          </div>
+          <tr class="row-show-locked"style="background-color:gray;">
+              <th><i class="fas fa-lock p-2"></i></th>
+              <td>Indice bloqué</td>
+          </tr>
         <% end %>
     <% end %>
-  </div>
+  </tbody>
 
+</table>
+
+</div>
+  <div class="box-button">
+  <div class="button-buzzer">
   <%if @challenge.challenge_questions.count == @challenge.challenge_questions.where(status: true).count %>
     <%= simple_form_for @challenge, method: :post, url: challenge_validate_path(@challenge) do |f| %>
-      <%= f.submit "Valider le lieu secret", class: "mb-2 button-validate" %>
+      <%= f.submit "Valider le lieu secret", class: "btn-red" %>
       <%end%>
   <%else%>
-    <button disabled class="mb-2 button-validate" style="opacity:0.7">Répondez à toutes les questions pour pouvoir débloquer le lieu secret.</button>
+    <button disabled class="btn-red">Valider le lieu secret</button>
   <% end %>
+</div>
+  </div>
 </div>

@@ -65,4 +65,5 @@ class Challenge < ApplicationRecord
       bonus_points: score_bonus
     }
   end
+
 end

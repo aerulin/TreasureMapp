@@ -18,7 +18,9 @@
   <% @missions.each do |mission|%>
     <% if Challenge.find_by(mission: mission, user: current_user).nil? %>
       <div class="index-card">
-        <%= image_tag mission.photo_url, alt: "Le Wagon" %>
+        <div class="index-photo">
+          <%= image_tag mission.photo_url, alt: "Le Wagon" %>
+        </div>
         <div class="index-card-infos">
           <div class="index-card-infos-text">
             <h5><%= mission.name %></h5>
@@ -27,7 +29,7 @@
               <p>🏋️‍♀️ <%= mission.difficulty %></p>
             </div>
           </div>
-          <div class="btn-red card-button"><%= link_to 'Découvrir', mission_path(mission)%></div>
+          <div class="btn-red index-card-button"><%= link_to 'Découvrir', mission_path(mission)%></div>
         </div>
       </div>
     <% end %>

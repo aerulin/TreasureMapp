@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :challenges
+  has_one_attached :photo
 
   # class method to sum the scores stored in all challenges belonging to user
   def calculate_score

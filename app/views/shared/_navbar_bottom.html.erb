@@ -1,21 +1,40 @@
 <div class="mobile-navbar">
 
-    <ul class="navbar-bottom">
-        <li class="item-nav" style="border-right:1px solid #e7e7e7">
-          <i class="fas fa-home icon-nav-bottom"></i>
-          <div><%= link_to "Accueil", root_path, class: "link-nav" %></div>
-        </li>
-        <li class="item-nav" style="border-right:1px solid #e7e7e7">
+    <div class="navbar-bottom">
+
+      <div class="item-nav<%= current_page?('/') ? " active" : "" %>">
+        <a href="/" class="link-nav">
+            <i class="fas fa-home icon-nav-bottom"></i>
+            <p>Accueil</p>
+        </a>
+      </div>
+
+      <hr class="vertical-line">
+
+      <div class="item-nav<%= request.fullpath.start_with?('/missions') ? " active" : "" %>">
+        <a href="/missions" class="link-nav">
           <i class="fas fa-gamepad icon-nav-bottom"></i>
-          <div><%= link_to "Missions", missions_path, class: "link-nav" %></div>
-        </li>
-        <li class="item-nav" style="border-right:1px solid #e7e7e7">
+          <p>Missions</p>
+        </a>
+      </div>
+
+      <hr class="vertical-line">
+
+      <div class="item-nav <%= request.fullpath.start_with?('/map') ? " active" : "" %>">
+        <a href="/map_all_challenges" class="link-nav">
           <i class="fas fa-map-signs icon-nav-bottom"></i>
-          <div><%= link_to "Carte", "#", class: "link-nav" %></div>
-        </li>
-        <li class="item-nav">
+          <p>Carte</p>
+        </a>
+      </div>
+
+      <hr class="vertical-line">
+
+      <div class="item-nav<%= current_page?('/users') ? " active" : "" %>">
+        <a href="/users" class="link-nav">
             <i class="fas fa-trophy icon-nav-bottom"></i>
-            <div><%= link_to "Scores", users_path, class: "link-nav" %></div>
-        </li>
-    </ul>
+            <p>Scores</p>
+        </a>
+      </div>
+
+    </div>
 </div>

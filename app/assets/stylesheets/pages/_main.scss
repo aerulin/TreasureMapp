@@ -1,14 +1,20 @@
 .main{
   text-align: center;
-  overflow: scroll;
   margin-bottom: 0px;
-  min-height: 88vh;
+  min-height: calc(90vh - 8px);
+  padding-bottom: 1vh;
 }
-
 
 .main-single{
   text-align: center;
-  overflow: scroll;
   margin-bottom: 0px;
-  min-height: 88vh;
+  height: calc(90vh - 8px);
+  padding-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-wrapper{
+  margin-bottom: 10vh;
 }

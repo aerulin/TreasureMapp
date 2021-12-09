@@ -1,18 +1,13 @@
 <div class="map-popup">
   <% if challenge_question.status %>
-    <div class="question-box">
-      <p>Bravo! La réponse à:</p>
-      <p class="question-text"><%= challenge_question.question.question %></p>
-      <p>etait: </p>
-      <p class="question-text"><%= challenge_question.question.answer %></p>
-    </div>
-      <%= link_to 'voir l\'indice débloqué', challenge_path(challenge), class: "btn-border-red"%>
+    <p>Bravo, vous avez déjà trouvé la bonne réponse à cette question!</p>
   <% else %>
     <p class="question">
       <%= question.question %>
     </p>
     <%= simple_form_for challenge_question, method: :post, url: challenge_question_validate_path(challenge, question), html: { autocomplete: 'off' } do |f| %>
       <%= f.input :guess, label: false %>
+      <%= f.hidden_field :redirect, value: "all_map" %>
       <%= f.submit "Valider", class: "btn-red" %>
     <% end %>
   <% end %>

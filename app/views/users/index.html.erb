@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main-single">
 
   <div class="banner-custom">
     <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt='Background Picture'>
@@ -28,7 +28,7 @@
       <% @users.each_with_index do |user, index| %>
 
         <% if user == current_user %>
-          <tr class='custom-row row-current-user'>
+          <tr class="rank<%= index %> custom-row row-current-user">
             <th scope="row"><%= index + 1 %></th>
             <td><%= cl_image_tag current_user.photo.key, crop: :fill, class:'avatar-small border-red' %></td>
             <td style="text-align: left"><%= user.nickname %></td>

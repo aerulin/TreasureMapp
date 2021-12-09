@@ -2,6 +2,9 @@
   <% if challenge_question.status %>
     <p>Bravo, vous avez déjà trouvé la bonne réponse à cette question!</p>
   <% else %>
+    <div style="height: 50px;" class="mb-3">
+    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_y37xuqq6.json" speed="1" loop autoplay></lottie-player>
+  </div>
     <p class="question">
       <%= question.question %>
     </p>

@@ -18,7 +18,8 @@ class ChallengeQuestionsController < ApplicationController
 
     if intersection.empty?
       challenge_question.save!
-      flash[:false] = "Fausse réponse! Essayez à nouveau."
+      flash[:bad_answer] = ''
+      # flash[:false] = "Fausse réponse! Essayez à nouveau."
       redirect_to challenge_map_path(challenge)
     else
       challenge_question.status = true
@@ -28,7 +29,7 @@ class ChallengeQuestionsController < ApplicationController
       else
         redirect_to challenge_path(challenge)
       end
-       flash[:true] = "Bravo! Vous avez trouvé la bonne réponse et débloqué un indice!"
+       flash[:good_answer] = ''
     end
   end
 

@@ -1,0 +1,160 @@
+.flash-answer {
+
+}
+
+
+.good-answer {
+
+
+}
+
+.bad-answer {
+
+
+
+}
+
+
+
+$white: #FCFCFC;
+$gray: #CBCDD3;
+$dark: #777777;
+$error: #EF8D9C;
+$orange: #FFC39E;
+$success: #B0DB7D;
+$secondary: #99DBB4;
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+$font: 'Lato', sans-serif;
+
+
+
+// html {
+//   display: grid;
+//   min-height: 100%;
+// }
+
+// body {
+//   display: grid;
+//   overflow: hidden;
+//   font-family: $font;
+//   text-transform: uppercase;
+//   text-align: center;
+// }
+
+.flash-answer {
+  position: absolute;
+  z-index: 100;
+  left: 20vw;
+  top: 33vh;
+  overflow: hidden;
+  width: 60vw;
+  height: 33vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 !important;
+
+
+  h1 {
+    font-size: 1.5em;
+    font-weight: 100;
+    letter-spacing: 3px;
+    padding-top: 5px;
+    color: $white;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+    h2 {
+    font-size: 0.9em;
+    font-weight: 100;
+    letter-spacing: 3px;
+    padding-top: 5px;
+    color: $white;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .green-custom {
+    color: darken($secondary, 20%);
+  }
+
+  .red-custom {
+    color: darken($error, 10%);
+  }
+
+  .alert-custom {
+    font-weight: 700;
+    letter-spacing: 5px;
+  }
+
+  p {
+    margin-top: -5px;
+    font-size: 0.8em;
+    font-weight: 100;
+    color: $white;
+    letter-spacing: 1px;
+  }
+
+  button, .dot {
+    cursor: pointer;
+  }
+
+  #success-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background: linear-gradient(to bottom right, $success 40%, $secondary 100%);
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba($gray, 10%);
+    perspective: 40px;
+  }
+
+  #error-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background: linear-gradient(to bottom left, $myred 40%, $orange 100%);
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba($gray, 10%);
+  }
+
+  .lotti-custom {
+    display: flex;
+    justify-content: center;
+  }
+
+  .message-custom {
+    width: 100%;
+    text-align: center;
+  }
+
+  .button-container {
+    width: 100%;
+    display: flex;
+  }
+
+  .button-box {
+    background: $white;
+    width: 50%;
+    height: 15%;
+    border-radius: 20px;
+    outline: 0;
+    border: none;
+    box-shadow: 2px 2px 10px rgba($dark, .5);
+    transition: all .5s ease-in-out;
+    margin: 0vh auto 3vh auto;
+    &:hover {
+      background: darken($white, 5%);
+      transform: scale(1.05);
+      transition: all .3s ease-in-out;
+    }
+  }
+
+}

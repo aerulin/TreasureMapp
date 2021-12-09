@@ -174,7 +174,7 @@ wagon = Mission.new(
   category: "Célébrité",
   difficulty: "Difficile",
   time: "0h45",
-  city: 'Lausanne',
+  city: 'Renens',
   lat: 46.53206308153252,
   lng: 6.59230929974131,
   description: "Maman j'ai raté Boris !",
@@ -190,7 +190,7 @@ i = 0
     photo_url: photo_array[i],
     difficulty: ['Facile', 'Moyen', 'Difficile'].sample,
     city: city_array[i],
-    time: "#{rand(0..2)}h#{rand(0...6)}0",
+    time: "#{rand(0..2)}h#{rand(3...6)}0",
     category: ['Quartier', 'Parc', 'Célébrité', 'Histoire', 'Art'].sample,
     description: description_array[i]
   )
@@ -381,20 +381,20 @@ end
 
 # Creating Alain et Sinan ###########################################
 
-puts 'Creating Sinan...'
+puts 'Creating Paule...'
 
 sinan = User.new(
-  first_name: 'Paul',
+  first_name: 'Paule',
   last_name: 'Ochon',
-  nickname: "Pas-d'paul",
+  nickname: "Pas-d'paule",
   city: "Lausanne",
   password: '654321',
-  email: 'paul@gmail.com',
+  email: 'paule@gmail.com',
 )
 sinan.photo.attach(
-  io: URI.open('https://wavemind.ch/wp-content/uploads/2020/09/sinan-portrait-SITE.png'),
-  filename: "sinan.png",
-  content_type: 'image/png'
+  io: URI.open('https://121clicks.com/wp-content/uploads/2020/04/liliia_beda_fine_art_photography_10.jpg'),
+  filename: "sinan.jpg",
+  content_type: 'image/jpg'
 )
 sinan.save!
 puts 'Sinan created'
@@ -444,33 +444,33 @@ end
 
 # Setup Sinan Ouchy Challenge ###########################################
 
-# ouchy_challenge = Challenge.create(
-#   user: sinan,
-#   mission: ouchy,
-#   status: false,
-#   secret_counter: 0,
-# )
+ouchy_challenge = Challenge.create(
+  user: sinan,
+  mission: ouchy,
+  status: false,
+  secret_counter: 0,
+)
 
-# ChallengeQuestion.create(
-#   challenge: ouchy_challenge,
-#   question: ouchy_q_1,
-#   status: true,
-#   answer_counter: 2
-# )
+ChallengeQuestion.create(
+  challenge: ouchy_challenge,
+  question: ouchy_q_1,
+  status: false,
+  answer_counter: 2
+)
 
-# ChallengeQuestion.create(
-#   challenge: ouchy_challenge,
-#   question: ouchy_q_2,
-#   status: false,
-#   answer_counter: 1
-# )
+ChallengeQuestion.create(
+  challenge: ouchy_challenge,
+  question: ouchy_q_2,
+  status: false,
+  answer_counter: 1
+)
 
-# ChallengeQuestion.create(
-#   challenge: ouchy_challenge,
-#   question: ouchy_q_3,
-#   status: true,
-#   answer_counter: 4
-# )
+ChallengeQuestion.create(
+  challenge: ouchy_challenge,
+  question: ouchy_q_3,
+  status: true,
+  answer_counter: 4
+)
 
 # Setup Sinan Sauvabelin Challenge ###########################################
 

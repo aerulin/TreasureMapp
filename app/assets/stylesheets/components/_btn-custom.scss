@@ -78,6 +78,19 @@
   padding: 2px 5px;
 }
 
+.banner-back-border-red {
+  z-index: 1;
+  position:absolute;
+  top: 10px;
+  left: 10px;
+  font-weight: 200;
+  a{
+  color: $myred;
+  }
+  border: 1px solid $myred;
+  padding: 2px 5px;
+}
+
 .btn-mission {
   color: white;
   background-color:#FC635B;

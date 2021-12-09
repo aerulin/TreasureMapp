@@ -30,6 +30,7 @@ people_photo_array = [
   'https://pbs.twimg.com/profile_images/1259471144924721152/azs4IpYS_400x400.jpg',
   'https://pbs.twimg.com/profile_images/859814701584220161/sKM3MmS__400x400.jpg',
   'https://i.f1g.fr/media/figaro/704x396_cropupscale/2018/01/14/XVM63b07e52-f6ef-11e7-8019-2c6b598f24bb.jpg',
+  'https://scontent-zrh1-1.xx.fbcdn.net/v/t1.18169-9/1929618_8558138577_7127_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=lvQjJT2G--UAX_HENk5&_nc_ht=scontent-zrh1-1.xx&oh=1525b9af42fda818e980ad56f07e820a&oe=61D6E7B2'
 ]
 
 nickname_array = %w[
@@ -46,7 +47,12 @@ nickname_array = %w[
   sé_ba_vrai
   romain_des_bois
   chanson_paillarde
+  sinananas
 ]
+
+# [
+#   {nickname: 'tibo', photo: ''}
+# ]
 
 # Mission name ####################################################
 mission_array = [
@@ -76,7 +82,7 @@ city_array = [
 ]
 
 description_array = [
-  "A la conquête de la ville de Calvin. Attention à ne pas prendre une martmite sur la tête.",
+  "A la conquête de la ville de Calvin. Attention à ne pas prendre une marmite sur la tête.",
   "Capitale culturelle, ville des amoureux, une petite escapade romantique.",
   "Des montagnes à la Mer Méditerranée, laissez vous porter par le courant.",
   "As de la grammaire et la conjugaison ? Sauras-tu Yverder ?",
@@ -113,7 +119,7 @@ ActiveStorage::Attachment.destroy_all
 
 puts 'Creating 10 users....'
 p = 0
-13.times do
+14.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = "#{first_name.downcase}.#{last_name.downcase}@gmail.com"
@@ -125,6 +131,12 @@ p = 0
     password: '123456',
     email: email
   )
+  user.photo.attach(
+    io: URI.open(people_photo_array[p]),
+    filename: "user#{p}.jpg",
+    content_type: 'image/jpg'
+  )
+# sleep(2.seconds)
   user.save!
   p += 1
 end
@@ -558,17 +570,17 @@ ChallengeQuestion.create(
 
 puts "add pictures to users"
 
-p = 0
-User.all[0..12].each do |user|
-  puts "Attaching photo to: #{user.nickname}"
-  user.photo.attach(
-    io: URI.open(people_photo_array[p]),
-    filename: "user#{p}.jpg",
-    content_type: 'image/jpg'
-  )
-sleep(2.seconds)
-p += 1
-end
+# p = 0
+# User.all[0..12].each do |user|
+#   puts "Attaching photo to: #{user.nickname}"
+#   user.photo.attach(
+#     io: URI.open(people_photo_array[p]),
+#     filename: "user#{p}.jpg",
+#     content_type: 'image/jpg'
+#   )
+# sleep(2.seconds)
+# p += 1
+# end
 
 puts "------------------------------------------------------------------"
 puts "----------------Seed working correctly. Enjoy !-------------------"

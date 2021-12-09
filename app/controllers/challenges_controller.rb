@@ -82,6 +82,7 @@ end
     # test = user_lat.between?(place[0] - delta, place[0] + delta)
     if user_lat.between?(place[0] - delta, place[0] + delta) && user_long.between?(place[1] - delta, place[1] + delta)
       challenge.status = true
+      challenge.score = challenge.calculate_score[:final_score]
       challenge.save
       render json: { location: challenge_score_path(challenge) }
     else

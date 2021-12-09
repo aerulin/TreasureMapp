@@ -75,14 +75,14 @@
     </div>
 
     <div id="final-score-box">
-    <h2 id="final-score"><%= @challenge.calculate_score[:final_score] %> pts</h2>
+    <h2 id="final-score"><p style="font-size:20px;">Total de la mission:</p> <%= @challenge.calculate_score[:final_score] %> pts</h2>
     </div>
 
   </div>
 
   <div>
-  <p>Mission commencée le: <%= @challenge.created_at.strftime("%d-%m-%Y") %></p>
-  <p>Mission terminée le: <%= @challenge.created_at.strftime("%d-%m-%Y") %></p>
+  <p>Mission commencée le: <%= @challenge.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+  <p>Mission terminée le: <%= @challenge.updated_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
   </div>
 
 </div>

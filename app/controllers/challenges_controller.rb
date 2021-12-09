@@ -81,6 +81,8 @@ end
 
     # test = user_lat.between?(place[0] - delta, place[0] + delta)
     if user_lat.between?(place[0] - delta, place[0] + delta) && user_long.between?(place[1] - delta, place[1] + delta)
+      challenge.status = true
+      challenge.save
       render json: { location: challenge_score_path(challenge) }
     else
       flash[:falsy] = "Oups! Il semblerait que ce ne soit pas le bon endroit, essayez encore!"

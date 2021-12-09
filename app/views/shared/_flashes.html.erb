@@ -42,20 +42,6 @@
 
 
 <% if flash[:bad_answer] %>
-  <%# <div class="flash-answer bad-answer alert-dismissible" role="alert">
-    <div id="error-box">
-      <div class="face2">
-        <div class="eye"></div>
-        <div class="eye right"></div>
-        <div class="mouth sad"></div>
-      </div>
-      <div class="shadow move"></div>
-      <div class="message-custom"><h1 class="alert-custom">Oh non !</h1><p>Ce n'est pas la bonne réponse !</div>
-      <button class="button-box" data-dismiss="flash-answer" aria-label="Close">
-        <h2 class="red-custom" aria-hidden="true">Fermer</h2>
-      </button>
-    </div>
-  </div> %>
   <div class="alert fade show flash-answer" role="alert">
     <div id="error-box">
       <div class="lotti-custom">
@@ -73,7 +59,7 @@
 <% end %>
 
 <% if flash[:good_answer] %>
-  <div class="flash-answer good-answer" role="alert">
+  <%# <div class="flash-answer good-answer" role="alert">
     <div id="success-box">
       <div class="face">
         <div class="eye"></div>
@@ -84,5 +70,20 @@
       <div class="message-custom"><h1 class="alert-custom">Success!</h1><p>yay, everything is working.</p></div>
       <button class="button-box"><h2 class="green-custom">continue</h2></button>
     </div>
+  </div> %>
+  <div class="alert fade show flash-answer" role="alert">
+    <div id="success-box">
+      <div class="lotti-custom">
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_jNEOSb.json"  background="transparent"  speed="1"  style="width: 25vw; height: 25vw;"  loop  autoplay></lottie-player>
+      </div>
+      <div class="message-custom"><h1 class="alert-custom">Wow ! </h1><p>Bravo, c'est la bonne réponse !!'</div>
+      <div class="button-container">
+        <button type="button" class="button-box" data-dismiss="alert" aria-label="Close">
+          <h2 class="green-custom" aria-hidden="true">Indice</h2>
+        </button>
+      </div>
+    </div>
   </div>
+
 <% end %>

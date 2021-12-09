@@ -29,9 +29,9 @@ const initMapbox = () => {
     element.style.width = '35px';
     element.style.height = '50px';
     if (marker.status) {
-      element.style.backgroundImage = `url('https://res.cloudinary.com/dg2an4buq/image/upload/v1638864481/green-dark-pin_n1y4ku.png')`;
+      element.style.backgroundImage = `url('https://res.cloudinary.com/dg2an4buq/image/upload/v1639059550/green-map-v3_yegezb.png')`;
     } else {
-      element.style.backgroundImage = `url('https://res.cloudinary.com/dg2an4buq/image/upload/v1638864232/red-pin_qi3h38.png')`;
+      element.style.backgroundImage = `url('https://res.cloudinary.com/dg2an4buq/image/upload/v1639059810/red-map-v3_huvtn0.png')`;
     }
 
   new mapboxgl.Marker(element)

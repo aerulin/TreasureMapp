@@ -1,21 +1,3 @@
-.flash-answer {
-
-}
-
-
-.good-answer {
-
-
-}
-
-.bad-answer {
-
-
-
-}
-
-
-
 $white: #FCFCFC;
 $gray: #CBCDD3;
 $dark: #777777;
@@ -23,25 +5,6 @@ $error: #EF8D9C;
 $orange: #FFC39E;
 $success: #B0DB7D;
 $secondary: #99DBB4;
-
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
-
-$font: 'Lato', sans-serif;
-
-
-
-// html {
-//   display: grid;
-//   min-height: 100%;
-// }
-
-// body {
-//   display: grid;
-//   overflow: hidden;
-//   font-family: $font;
-//   text-transform: uppercase;
-//   text-align: center;
-// }
 
 .flash-answer {
   position: absolute;
@@ -51,14 +14,10 @@ $font: 'Lato', sans-serif;
   overflow: hidden;
   width: 60vw;
   height: 33vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding: 0 !important;
 
-
   h1 {
-    font-size: 1.5em;
+    font-size: 5vw;
     font-weight: 100;
     letter-spacing: 3px;
     padding-top: 5px;
@@ -94,6 +53,7 @@ $font: 'Lato', sans-serif;
 
   p {
     margin-top: -5px;
+    margin-bottom: 0;
     font-size: 0.8em;
     font-weight: 100;
     color: $white;
@@ -105,7 +65,6 @@ $font: 'Lato', sans-serif;
   }
 
   #success-box {
-    position: absolute;
     width: 100%;
     height: 100%;
     margin: auto;
@@ -113,16 +72,21 @@ $font: 'Lato', sans-serif;
     border-radius: 20px;
     box-shadow: 5px 5px 20px rgba($gray, 10%);
     perspective: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   #error-box {
-    position: absolute;
     width: 100%;
     height: 100%;
     margin: auto;
     background: linear-gradient(to bottom left, $myred 40%, $orange 100%);
     border-radius: 20px;
     box-shadow: 5px 5px 20px rgba($gray, 10%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .lotti-custom {
@@ -143,7 +107,6 @@ $font: 'Lato', sans-serif;
   .button-box {
     background: $white;
     width: 50%;
-    height: 15%;
     border-radius: 20px;
     outline: 0;
     border: none;

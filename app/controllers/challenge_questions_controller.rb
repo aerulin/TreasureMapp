@@ -19,17 +19,12 @@ class ChallengeQuestionsController < ApplicationController
     if intersection.empty?
       challenge_question.save!
       flash[:bad_answer] = ''
-      # flash[:false] = "Fausse réponse! Essayez à nouveau."
       redirect_to challenge_map_path(challenge)
     else
       challenge_question.status = true
       challenge_question.save!
-      if params[:challenge_question][:redirect]
-        redirect_to '/map_all_challenges'
-      else
-        redirect_to challenge_path(challenge)
-      end
-       flash[:good_answer] = ''
+      redirect_to challenge_path(challenge)
+      flash[:good_answer] = ''
     end
   end
 

@@ -1,5 +1,8 @@
 <div class="main">
-
+ <div class="lottie-bg">
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_9Y9DIQ.json" speed="1.5"  style= "left:0 ; right: 0; position:absolute" loop  autoplay></lottie-player>
+ </div>
  <div class="banner-custom">
     <img src='https://cdn.pixabay.com/photo/2017/01/18/10/43/banner-1989514_1280.png' alt=''>
     <div class="banner-back">
@@ -13,7 +16,7 @@
 
 
   <h3>Score <%= @challenge.mission.name %></h3>
-  <p style="font-size:32px;margin-top:20px;font-weight:bold;color:#FC635B">Bravo! Vous avez débloqué l'endroit secret et terminé la mission!</p>
+  <p style="font-size:17px;margin-top:20px;font-weight:bold;color:#FC635B">Bravo! Vous avez débloqué l'endroit secret et terminé la mission!</p>
 
 
   <div class="score-box">
@@ -75,14 +78,14 @@
     </div>
 
     <div id="final-score-box">
-    <h2 id="final-score"><%= @challenge.calculate_score[:final_score] %> pts</h2>
+    <h2 id="final-score"><p style="font-size:20px;">Total de la mission:</p> <%= @challenge.calculate_score[:final_score] %> pts</h2>
     </div>
 
   </div>
 
   <div>
-  <p>Mission commencée le: <%= @challenge.created_at.strftime("%d-%m-%Y") %></p>
-  <p>Mission terminée le: <%= @challenge.created_at.strftime("%d-%m-%Y") %></p>
+  <p>Mission commencée le: <%= @challenge.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+  <p>Mission terminée le: <%= @challenge.updated_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
   </div>
 
 </div>

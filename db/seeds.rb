@@ -384,17 +384,17 @@ end
 puts 'Creating Sinan...'
 
 sinan = User.new(
-  first_name: 'Sinan',
-  last_name: 'Otech',
-  nickname: 'sinananas',
+  first_name: 'Paul',
+  last_name: 'Ochon',
+  nickname: "Pas-d'paul",
   city: "Lausanne",
-  password: '123456',
-  email: 'sinan@gmail.com',
+  password: '654321',
+  email: 'paul@gmail.com',
 )
 sinan.photo.attach(
-  io: URI.open('https://scontent-zrh1-1.xx.fbcdn.net/v/t1.18169-9/190711_4365858577_1943_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=wj_NIzSCnKUAX-W__ON&_nc_ht=scontent-zrh1-1.xx&oh=01be2c018cc5dbe9721de7970792bf71&oe=61D50430'),
-  filename: "sinan.jpg",
-  content_type: 'image/jpg'
+  io: URI.open('https://wavemind.ch/wp-content/uploads/2020/09/sinan-portrait-SITE.png'),
+  filename: "sinan.png",
+  content_type: 'image/png'
 )
 sinan.save!
 puts 'Sinan created'

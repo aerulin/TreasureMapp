@@ -1,13 +1,44 @@
-.background-img {
-  background-image: url("treasur-map.jpg");
-  height: 100vh;
+.background-img, .text {
+  border-radius: 10px;
+}
+
+.background {
+  height: 87vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .text {
-  background-color: rgba(200, 200, 200, 0.8);
-  border-radius: 10px;
-  border: 2px solid black;
+  height: 87vh;
+  width: 100%;
+  font-size: 1em;
+}
+
+.text  h1 {
+  color:#FC635b;
+  font-weight: 900;
+  font-size: 1.8em;
+}
+
+.text h2 {
+  text-decoration: underline;
+  color: #FC635b;
+  font-size: 1.6em;
+}
+
+.regle {
+  width: 90%;
+}
+
+.icon {
+  font-size:24px;
+  padding: 5px;
+  margin-right: 5px;
+  color: #FC635b;
+  margin-right:8px;
+}
+
+ul{
+  padding:0;
 }

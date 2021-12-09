@@ -1,17 +1,23 @@
-<div class="background-img d-flex align-items-center">
-  <div class="text p-3">
-    <h1 class="justify-content-center">Treasurmapp</h1>
-    <p>Avec Treasurmapp vous allez vous instruire, voyager et le tout, tout en vous amusant !!!!</p>
-    <p>En mode compétition vous devrez gagnez le plus de points possible pour pouvoir faire partis des meilleures joueurs et ainsi gagné différent prix.</p>
-    <p>Comment ce passe le jeux ?</p>
-    <p>Une fois logé vous serai automatiquement diriger sur votre playground.
-    De là vous aurez plusieurs choix à disposition:</p>
-    <ul class="mt-3">
-      <li>Voir votre classement</li>
-      <li>La liste de vos missions inachevé que vous pouvez reprendre</li>
-      <li>Vos missions terminés</li>
-      <li>Un menu pour naviguer plus rapidement</li>
-    </ul>
-    <i class="fas fa-chevron-right"></i>
+<div class="background d-flex align-items-center">
+  <div class="text pb-2 px-3 d-flex flex-column bd-highlight">
+    <div class="bd-highlight">
+      <h1 class="justify-content-center">Treasuremapp</h1>
+      <p class="text-center">Avec Treasurmapp, découvrez la face cachée de votre ville en vous amusant!</p>
+      <p class="text-center">Le but de chaque mission est de découvrir un lieu tenu secret: Parcourez la ville à la recherche d'indices en résolvant des énigmes! </p>
+    </div>
+    <div class="regle bd-highlight mx-auto">
+      <h2 class="text-center">Règles du jeux</h2>
+      <ul class="list-style-type">
+        <li class="d-flex"><i class="icon fas fa-crosshairs mt-2"></i><p>Selectionnez la mission de votre choix et lancez vous dans l'aventure.</p></li>
+        <li class="d-flex"><i class="icon far fa-map mt-2"></i><p>Ouvrez la map et rendez-vous sur le lieu de chaque question pour y répondre.</p></li>
+        <li class="d-flex"><i class="icon fas fa-trophy mt-2"></i><p>Chaque bonne réponse vous débloque un indice qui vous aidera à deviner le lieu secret.</p></li>
+        <li class="d-flex"><i class="icon fas fa-key mt-2"></i><p>Une idée du lieu secret? Rendez-vous sur place et validez votre réponse par géolocalisation!</p></li>
+      </ul>
+    </div>
+    <div class="place-btn mt-auto bd-highlight">
+      <%= link_to missions_path do %>
+        <button class="button-tuto-m px-5">Direction les missions</button>
+      <% end %>
+    </div>
   </div>
 </div>

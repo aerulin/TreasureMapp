@@ -389,7 +389,7 @@ sinan = User.new(
   nickname: "Pas-d'paule",
   city: "Lausanne",
   password: '654321',
-  email: 'paul@gmail.com',
+  email: 'paule@gmail.com',
 )
 sinan.photo.attach(
   io: URI.open('https://121clicks.com/wp-content/uploads/2020/04/liliia_beda_fine_art_photography_10.jpg'),

@@ -44,6 +44,7 @@ class Challenge < ApplicationRecord
     score = (final_q_answered + final_q_guess + final_location_guess + final_end_mission)
     score_bonus = (score * bonus).to_i
     final_score = score + score_bonus
+    # @time = challenge.updated_at.strftime("%d-%m-%Y %H:%M:%S") - challenge.created_at.strftime("%d-%m-%Y %H:%M:%S")
 
     # prepare hash
     {
@@ -65,4 +66,5 @@ class Challenge < ApplicationRecord
       bonus_points: score_bonus
     }
   end
+
 end

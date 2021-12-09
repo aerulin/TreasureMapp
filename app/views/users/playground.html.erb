@@ -5,6 +5,11 @@
     <div class="banner-button">
       <%= link_to "Mon profil",  edit_user_registration_path, class:'btn-border-white' %>
     </div>
+
+    <div class="banner-button-left">
+      <i class="fas fa-info-circle"></i>
+    </div>
+
   </div>
   <div class="box-avatar">
     <% if current_user.photo.attached? %>

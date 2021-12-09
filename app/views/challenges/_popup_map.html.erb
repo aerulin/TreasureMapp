@@ -1,4 +1,7 @@
 <div class="map-popup">
+  <div style="height: 50px;" class="mb-3">
+    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_y37xuqq6.json" speed="1" loop autoplay></lottie-player>
+  </div>
   <% if challenge_question.status %>
     <div class="question-box">
       <p>Bravo! La réponse à:</p>
@@ -8,7 +11,7 @@
     </div>
       <%= link_to 'voir l\'indice débloqué', challenge_path(challenge), class: "btn-border-red"%>
   <% else %>
-    <p class="question">
+    <p class="question mb-3">
       <%= question.question %>
     </p>
     <%= simple_form_for challenge_question, method: :post, url: challenge_question_validate_path(challenge, question), html: { autocomplete: 'off' } do |f| %>

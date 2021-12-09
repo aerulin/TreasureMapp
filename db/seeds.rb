@@ -174,7 +174,7 @@ wagon = Mission.new(
   category: "Célébrité",
   difficulty: "Difficile",
   time: "0h45",
-  city: 'Lausanne',
+  city: 'Renens',
   lat: 46.53206308153252,
   lng: 6.59230929974131,
   description: "Maman j'ai raté Boris !",
@@ -190,7 +190,7 @@ i = 0
     photo_url: photo_array[i],
     difficulty: ['Facile', 'Moyen', 'Difficile'].sample,
     city: city_array[i],
-    time: "#{rand(0..2)}h#{rand(0...6)}0",
+    time: "#{rand(0..2)}h#{rand(3...6)}0",
     category: ['Quartier', 'Parc', 'Célébrité', 'Histoire', 'Art'].sample,
     description: description_array[i]
   )

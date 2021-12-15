@@ -17,11 +17,11 @@ photo_array = [
 
 # User config ####################################################
 people_photo_array = [
-  'https://scontent-zrh1-1.xx.fbcdn.net/v/t31.18172-8/1233185_10151996261145466_123608388_o.jpg?_nc_cat=104&ccb=1-5&_nc_sid=174925&_nc_ohc=Wh7Ogl-WwGQAX8ayg4E&_nc_ht=scontent-zrh1-1.xx&oh=964858ca76b193bda3ddcc6c10f99235&oe=61D4C229',
+  'https://www.swissmarketing.ch/img/content/Thibault-Jaime1024x768.jpg',
   'https://media-exp1.licdn.com/dms/image/C4D03AQE-NlbWekf_cQ/profile-displayphoto-shrink_200_200/0/1525170617485?e=1643241600&v=beta&t=xuV--6urfX-I3gmUWwmlO6rlDXdPA_rSKPQejSyOz7E',
   'https://scontent-zrh1-1.xx.fbcdn.net/v/t1.18169-9/10439375_539783666153655_4785173868232971770_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=174925&_nc_ohc=_DlWuZjzZGYAX-cD8EE&_nc_oc=AQlh1vAkOV-rEjnG8YxHC6-Q89KCdhNbEsgrw_07NaD6MP34jfJXxNpylzEK7jvyM08&_nc_ht=scontent-zrh1-1.xx&oh=a4a87124c5d3dc2f36f74e69a6bb0273&oe=61D5CB70',
   'https://media-exp1.licdn.com/dms/image/C5603AQF1m6GQm0_Caw/profile-displayphoto-shrink_200_200/0/1517401395277?e=1642636800&v=beta&t=ISlmb5J3o71erLEbZANIcEr2CbFIRNItzbuvvB28FPw',
-  'https://media-exp1.licdn.com/dms/image/C4D03AQEvudK4GBsvlA/profile-displayphoto-shrink_200_200/0/1553800705162?e=1642032000&v=beta&t=eZqPYIQDXK5O6DKvaTDJ4Ae--TN2Jfc6y814iPN2XUE',
+  'https://play-lh.googleusercontent.com/wuyYdwm-twuGDsFP_G2ekbReM0hfnPj7insu4y-TEPlM969feO0l9RntbQkBlYIiGZQ',
   'https://scontent-zrh1-1.xx.fbcdn.net/v/t39.30808-6/255020301_10159306986390259_8165562350308746856_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=gO9w0tcr3ooAX-2-8lm&tn=18zihvG_Xm7Yo8rg&_nc_ht=scontent-zrh1-1.xx&oh=7a862ab2017692228c8275bfa4b63191&oe=61B4EE5A',
   'https://media-exp1.licdn.com/dms/image/C4E03AQG-WjMuGBEIcg/profile-displayphoto-shrink_100_100/0/1582910207780?e=1643846400&v=beta&t=DK_ZJ-2eaL0mr0usHHZqUkPlmmJslLQyK1y8ulB4PGQ',
   'https://scontent-zrh1-1.xx.fbcdn.net/v/t1.18169-9/12003167_10205751447879577_5442256014356102599_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=174925&_nc_ohc=fWtqG4yM904AX_CRN5v&_nc_ht=scontent-zrh1-1.xx&oh=d141b31ac2c91c6b3bd5bdb2b3019c20&oe=61D77793',
@@ -117,9 +117,10 @@ ActiveStorage::Attachment.destroy_all
 
 # Creating users ####################################################
 
-puts 'Creating 10 users....'
+puts 'Creating 14 users....'
 p = 0
 14.times do
+  puts "creating #{nickname_array[p]} nb#{p}"
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = "#{first_name.downcase}.#{last_name.downcase}@gmail.com"
